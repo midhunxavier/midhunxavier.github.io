@@ -1,7 +1,7 @@
 ---
 title: "Cyber-physical automation systems modelling with IEC 61499 for their formal verification"
 collection: publications
-permalink: /publication/2010-10-01-paper-title-number-1
+permalink: /publication/paper_2
 excerpt: ''
 date: 2021-07-21
 venue: 'Journal 1'
