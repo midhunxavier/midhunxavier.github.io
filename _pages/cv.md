@@ -43,23 +43,17 @@ Education
 
 Skills
 ======
-* Python
-* React
-* SQL
-* SparQL
-* Unix
-* Git
-* Docker
-* Django
-* AWS
-* solidity
-* Ethereum smart contract
-* Web 3
-* IPFS
-* Robotics
-* Blockchain
-* Machine Learning
-* Cloud Computing
+
+* Frontend - React, Angular, Next.js
+* Backend - Python, Django, SQL, SparQL, AWS lambda
+* OS - Unix, Windows
+* Database - Postgres, Mongo, GraphDB
+* Deployment - Docker, Kubernetes, AWS or GCP
+* Vesrion control, documentation & management - Git, Jira, Swagger, OpenAPI 
+* Robotics - ROS 2
+* Blockchain - Smart contract developement, Decentralized applications (dApps), Non-fungible tokens (NFTs), Solidity, Truffle, Web.js, IPFS
+* Machine Learning - Deep learning, Computer vision, TensorFlow, PyTorch, Keras
+* Cloud Computing - Microservices, AWS, GCP 
 
 
 Publications
