@@ -10,11 +10,3 @@ location: ""
 
 I am interested in conducting research on the formal modeling and verification of industrial control systems, with a specific emphasis on the IEC 61499 standard. My focus is on exploring the novel techniques for modeling and verifying complex cyber-physical systems, including the integration of digital twin technology for formal verification purposes. Additionally, I am exploring the potential of process mining to optimize the performance of industrial control systems. Ultimately, my objective is to develop more efficient and reliable control systems that can be formally verified to ensure their safety and security.
 
-Heading 1
-======
-
-Heading 2
-======
-
-Heading 3
-======
