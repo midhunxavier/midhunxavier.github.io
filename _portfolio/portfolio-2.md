@@ -1,6 +1,6 @@
 ---
 title: "qr.justprint.io"
-excerpt: "Enhancing NFT Transparency with a Dynamic QR Code Generator <br/><img src='/images/qr1.PNG'>"
+excerpt: "Enhancing NFT Transparency with a Dynamic QR Code Generator <br/>"
 collection: portfolio
 ---
 
@@ -8,4 +8,4 @@ A dynamic QR code generator for NFTs (non-fungible tokens) would allow users to 
 
 [Click to visit](qr.justprint.io)
 
-excerpt: "Enhancing NFT Transparency with a Dynamic QR Code Generator <br/><img src='/images/qr1.PNG'>"
+"Enhancing NFT Transparency with a Dynamic QR Code Generator <br/><img src='/images/qr1.PNG'>"
