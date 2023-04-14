@@ -4,7 +4,7 @@ collection: teaching
 type: ""
 permalink: /teaching/research_1
 venue: ""
-date: 
+date: 2014-01-01
 location: ""
 ---
 
