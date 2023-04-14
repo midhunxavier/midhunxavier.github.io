@@ -1,6 +1,6 @@
 ---
 title: "qr.justprint.io"
-excerpt: "Enhancing NFT Transparency with a Dynamic QR Code Generator <br/><img src='/images/qr1.jpg'>"
+excerpt: "Enhancing NFT Transparency with a Dynamic QR Code Generator <br/><img src='/images/qr1.PNG'>"
 collection: portfolio
 ---
 
