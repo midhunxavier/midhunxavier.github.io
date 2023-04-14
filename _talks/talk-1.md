@@ -5,7 +5,7 @@ type: "Talk"
 permalink: /talks/talk-1
 venue: " Palma de Mallorca, Spain"
 date: 2021-07-21
-location: "San Francisco, California"
+location: "Palma de Mallorca, Spain"
 ---
 
 [Click here to watch](http://midhunxavier.github.io/files/paper1.pdf)
