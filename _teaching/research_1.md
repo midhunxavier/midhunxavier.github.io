@@ -1,5 +1,5 @@
 ---
-title: "Formal modelling and verification industrial control systems"
+title: "Enhancing Safety and Security in Industrial Control Systems: Formal Modeling, Verification, and Optimization Techniques with a Focus on IEC 61499 Standard and Digital Twin Technology"
 collection: teaching
 type: ""
 permalink: /teaching/research_1
