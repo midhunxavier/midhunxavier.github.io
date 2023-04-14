@@ -4,7 +4,7 @@ collection: talks
 type: "Talk"
 permalink: /talks/talk-2
 venue: "Perth, Australia"
-date: 2022-07-21
+date: 2022-07-25
 location: "Perth, Australia"
 ---
 
