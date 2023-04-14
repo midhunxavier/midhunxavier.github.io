@@ -2,7 +2,7 @@
 title: "Towards Decentralized Industrial Control Systems: Exploring the Potential of Blockchain Technology for Secure and Efficient Automation"
 collection: teaching
 type: ""
-permalink: /teaching/2015-spring-teaching-1
+permalink: /teaching/research_2
 venue: ""
 date: 
 location: ""
