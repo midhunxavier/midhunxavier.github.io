@@ -8,4 +8,4 @@ date: 2022-06-20
 location: "Hungary"
 ---
 
-[Click here to watch](http://midhunxavier.github.io/files/HiPEAC2022.pdf)
+[Click here to see](http://midhunxavier.github.io/files/HiPEAC2022.pdf)
