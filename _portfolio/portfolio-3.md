@@ -1,6 +1,6 @@
 ---
 title: "ConvertAny"
-excerpt: "ConvertAny: A Serverless File Converter Tool Built on AWS Lambda and S3 <br/><img src='/images/convertany1.PNG'>"
+excerpt: "ConvertAny: A Serverless File Converter Tool Built on AWS Lambda and S3 <br/>"
 collection: portfolio
 ---
 
@@ -16,3 +16,5 @@ Created static website using bulma CSS framework.
 This is a serverless apploication completely built on AWS Lambda and S3. This tool was inspired by the serverless-libreoffice project by @vladgolubev.
 
 [Click to visit](convertany.justprint.io)
+
+"ConvertAny: A Serverless File Converter Tool Built on AWS Lambda and S3 <br/><img src='/images/convertany1.PNG'>"
