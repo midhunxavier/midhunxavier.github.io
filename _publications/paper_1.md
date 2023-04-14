@@ -5,7 +5,6 @@ permalink: /publication/paper_1
 excerpt: ''
 date: 2021-07-21
 venue: '2021 IEEE 19th International Conference on Industrial Informatics (INDIN)'
-paperurl: 'http://midhunxavier.github.io/files/paper1.pdf'
 
 ---
 
