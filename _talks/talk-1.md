@@ -8,4 +8,4 @@ date: 2021-07-21
 location: "Palma de Mallorca, Spain"
 ---
 
-[Click here to watch](http://midhunxavier.github.io/files/paper1.pdf)
+[Click here to watch](https://youtu.be/F3TbZqafvRU)
