@@ -8,4 +8,4 @@ In simple terms, Speecher can easily make audio versions of your #blog posts and
 
 [Click to visit](https://www.linkedin.com/company/66287612)
 
-excerpt: "Bring voice to your content!<br/><img src='/images/speecher1.jpg'>"
+"Bring voice to your content!<br/><img src='/images/speecher1.jpg'>"
