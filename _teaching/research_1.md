@@ -1,10 +1,10 @@
 ---
 title: "Enhancing Safety and Security in Industrial Control Systems: Formal Modeling, Verification, and Optimization Techniques with a Focus on IEC 61499 Standard and Digital Twin Technology"
 collection: teaching
-type: ""
+type: "Formal modelling and verification"
 permalink: /teaching/research_1
-venue: ""
-date: 2014-01-01
+venue: "LTU"
+date: 2020-01-01
 location: ""
 ---
 
