@@ -1,6 +1,6 @@
 ---
 title: "Speecher.io"
-excerpt: "Bring voice to your content!<br/><img src='/images/speecher1.jpg'>"
+excerpt: "Bring voice to your content!<br/>"
 collection: portfolio
 ---
 
