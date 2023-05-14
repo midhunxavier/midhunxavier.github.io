@@ -10,7 +10,7 @@ redirect_from:
 
 Hello! My name is Midhun Xavier and I am a versatile engineer and researcher with experience in various fields such as Full Stack development, System Engineering, Data Analytics, Robotics, and Blockchain technology.
 
-I completed my Bachelor's degree in Electronics and Communication Engineering from MG University in 2014 and went on to pursue a Master's degree in Computer Science and Engineering from NIT Trichy, which I completed in 2017. Currently, I am pursuing a Ph.D. in Formal Modelling and Verification of IEC 61499 Systems from LTU, Sweden, which is expected to be completed in 2025.
+I completed my Bachelor's degree in Electronics and Communication Engineering from MG University in 2014 and went on to pursue a Master's degree in Computer Science and Engineering from IIIT, NIT Trichy campus, which I completed in 2017. Currently, I am pursuing a Ph.D. in Formal Modelling and Verification of IEC 61499 Systems from LTU, Sweden, which is expected to be completed in 2025.
 
 In my work experience, I have had the opportunity to work on various interesting projects. As a Full Stack developer at RCKR Software Pvt Ltd, I worked on implementing an "Identity Provider Platform" feature and building a health monitoring and recording web application with a configurable content management system. I also worked on transforming FHIR to CHbase Data Integration platform and vice versa to transfer health records between two different platforms.
 
