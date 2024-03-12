@@ -1,5 +1,5 @@
 ---
-title: "DeLMS: A decentralized learning management system"
+title: "DeLMS: A decentralized learning management system "
 collection: talks
 type: "Talk"
 permalink: /talks/talk-4
