@@ -3,8 +3,6 @@ title: "Green transport and renewable power: an integrated analysis for India's 
 collection: publications
 permalink: /publication/paper_9
 excerpt: ''
-date: 2023-11-27
-
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper9.pdf)
