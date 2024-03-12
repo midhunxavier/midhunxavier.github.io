@@ -3,7 +3,6 @@ title: "Formal Verification of the Control Software of a Radioactive Material Re
 collection: publications
 permalink: /publication/paper_12
 excerpt: ''
-date: 2023-10-02
 
 ---
 
