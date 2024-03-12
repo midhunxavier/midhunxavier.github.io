@@ -11,13 +11,16 @@ redirect_from:
 
 Work experience
 ======
+* 2024- : Software Engineer
+  * Flexbridge AB, Luleå, Sweden
+
+  * Implemented distributed control systems in IEC 61499 standard using Schneider Electric EAE
+
 * 2019-2020: Full Stack developer
   * RCKR Software Pvt Ltd, Bengaluru, India
 
   * Implemented "Identity Provider Platform" feature to enable login with various providers (Apple, Amazon, Facebook, Google and Microsoft) using OAuth2 workflow.
-  * Worked on building a health monitoring, analyzing and recording web application with configurable content management system and it made Web Content Accessibility       Guidelines (WCAG) compatible for visually challenged people.
-  * Implemented the transformation of FHIR (Fast Healthcare Interoperability Resource) to CHbase Data Intergartion platform and vice versa to communicate and transfer     the health record between two different platforms.
-
+  * Worked on building a health monitoring, analyzing and recording web application with a configurable content management system and it made Web Content Accessibility       Guidelines (WCAG) compatible for visually challenged people.
 
 * 2017-2019: System Engineer
   * Tata Consultancy Services (TCS) , Kochi, India
@@ -37,7 +40,7 @@ Education
 ======
 * B.S. in Electronics and Communication Engineering, SCMS, Kochi, MG University, India, 2014
 * M.S. in Computer Science and Engineering, NIT Trichy Campus, (IIIT), India, 2017
-* Ph.D in Formal modelling and verification of IEC 61499 systems, LTU, Sweden, 2025 (expected)
+* PhD in Formal modelling and verification of IEC 61499 systems, LTU, Sweden, 2024 (expected)
 
 
 
@@ -49,11 +52,13 @@ Skills
 * OS - Unix, Windows
 * Database - Postgres, Mongo, GraphDB
 * Deployment - Docker, Kubernetes, AWS or GCP
-* Vesrion control, documentation & management - Git, Jira, Swagger, OpenAPI 
+* Version control, documentation & management - Git, Jira, Swagger, OpenAPI 
 * Robotics - ROS 2
-* Blockchain - Smart contract developement, Decentralized applications (dApps), Non-fungible tokens (NFTs), Solidity, Truffle, Web.js, IPFS
+* Blockchain - Smart contract development, Decentralized applications (dApps), Non-fungible tokens (NFTs), Solidity, Truffle, Web.js, IPFS
 * Machine Learning - Deep learning, Computer vision, TensorFlow, PyTorch, Keras
-* Cloud Computing - Microservices, AWS, GCP 
+* Cloud Computing - Microservices, AWS, GCP
+* Formal Verification Tools - NuSMV, Spin
+* Industrial Informatics - IEC 61499, IEC 61131
 
 
 Publications
