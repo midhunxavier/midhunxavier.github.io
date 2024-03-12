@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/paper_10
 excerpt: ''
 date: 2023-11-27
-venue: 2023 IEEE 28th International Conference on Emerging Technologies and Factory Automation (ETFA)
+venue: 2023 IEEE 28th International Conference on Emerging Technologies and Factory Automation (ETFA), Sinaia, Romania
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper10.pdf)
