@@ -1,5 +1,5 @@
 ---
-title: "Test Suite for IEC 61499 Application Portability - Schneider Electric EAE | 4DIAC | FBME"
+title: "Test Suite for IEC 61499 Application Portability"
 collection: talks
 type: "Talk"
 permalink: /talks/talk-5
