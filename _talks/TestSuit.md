@@ -4,7 +4,7 @@ collection: talks
 type: "Talk"
 permalink: /talks/talk-5
 venue: " Helsinki, Finland"
-date: 2023-06 -21
+date: 2023-06-21
 location: "Helsinki, Finland"
 ---
 
