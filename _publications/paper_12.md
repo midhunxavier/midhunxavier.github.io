@@ -2,8 +2,8 @@
 title: "Formal Verification of the Control Software of a Radioactive Material Remote Handling System, Based on IEC 61499"
 collection: publications
 permalink: /publication/paper_12
-excerpt: ''
-
+excerpt: ""
+date: 2023-10-07
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper12.pdf)

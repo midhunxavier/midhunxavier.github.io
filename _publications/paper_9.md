@@ -2,7 +2,8 @@
 title: "Green transport and renewable power: an integrated analysis for India's future"
 collection: publications
 permalink: /publication/paper_9
-excerpt: ''
+excerpt: ""
+date: 2023-05-07
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper9.pdf)
