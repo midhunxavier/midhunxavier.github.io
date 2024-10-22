@@ -8,18 +8,16 @@ redirect_from:
   - /about.html
 ---
 
-Hello! My name is Midhun Xavier and I am a versatile engineer and researcher with experience in various fields such as Full Stack development, System Engineering, Data Analytics, Robotics, and Blockchain technology.
+Hi, I’m Midhun Xavier, a passionate researcher and developer, currently pursuing a PhD at Luleå University of Technology, Sweden. My work primarily focuses on creating innovative solutions that merge cutting-edge technologies like Machine Learning, Blockchain, and Industrial Internet of Things (IIOT) to solve real-world problems in industrial systems.
 
-I completed my Bachelor's degree in Electronics and Communication Engineering from MG University in 2014 and went on to pursue a Master's degree in Computer Science and Engineering from NIT Trichy campus (IIIT), which I completed in 2017. Currently, I am pursuing a PhD in Formal Modelling and Verification of IEC 61499 Systems from LTU, Sweden, which is expected to be completed in 2025.
+Throughout my academic and professional journey, I’ve had the opportunity to work on several groundbreaking projects. I implemented a decentralized manufacturing marketplace on the Ethereum blockchain, enhancing traceability and transparency across the production chain. This system enables seamless transactions and reliable tracking of products, significantly improving supply chain efficiency.
 
-In my work experience, I have had the opportunity to work on various interesting projects. As a Full Stack developer at RCKR Software Pvt Ltd, I worked on implementing an "Identity Provider Platform" feature and building a health monitoring and recording web application with a configurable content management system. I also worked on transforming FHIR to CHbase Data Integration platform and vice versa to transfer health records between two different platforms.
+I’ve also designed AI-based predictive maintenance systems, integrating advanced algorithms to anticipate equipment failures and enhance system reliability. These systems are crucial for industries that rely on predictive analytics to avoid costly downtime and improve overall performance.
 
-During my time as a System Engineer at Tata Consultancy Services (TCS), I developed an "EMAIL STATS BOT" tool and integrated a "Status Monitor Web application" with a chatbot using the RASA framework. I also deployed an "Encrypted QR Code Generator and Verification Application" to prevent counterfeit products from the retail industry using Blockchain technology.
+Additionally, I’ve explored the potential of decentralized learning systems, developing a learning management system (LMS) using Ethereum smart contracts and IPFS. This innovative LMS ensures secure, transparent, and decentralized storage, fostering greater collaboration and data integrity in educational environments.
 
-As a Data Analyst - Research Intern at Uvionics Tech India Pvt Ltd, I developed a real-time streaming model to analyze and visualize ECG signals and investigated a Disease Prediction Model using clustering and classification techniques.
+My technical expertise spans across a range of domains, including frontend and backend development (React, Angular, Python), machine learning, and blockchain technologies. I also have experience in formal verification and modeling of industrial control systems, particularly in applying the IEC 61499 standard for the design and verification of cyber-physical systems.
 
-Apart from my work experience, I have published several research papers in various journals. My research interests include Cyber-Physical Systems (CPS), Formal Verification, Process Mining in Industrial Control Systems, Digital Twin, and IEC 61499 standard.
+Through my research and development efforts, I aim to contribute to the creation of sustainable and energy-efficient industrial systems, focusing on adaptability to diverse operating environments and minimizing environmental impact. I also have a keen interest in integrating blockchain technology to build more secure and efficient decentralized industrial control systems.
 
-I have a strong technical background and possess skills in Python, React, SQL, SparQL, Unix, Git, Docker, Django, AWS, solidity, Ethereum smart contract, Web 3, IPFS, Blockchain, Machine Learning, and Cloud Computing.
-
-In summary, I am an enthusiastic and driven engineer with a passion for research and a proven track record in developing innovative solutions to complex problems.
+Feel free to explore my projects and publications to learn more about my work, or reach out to me if you'd like to collaborate or discuss new ideas!
