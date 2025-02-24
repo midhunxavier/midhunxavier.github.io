@@ -13,16 +13,25 @@ redirect_from:
 
 - 2024- : Researcher, LTU, Luleå, Sweden
 
-  - Implemented AI-powered ReACT agents in industrial automation to enhance human-machine collaboration, optimize production workflows, and enable real-time decision-making for adaptive manufacturing environments. These agents leveraged reasoning and planning techniques to autonomously execute tasks, predict system failures, and ensure continuous operational efficiency.
-    Skills & Tools: OpenAI API, Ollama, OPC UA, Prompt Engineering, Langchain, Knowledge Graphs
-  - Built an AI service platform that integrates SQL chatbot agents for seamless interaction with industrial automation databases and real-time sensor data visualization. The platform enables automated decision-making, optimizing control system efficiency through advanced LLM-based reasoning and real-time execution of industrial tasks.
-    Skills & Tools: Python, LangChain, Vector Databases, Retrieval-Augmented Generation (RAG), FastAPI, SQL, REST APIs, IEC 61499, OPC UA.
-  - Developed a multi-agent AI framework for distributed control systems, integrating AI-driven decision-making and real-time task execution across industrial automation platforms. The system enables seamless agent collaboration, intelligent workload distribution, and optimized performance monitoring in decentralized environments.
-    Skills & Tools: Python, LangGraph, AWS Agents, Anthropic.
-  - Optimized LLM fine-tuning for generating IEC 61499 function blocks in industrial automation, enhancing accuracy and response times for AI-driven control system design. This involved iterative benchmarking and training of models to ensure optimal function block generation and seamless integration into automation workflows.
-    Skills & Tools: LoRA (Low-Rank Adaptation), RLHF (Reinforcement Learning with Human Feedback), IEC 61499.
-  - Developed an AI evaluation pipeline to test model responses for accuracy, factual consistency, and unintended biases, optimizing feedback analysis in an AI-driven workplace well-being platform. Tested various LLMs for benchmarking and evaluation using LangSmith to improve sentiment analysis and stress prediction from employee feedback surveys.
-    Skills & Tools: PyTest, LangChain Evaluation, LangSmith, Benchmarking Frameworks, A/B Testing, AI Explainability Tools.
+- **Use Case:** Implemented AI-powered ReACT agents in industrial automation to enhance human-machine collaboration, optimize production workflows, and enable real-time decision-making for adaptive manufacturing environments. These agents leveraged reasoning and planning techniques to autonomously execute tasks, predict system failures, and ensure continuous operational efficiency.
+
+  - **Skills & Tools:** OpenAI API, GPT-4, OPC UA, Prompt Engineering, LlamaIndex, Knowledge Graphs, AI Planning Algorithms.
+
+- **Use Case:** Built an AI service platform that integrates SQL chatbot agents for seamless interaction with industrial automation databases and real-time sensor data visualization. The platform enables automated decision-making, optimizing control system efficiency through advanced LLM-based reasoning and real-time execution of industrial tasks.
+
+  - **Skills & Tools:** Python, LangChain, Vector Databases, Retrieval-Augmented Generation (RAG), FastAPI, SQL, REST APIs, IEC 61499, OPC UA.
+
+- **Use Case:** Developed a multi-agent AI framework for distributed control systems, integrating AI-driven decision-making and real-time task execution across industrial automation platforms. The system enables seamless agent collaboration, intelligent workload distribution, and optimized performance monitoring in decentralized environments.
+
+  - **Skills & Tools:** Multi-Agent Reinforcement Learning (MARL), MAS Frameworks, Distributed Computing, LangGraph.
+
+- **Use Case:** Optimized LLM fine-tuning for generating IEC 61499 function blocks in industrial automation, enhancing accuracy and response times for AI-driven control system design. This involved iterative benchmarking and training of models to ensure optimal function block generation and seamless integration into automation workflows.
+
+  - **Skills & Tools:** PyTorch, LoRA (Low-Rank Adaptation), IEC 61499.
+
+- **Use Case:** Developed an AI evaluation pipeline to test model responses for accuracy, factual consistency, and unintended biases, optimizing feedback analysis in an AI-driven workplace well-being platform. Tested various LLMs for benchmarking and evaluation using LangSmith to improve sentiment analysis and stress prediction from employee feedback surveys.
+
+  - **Skills & Tools:** PyTest, LangChain Evaluation, LangSmith, Benchmarking Frameworks, A/B Testing, AI Explainability Tools.
 
 - 2019-2020: Full Stack developer, RCKR Software Pvt Ltd, Bengaluru, India
 
