@@ -10,14 +10,11 @@ main:
   - title: "Talks"
     url: /talks/    
     
-  - title: "Projects"
+  - title: "Hobby Hive"
     url: /portfolio/
     
   - title: "CV"
     url: /cv/
-    
-  - title: "Blog Posts"
-    url: /year-archive/
     
   - title: "Contact"
     url: /markdown/
