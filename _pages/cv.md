@@ -15,18 +15,23 @@ redirect_from:
 
   - LTU, Luleå, Sweden
 
-  - Implemented a decentralized manufacturing marketplace on the Ethereum blockchain platform, utilizing software agents to enhance traceability and transparency in flexible production systems. This solution facilitates seamless transactions and ensures reliable tracking of products and processes, optimizing efficiency and accountability across the manufacturing supply chain.
-  - Developed and deployed artificial intelligence-based observers that leverage advanced algorithms to predict failures and anticipate maintenance needs within industrial control systems. These sophisticated AI systems analyze complex data patterns and operational parameters, enabling proactive maintenance strategies and enhancing overall system reliability and efficiency.
-  - Designed and implemented a decentralized learning management system (LMS) leveraging Ethereum smart contracts and IPFS (InterPlanetary File System). This system enables secure, transparent, and decentralized storage and management of educational content, fostering greater accessibility and collaboration in the learning environment while ensuring data integrity and privacy.
-  - Employed methods like quantization, pruning, and model distillation to decrease the size of neural network models without compromising accuracy, enabled them to operate efficiently on edge devices.
-  - Integrated a Large Language Model (LLM) with an IEC 61499 industrial control application to develop a natural language interface for human-machine interaction, maintenance, and monitoring of control systems.
+  - Implemented AI-powered ReACT agents in industrial automation to enhance human-machine collaboration, optimize production workflows, and enable real-time decision-making for adaptive manufacturing environments. These agents leveraged reasoning and planning techniques to autonomously execute tasks, predict system failures, and ensure continuous operational efficiency.
+    Skills & Tools: OpenAI API, Ollama, OPC UA, Prompt Engineering, Langchain, Knowledge Graphs
+  - Built an AI service platform that integrates SQL chatbot agents for seamless interaction with industrial automation databases and real-time sensor data visualization. The platform enables automated decision-making, optimizing control system efficiency through advanced LLM-based reasoning and real-time execution of industrial tasks.
+    Skills & Tools: Python, LangChain, Vector Databases, Retrieval-Augmented Generation (RAG), FastAPI, SQL, REST APIs, IEC 61499, OPC UA.
+  - Developed a multi-agent AI framework for distributed control systems, integrating AI-driven decision-making and real-time task execution across industrial automation platforms. The system enables seamless agent collaboration, intelligent workload distribution, and optimized performance monitoring in decentralized environments.
+    Skills & Tools: Python, LangGraph, AWS Agents, Anthropic.
+  - Optimized LLM fine-tuning for generating IEC 61499 function blocks in industrial automation, enhancing accuracy and response times for AI-driven control system design. This involved iterative benchmarking and training of models to ensure optimal function block generation and seamless integration into automation workflows.
+    Skills & Tools: LoRA (Low-Rank Adaptation), RLHF (Reinforcement Learning with Human Feedback), IEC 61499.
+  - Developed an AI evaluation pipeline to test model responses for accuracy, factual consistency, and unintended biases, optimizing feedback analysis in an AI-driven workplace well-being platform. Tested various LLMs for benchmarking and evaluation using LangSmith to improve sentiment analysis and stress prediction from employee feedback surveys.
+    Skills & Tools: PyTest, LangChain Evaluation, LangSmith, Benchmarking Frameworks, A/B Testing, AI Explainability Tools.
 
 - 2019-2020: Full Stack developer
 
   - RCKR Software Pvt Ltd, Bengaluru, India
 
   - Designed, developed, and deployed end-to-end machine learning solutions, including preprocessing, model training, evaluation, and deployment, using frameworks like TensorFlow, PyTorch, and Scikit-learn.
-  - Developed scalable and efficient full-stack applications integrating machine learning models, front-end interfaces, and back-end services using technologies such as Python, Next.Js, and MongoDB.
+  - Developed scalable and efficient full-stack applications integrating machine learning models, front-end interfaces, and back-end services using technologies such as Python, Next.Js, and DyanamoDB.
 
 - 2017-2019: System Engineer
 
@@ -47,32 +52,17 @@ redirect_from:
 
 # Skills
 
+- LLMs & Tools: OpenAI, Anthropic, DeepSeek, AWS Bedrock, Ollama , Langchain, Langsmith, LangGraph
 - Machine Learning & Tools : PyTorch, TensorFlow, Keras, Hugging Face Transformers, NLTK, SpaCy
-- LLM : OpenAI, Anthropic, Bedrock, Huggingface, Langchain
-- Blockchain Platforms & Tools : Ethereum, Truffle, Hardhat, Ganache, Remix IDE
-- Smart Contract Development : Solidity, Rust, ERC-20, ERC-721
-- Decentralized Storage Solutions: IPFS, Arweave
-- Frontend - Next.js, Web3.js, Ethers.js
+- Frontend - Next.js
 - Backend - Python, TypeScript
-- Database - Postgres, MongoDB, GraphDB
+- Storage - Postgres, DyanamoDB, GraphDB, IPFS, S3
 - Containerization: Docker, Kubernetes
 - Cloud Computing - AWS
 - Software Development & Version Control - REST, GraphQL, Git, GitHub, Jenkins, GitLab CI
 
-# Publications
+# My research interests
 
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-My research interests
-======
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>

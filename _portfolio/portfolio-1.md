@@ -1,5 +1,5 @@
 ---
-title: "fbuilder AI Agent"
+title: "FBuilder AI Agent"
 excerpt: "Building control system function blocks, simplified with AI!<br/>"
 collection: portfolio
 ---
