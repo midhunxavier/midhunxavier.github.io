@@ -30,4 +30,4 @@ Ask Canvas AI empowers universities and educators to make data-driven decisions 
 **Experience the future of student information management with Ask Canvas AI—where advanced AI meets educational innovation!**
 [Click to visit](https://askcanvas.streamlit.app/)
 
-"Kraftzon: The Secure and Transparent Decentralized Marketplace for Handmade Products <br/><img src='/images/askCanvas.PNG'>"
+AskCanvas <br/><img src='/images/askCanvas.PNG'>"

@@ -18,4 +18,4 @@ This platform offers **end-to-end AI-powered solutions** designed to streamline 
 Whether you're designing, testing, or optimizing, this platform empowers you to innovate and grow with cutting-edge AI services tailored to your needs. **Explore the future of industrial automation today!**
 [Click to visit](https://github.com/midhunxavier/IEC61499-AI-Assistant)
 
-"Kraftzon: The Secure and Transparent Decentralized Marketplace for Handmade Products <br/><img src='/images/iec61499Assistants.PNG'>"
+IEC 61499 AI Assistants<br/><img src='/images/iec61499Assistants.PNG'>"
