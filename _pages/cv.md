@@ -51,7 +51,7 @@ redirect_from:
 
 - B.S. in Electronics and Communication Engineering, SCMS, Kochi, MG University, India, 2014
 - M.S. in Computer Science and Engineering, NIT Trichy Campus, (IIIT), India, 2017
-- PhD in Formal modelling and verification of IEC 61499 systems, LTU, Sweden, 2025 (expected)
+- PhD in Industrial AI Agents, LTU, Sweden, 2025 (expected)
 
 # Skills
 
