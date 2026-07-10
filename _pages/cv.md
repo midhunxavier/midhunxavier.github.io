@@ -15,13 +15,13 @@ AI Research Engineer at **Aerobase** specializing in **Neural Combinatorial Opti
 
 - **2025 - present : AI Research Engineer, Aerobase, Sweden**
 
-- Research and develop neural combinatorial optimization models for large-scale routing, scheduling, and assignment problems, training attention-based neural solvers end-to-end with reinforcement learning and modern policy-optimization methods.
+- Develop robot path generation and 3D-printing toolpath optimization for additive manufacturing, formulating deposition-path planning as a combinatorial optimization problem and solving it with neural combinatorial optimization and attention-based solvers to improve build quality, throughput, and material efficiency.
 
-  - _Skills & Tools:_ PyTorch, Attention Models & Transformers, Reinforcement Learning, Policy Optimization (GRPO, PKPO, RSPO, PPO), Pass@K / Max@K objectives, OR-Tools.
+  - _Skills & Tools:_ Python, PyTorch, Neural Combinatorial Optimization, Attention Models & Transformers, Policy Optimization (GRPO, PKPO, RSPO, PPO), Pass@K / Max@K objectives, OR-Tools.
 
-- Develop reinforcement-learning approaches for robot path generation and motion planning, learning policies that produce efficient, collision-free trajectories in dynamic environments.
+- Apply reinforcement learning to defect minimization in additive manufacturing, training agents that reduce porosity, cracking, and residual stress using feedback from thermal and mechanical FEM, microstructure analysis, and melt-pool CFD simulations (simulation-in-the-loop optimization).
 
-  - _Skills & Tools:_ Python, PyTorch, Reinforcement Learning, Robot Path Planning, Motion Planning, Simulation.
+  - _Skills & Tools:_ Reinforcement Learning, FEM (thermal & mechanical), Melt-Pool CFD Simulation, Microstructure Analysis, Simulation-in-the-Loop Optimization.
 
 - **2020 - 2025 : Doctoral Researcher, LTU, Luleå, Sweden**
 

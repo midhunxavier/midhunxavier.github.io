@@ -1,11 +1,11 @@
 ---
-title: "Reinforcement Learning for Robot Path Generation and Motion Planning"
+title: "Combinatorial Optimization for Additive Manufacturing Toolpath and Robot Path Generation"
 collection: teaching
-type: "Applied RL & Robotics (Aerobase)"
+type: "Applied NCO (Aerobase)"
 permalink: /teaching/research_6
 venue: "Aerobase"
-date: 2025-06-15
+date: 2025-08-01
 location: ""
 ---
 
-As an AI Research Engineer at Aerobase, my applied research focuses on reinforcement learning for robot path generation and motion planning. I develop learning-based policies that generate efficient, collision-free trajectories in dynamic environments, combining neural combinatorial optimization with classical planning to improve path quality, adaptability, and runtime for real-world robotic and industrial automation tasks.
+At Aerobase, I apply neural combinatorial optimization to robot path generation and 3D-printing toolpath planning for additive manufacturing. I formulate deposition-path sequencing as a combinatorial optimization problem and train attention-based neural solvers to generate paths that reduce travel, balance thermal load, and improve build quality, throughput, and material efficiency in robotic 3D-printing processes.
