@@ -19,7 +19,6 @@ breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
-talkmap_link             : false #change to true to add link to talkmap on talks page
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
@@ -106,14 +105,14 @@ author:
   orcid            : "https://orcid.org/0000-0003-3371-6075"
   pinterest        :
   soundcloud       :
-  stackoverflow    : "7750741/midhunxavier"
+  stackoverflow    :
   steam            :
   tumblr           :
   twitter          : 
   vine             :
   weibo            :
   xing             :
-  youtube          : "https://www.youtube.com/@midhunxavier"
+  youtube          :
   wikipedia        :
 
 
@@ -181,9 +180,6 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
 
 
 # Defaults
@@ -224,14 +220,6 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
 
 # Sass/SCSS
 sass:
