@@ -8,4 +8,4 @@ redirect_from:
 ---
 
 Feel free to get in touch. You can email me at:  
-## midhun.xavier@ltu.se
+## midhunxavier@outlook.com
