@@ -15,7 +15,7 @@ AI Research Engineer at **Aerobase** specializing in **Neural Combinatorial Opti
 
 - **2025 - present : AI Research Engineer, Aerobase, Sweden**
 
-- Develop robot path generation and 3D-printing toolpath optimization for additive manufacturing, formulating deposition-path planning as a combinatorial optimization problem and solving it with neural combinatorial optimization and attention-based solvers to improve build quality, throughput, and material efficiency.
+- Develop robot path generation and toolpath optimization for metal additive manufacturing (DED, LPBF, and WAAM), formulating deposition- and scan-path planning as a combinatorial optimization problem and solving it with neural combinatorial optimization and attention-based solvers to improve build quality, throughput, and material efficiency.
 
   - _Skills & Tools:_ Python, PyTorch, Neural Combinatorial Optimization, Attention Models & Transformers, Policy Optimization (GRPO, PKPO, RSPO, PPO), Pass@K / Max@K objectives, OR-Tools.
 

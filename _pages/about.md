@@ -8,11 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinatorial Optimization (NCO)** and **Reinforcement Learning (RL)**. My work bridges theoretical research on learning-based optimization with applied deployment in **additive manufacturing** — using deep learning to generate and optimize robot paths and to minimize defects in 3D-printed parts.
+I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinatorial Optimization (NCO)** and **Reinforcement Learning (RL)**. My work bridges theoretical research on learning-based optimization with applied deployment in **metal additive manufacturing** — Directed Energy Deposition (DED), Laser Powder Bed Fusion (LPBF), and Wire Arc Additive Manufacturing (WAAM) — using deep learning to generate and optimize robot and laser paths and to minimize defects in printed parts.
 
 ## Applied Research at Aerobase
 
-- **Additive Manufacturing Path Optimization** – Generating and optimizing robot deposition paths and 3D-printing toolpaths by formulating path planning as a combinatorial optimization problem, sequencing deposition segments to reduce travel, balance thermal load, and improve build quality and productivity.
+- **Additive Manufacturing Path Optimization** – Generating and optimizing robotic deposition paths for DED and WAAM and laser scan/toolpaths for LPBF by formulating path planning as a combinatorial optimization problem, sequencing segments to reduce travel, balance thermal load, and improve build quality and productivity.
 
 - **Reinforcement Learning for Defect Minimization** – Training RL agents to minimize defects such as porosity, cracking, residual stress, and distortion by learning from multiphysics simulation feedback, including thermal and mechanical FEM, microstructure analysis, and melt-pool CFD simulations.
 

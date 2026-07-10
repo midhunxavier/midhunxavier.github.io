@@ -8,4 +8,4 @@ date: 2025-07-15
 location: ""
 ---
 
-I develop reinforcement-learning methods that minimize defects — such as porosity, cracking, residual stress, and distortion — in additively manufactured parts. The RL agents learn from multiphysics simulation feedback, including thermal and mechanical finite element (FEM) analysis, microstructure analysis, and melt-pool computational fluid dynamics (CFD) simulations, closing the loop between process parameters, deposition-path planning, and predicted part quality.
+I develop reinforcement-learning methods that minimize defects — such as porosity, cracking, residual stress, and distortion — in parts produced by Directed Energy Deposition (DED), Laser Powder Bed Fusion (LPBF), and Wire Arc Additive Manufacturing (WAAM). The RL agents learn from multiphysics simulation feedback, including thermal and mechanical finite element (FEM) analysis, microstructure analysis, and melt-pool computational fluid dynamics (CFD) simulations, closing the loop between process parameters, deposition-path planning, and predicted part quality.

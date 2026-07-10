@@ -8,4 +8,4 @@ date: 2025-08-01
 location: ""
 ---
 
-At Aerobase, I apply neural combinatorial optimization to robot path generation and 3D-printing toolpath planning for additive manufacturing. I formulate deposition-path sequencing as a combinatorial optimization problem and train attention-based neural solvers to generate paths that reduce travel, balance thermal load, and improve build quality, throughput, and material efficiency in robotic 3D-printing processes.
+At Aerobase, I apply neural combinatorial optimization to robot path generation and toolpath planning across metal additive-manufacturing processes — Directed Energy Deposition (DED), Laser Powder Bed Fusion (LPBF), and Wire Arc Additive Manufacturing (WAAM). I formulate deposition- and scan-path sequencing as a combinatorial optimization problem and train attention-based neural solvers to generate paths that reduce travel, balance thermal load, and improve build quality, throughput, and material efficiency.
