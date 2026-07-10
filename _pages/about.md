@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinatorial Optimization (NCO)** and **Reinforcement Learning (RL)**. My work bridges theoretical research on learning-based optimization with applied deployment in **metal additive manufacturing** — Directed Energy Deposition (DED), Laser Powder Bed Fusion (LPBF), and Wire Arc Additive Manufacturing (WAAM) — using deep learning to generate and optimize robot and laser paths and to minimize defects in printed parts.
+I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinatorial Optimization (NCO)** and **Reinforcement Learning (RL)**. My work bridges theoretical research on learning-based optimization with its applied deployment to complex real-world engineering problems — using deep learning to generate and optimize paths, plan under constraints, and make sequential decisions that improve quality, efficiency, and reliability.
 
 ## Applied Research at Aerobase
 
