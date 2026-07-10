@@ -10,15 +10,13 @@ redirect_from:
 
 I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinatorial Optimization (NCO)** and **Reinforcement Learning (RL)**. My work bridges theoretical research on learning-based optimization with its applied deployment to complex real-world engineering problems — using deep learning to generate and optimize paths, plan under constraints, and make sequential decisions that improve quality, efficiency, and reliability.
 
-## Applied Research at Aerobase
+## My Expertise
 
-- **Additive Manufacturing Path Optimization** – Generating and optimizing robotic deposition paths for DED and WAAM and laser scan/toolpaths for LPBF by formulating path planning as a combinatorial optimization problem, sequencing segments to reduce travel, balance thermal load, and improve build quality and productivity.
+- **Path & Toolpath Optimization** – Generating and optimizing robot and machine paths by formulating path planning as a combinatorial optimization problem, sequencing segments to reduce travel, balance load, and improve throughput and output quality.
 
-- **Reinforcement Learning for Defect Minimization** – Training RL agents to minimize defects such as porosity, cracking, residual stress, and distortion by learning from multiphysics simulation feedback, including thermal and mechanical FEM, microstructure analysis, and melt-pool CFD simulations.
+- **Reinforcement Learning for Quality & Defect Minimization** – Training RL agents to minimize defects and improve process outcomes by learning from multiphysics simulation feedback, including finite element (FEM) and computational fluid dynamics (CFD) models.
 
-- **Simulation-in-the-Loop Optimization** – Coupling learned policies with physics-based simulators to close the loop between process parameters, path planning, and predicted part quality.
-
-## Neural Combinatorial Optimization (Theory)
+- **Simulation-in-the-Loop Optimization** – Coupling learned policies with physics-based simulators to close the loop between decisions, control parameters, and predicted outcomes.
 
 - **Learning-Based Solvers** – Designing neural solvers for classic combinatorial problems (TSP, CVRP, scheduling, bin packing, assignment) that construct and refine solutions directly from data, complementing or replacing hand-crafted heuristics.
 
@@ -30,4 +28,4 @@ I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinator
 
 - **Learned Heuristics & Generalization** – Developing constructive and improvement (local-search) policies, neural large-neighborhood search, and improving out-of-distribution generalization across instance sizes and distributions.
 
-With a strong foundation in machine learning, reinforcement learning, and optimization, I build neural solvers and RL systems that are efficient, scalable, and grounded in real-world manufacturing physics.
+With a strong foundation in machine learning, reinforcement learning, and optimization, I build neural solvers and RL systems that are efficient, scalable, and grounded in real-world engineering problems.
