@@ -9,19 +9,21 @@ redirect_from:
 
 {% include base_path %}
 
-Research Engineer specializing in **Neural Combinatorial Optimization** — training attention-based neural networks with reinforcement learning and modern policy-optimization methods (GRPO, PKPO, RSPO, PPO) under Pass@K / Max@K objectives to solve large-scale routing, scheduling, and assignment problems. Strong foundation in machine learning, deep learning, and software engineering.
+AI Research Engineer at **Aerobase** specializing in **Neural Combinatorial Optimization**, **Reinforcement Learning**, and **Robot Path Generation** — training attention-based neural networks with modern policy-optimization methods (GRPO, PKPO, RSPO, PPO) under Pass@K / Max@K objectives to solve large-scale routing, scheduling, and planning problems. Strong foundation in machine learning, deep learning, and software engineering.
 
 # Work experience
 
-- **2025- : Researcher, LTU, Luleå, Sweden**
+- **2025 - present : AI Research Engineer, Aerobase, Sweden**
 
-- Implemented AI-powered ReACT agents in industrial automation to enhance human-machine collaboration, optimize production workflows, and enable real-time decision-making for adaptive manufacturing environments. These agents leveraged reasoning and planning techniques to autonomously execute tasks, predict system failures, and ensure continuous operational efficiency.
+- Research and develop neural combinatorial optimization models for large-scale routing, scheduling, and assignment problems, training attention-based neural solvers end-to-end with reinforcement learning and modern policy-optimization methods.
 
-  - _Skills & Tools:_ OpenAI API, GPT-4, OPC UA, Prompt Engineering, LlamaIndex, Knowledge Graphs, AI Planning Algorithms.
+  - _Skills & Tools:_ PyTorch, Attention Models & Transformers, Reinforcement Learning, Policy Optimization (GRPO, PKPO, RSPO, PPO), Pass@K / Max@K objectives, OR-Tools.
 
-- Built an AI service platform that integrates SQL chatbot agents for seamless interaction with industrial automation databases and real-time sensor data visualization. The platform enables automated decision-making, optimizing control system efficiency through advanced LLM-based reasoning and real-time execution of industrial tasks.
+- Develop reinforcement-learning approaches for robot path generation and motion planning, learning policies that produce efficient, collision-free trajectories in dynamic environments.
 
-  - _Skills & Tools:_ Python, LangChain, Vector Databases, Retrieval-Augmented Generation (RAG), FastAPI, SQL, REST APIs, IEC 61499, OPC UA.
+  - _Skills & Tools:_ Python, PyTorch, Reinforcement Learning, Robot Path Planning, Motion Planning, Simulation.
+
+- **2020 - 2025 : Doctoral Researcher, LTU, Luleå, Sweden**
 
 - Developed a multi-agent AI framework for distributed control systems, integrating AI-driven decision-making and real-time task execution across industrial automation platforms. The system enables seamless agent collaboration, intelligent workload distribution, and optimized performance monitoring in decentralized environments.
 
