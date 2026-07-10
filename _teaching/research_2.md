@@ -1,11 +1,11 @@
 ---
-title: "Towards Decentralized Industrial Control Systems: Exploring the Potential of Blockchain Technology for Secure and Efficient Automation"
+title: "Reinforcement Learning and Policy Optimization for Combinatorial Problems"
 collection: teaching
-type: "Blockchain"
+type: "Policy Optimization"
 permalink: /teaching/research_2
 venue: "LTU"
-date: 2021-01-01
+date: 2025-04-01
 location: ""
 ---
 
-Interested in exploring the use of smart contracts and decentralized applications (dApps) to build more secure, efficient and transparent control systems for industrial applications. This includes investigating the potential of blockchain technology for enabling secure and decentralized data sharing, as well as for automating control tasks and optimizing industrial processes. Ultimately, my goal is to contribute to the development of next-generation industrial control systems that leverage blockchain technology to enhance their security, reliability, and performance.
+I study how modern policy-optimization algorithms can train neural solvers end-to-end without labelled optimal solutions. This includes policy-gradient and actor–critic methods, REINFORCE with greedy and rollout baselines, and recent algorithms such as GRPO, PKPO, RSPO, and PPO. My goal is to make training more stable, sample-efficient, and better aligned with the true optimization objective of the underlying combinatorial problem.

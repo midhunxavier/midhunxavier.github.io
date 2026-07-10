@@ -3,9 +3,9 @@ title: "Developing a Test Suite for Evaluating IEC 61499 Application Portability
 collection: publications
 permalink: /publication/paper_7
 excerpt: ''
-date: 2023-06-21
+date: 2023-06-19
 venue: '2023 IEEE 32nd International Symposium on Industrial Electronics (ISIE), Helsinki, Finland'
-
+citation: "M. Xavier, T. Liakh, S. Patil, V. Vyatkin. \"Developing a Test Suite for Evaluating IEC 61499 Application Portability.\" <i>2023 IEEE 32nd International Symposium on Industrial Electronics (ISIE), Helsinki, Finland</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper7.pdf)

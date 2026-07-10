@@ -2,8 +2,10 @@
 title: "Formal Verification of the Control Software of a Radioactive Material Remote Handling System, Based on IEC 61499"
 collection: publications
 permalink: /publication/paper_12
-excerpt: ""
+excerpt: ''
 date: 2023-10-07
+venue: 'IEEE Open Journal of the Industrial Electronics Society'
+citation: "G. Lilli, M. Xavier, E. Le Priol, V. Perret, T. Liakh, R. Oboe, V. Vyatkin. \"Formal Verification of the Control Software of a Radioactive Material Remote Handling System, Based on IEC 61499.\" <i>IEEE Open Journal of the Industrial Electronics Society</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper12.pdf)

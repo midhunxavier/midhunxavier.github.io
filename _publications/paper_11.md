@@ -3,9 +3,9 @@ title: "Formal verification of observers supervising a cyber-physical system imp
 collection: publications
 permalink: /publication/paper_11
 excerpt: ''
-date: 2023-06-21
+date: 2023-06-19
 venue: '2023 IEEE 32nd International Symposium on Industrial Electronics (ISIE), Helsinki, Finland'
-
+citation: "P. Ovsiannikova, E. Le Priol, V. Perret, P. Jhunjhunwala, M. Xavier, V. Vyatkin. \"Formal verification of observers supervising a cyber-physical system implemented using IEC 61499.\" <i>2023 IEEE 32nd International Symposium on Industrial Electronics (ISIE), Helsinki, Finland</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper11.pdf)

@@ -1,10 +1,11 @@
 ---
-title: "Generating Por table Test Cases for IEC 61499 FBs from Interface Behaviour Specifications"
+title: "Generating Portable Test Cases for IEC 61499 FBs from Interface Behaviour Specifications"
 collection: publications
 permalink: /publication/paper_10
 excerpt: ''
-date: 2023-11-27
+date: 2023-09-12
 venue: '2023 IEEE 28th International Conference on Emerging Technologies and Factory Automation (ETFA), Sinaia, Romania'
+citation: "B. Wiesmayr, M. Xavier, S. Patil, A. Zoitl, V. Vyatkin. \"Generating Portable Test Cases for IEC 61499 FBs from Interface Behaviour Specifications.\" <i>2023 IEEE 28th International Conference on Emerging Technologies and Factory Automation (ETFA), Sinaia, Romania</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper10.pdf)

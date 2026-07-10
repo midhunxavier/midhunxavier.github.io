@@ -5,7 +5,7 @@ permalink: /publication/paper_2
 excerpt: ''
 date: 2022-07-21
 venue: '2022 IEEE 20th International Conference on Industrial Informatics (INDIN)'
-
+citation: "M. Xavier, V. Dubinin, S. Patil, V. Vyatkin. \"Process mining in industrial control systems.\" <i>2022 IEEE 20th International Conference on Industrial Informatics (INDIN)</i>, 2022."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper2.pdf)

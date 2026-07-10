@@ -1,11 +1,11 @@
 ---
-title: "Autonomous AI Agents for Adaptive Decision-Making"
+title: "Generalization and Scaling of Neural Solvers"
 collection: teaching
-type: "AI Agents"
+type: "Generalization & Scaling"
 permalink: /teaching/research_5
 venue: "LTU"
-date: 2024-01-01
+date: 2025-01-01
 location: ""
 ---
 
-My research interest lies in the development of autonomous AI agents capable of adaptive decision-making in dynamic environments. I focus on designing intelligent systems that leverage reinforcement learning, knowledge-based reasoning, and real-time data processing to make informed decisions with minimal human intervention. These AI agents can be applied across various domains, including industrial automation, robotics, and smart infrastructure. By enhancing AI agents' ability to learn, generalize, and respond to changing conditions, I aim to contribute to more efficient, resilient, and scalable decision-making systems.
+A key challenge in Neural Combinatorial Optimization is generalizing to instances that are larger or drawn from different distributions than those seen during training. I investigate curriculum learning, data augmentation, and inference-time search strategies to improve out-of-distribution robustness, and I benchmark learned solvers against exact and metaheuristic baselines (OR-Tools, LKH, Gurobi) on solution quality, optimality gap, and runtime.

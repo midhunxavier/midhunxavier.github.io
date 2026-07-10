@@ -1,11 +1,11 @@
 ---
-title: "Formal modelling, analysis, and synthesis of modular industrial systems inspired by Net condition/event systems"
+title: "Formal modelling, analysis, and synthesis of modular industrial systems inspired by Net Condition/Event Systems"
 collection: publications
 permalink: /publication/paper_6
 excerpt: ''
-date: 2023-05-28
-venue: '44th International Conference, PETRI NETS 2023, Lisbon, Portugal, June 25–30, 2023, Proceedings'
-
+date: 2023-06-25
+venue: '44th International Conference on Application and Theory of Petri Nets and Concurrency (PETRI NETS 2023), Lisbon, Portugal'
+citation: "M. Xavier, S. Patil, V. Dubinin, V. Vyatkin. \"Formal modelling, analysis, and synthesis of modular industrial systems inspired by Net Condition/Event Systems.\" <i>44th International Conference on Application and Theory of Petri Nets and Concurrency (PETRI NETS 2023), Lisbon, Portugal</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper6.pdf)

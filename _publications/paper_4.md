@@ -5,7 +5,7 @@ permalink: /publication/paper_4
 excerpt: ''
 date: 2022-07-21
 venue: 'arXiv preprint arXiv:2211.03681'
-
+citation: "M. Xavier, V. Dubinin, S. Patil, V. Vyatkin. \"Plant model generation from event log using ProM for formal verification of CPS.\" <i>arXiv preprint arXiv:2211.03681</i>, 2022."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper4.pdf)

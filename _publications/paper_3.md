@@ -1,11 +1,11 @@
 ---
 title: "Plant model generator from digital twin for purpose of formal verification"
 collection: publications
-permalink: /publication/paper_1
+permalink: /publication/paper_3
 excerpt: ''
 date: 2021-07-21
-venue: '2021 26th IEEE International Conference on Emerging Technologies and Factory'
-
+venue: '2021 26th IEEE International Conference on Emerging Technologies and Factory Automation (ETFA)'
+citation: "M. Xavier, J. Håkansson, S. Patil, V. Vyatkin. \"Plant model generator from digital twin for purpose of formal verification.\" <i>2021 26th IEEE International Conference on Emerging Technologies and Factory Automation (ETFA)</i>, 2021."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper3.pdf)

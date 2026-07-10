@@ -8,11 +8,8 @@ main:
     url: /publications/
 
   - title: "Talks"
-    url: /talks/    
-    
-  - title: "Projects"
-    url: /portfolio/
-    
+    url: /talks/
+
   - title: "CV"
     url: /cv/
     

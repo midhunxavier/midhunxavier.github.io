@@ -3,9 +3,9 @@ title: "A Comprehensive Approach for Gearbox Fault Detection and Diagnosis Using
 collection: publications
 permalink: /publication/paper_8
 excerpt: ''
-date: 2023-05-07
+date: 2023-06-05
 venue: '2023 IEEE International Conference on Prognostics and Health Management (ICPHM), Montreal, QC, Canada'
-
+citation: "P. Sobha, M. Xavier, P. Chandran. \"A Comprehensive Approach for Gearbox Fault Detection and Diagnosis Using Sequential Neural Networks.\" <i>2023 IEEE International Conference on Prognostics and Health Management (ICPHM), Montreal, QC, Canada</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper8.pdf)

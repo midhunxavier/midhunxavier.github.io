@@ -2,8 +2,10 @@
 title: "Green transport and renewable power: an integrated analysis for India's future"
 collection: publications
 permalink: /publication/paper_9
-excerpt: ""
+excerpt: ''
 date: 2023-05-07
+venue: 'International Journal of Sustainable Energy'
+citation: "P. Sobha, A. Muthusamypillai, M. Xavier. \"Green transport and renewable power: an integrated analysis for India's future.\" <i>International Journal of Sustainable Energy</i>, 2023."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper9.pdf)

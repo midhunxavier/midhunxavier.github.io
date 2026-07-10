@@ -1,12 +1,11 @@
 ---
-title: "Integrating AI and Machine Learning for Sustainable Industrial Control Systems"
+title: "Best-of-K Objectives: Optimizing for Pass@K and Max@K"
 collection: teaching
-type: "AIML"
+type: "Objectives & Evaluation"
 permalink: /teaching/research_3
 venue: "LTU"
-date: 2022-01-01
+date: 2025-03-01
 location: ""
 ---
 
-The focus of my research interest is on the development of sustainable industrial control systems through the integration of AI and machine learning technologies. I am interested in exploring innovative techniques to design intelligent control systems that can adapt to variable environmental conditions and optimize energy consumption. Specifically, I intend to investigate the application of machine learning algorithms to model the behavior of industrial systems and predict their performance under diverse operating conditions. Ultimately, my aim is to contribute to the creation of more sustainable industrial control systems that can enhance energy efficiency and minimize environmental impact.
-
+At inference time, neural solvers typically sample multiple candidate solutions and keep the best one. I am interested in training directly for these best-of-K settings by optimizing Pass@K and Max@K objectives, so that the training signal matches how models are actually deployed. This work explores objective design, variance reduction, and the trade-off between solution diversity and per-sample quality.

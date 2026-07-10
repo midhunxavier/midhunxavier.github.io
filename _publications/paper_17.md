@@ -2,9 +2,10 @@
 title: "LLM-Powered Multi-Actor System for Intelligent Analysis and Visualization of IEC 61499 Control Systems"
 collection: publications
 permalink: /publication/paper_17
-excerpt: ""
+excerpt: ''
 date: 2024-11-02
-venue: " 2024 IEEE 50th International Conference on IECON, Chicago, US"
+venue: 'IECON 2024 – 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, USA'
+citation: "M. Xavier, T. Liakh, S. Patil, V. Vyatkin. \"LLM-Powered Multi-Actor System for Intelligent Analysis and Visualization of IEC 61499 Control Systems.\" <i>IECON 2024 – 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, USA</i>, 2024."
 ---
 
 [Download paper here](http://midhunxavier.github.io/files/paper17.pdf)

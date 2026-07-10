@@ -9,6 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
+Research Engineer specializing in **Neural Combinatorial Optimization** — training attention-based neural networks with reinforcement learning and modern policy-optimization methods (GRPO, PKPO, RSPO, PPO) under Pass@K / Max@K objectives to solve large-scale routing, scheduling, and assignment problems. Strong foundation in machine learning, deep learning, and software engineering.
+
 # Work experience
 
 - **2025- : Researcher, LTU, Luleå, Sweden**
@@ -51,18 +53,21 @@ redirect_from:
 
 - B.S. in Electronics and Communication Engineering, SCMS, Kochi, MG University, India, 2014
 - M.S. in Computer Science and Engineering, NIT Trichy Campus, (IIIT), India, 2017
-- PhD in Industrial AI Agents, LTU, Sweden, 2025 (expected)
+- PhD in Industrial AI (Machine Learning & Formal Methods for Industrial Automation), LTU, Sweden, 2025
 
 # Skills
 
-- LLMs & Tools: OpenAI, Anthropic, DeepSeek, AWS Bedrock, Ollama , Langchain, Langsmith, LangGraph
-- Machine Learning & Tools : PyTorch, TensorFlow, Keras, Hugging Face Transformers, NLTK, SpaCy
-- Frontend - Next.js
-- Backend - Python, TypeScript
-- Storage - Postgres, DyanamoDB, GraphDB, IPFS, S3
+- Neural Combinatorial Optimization: Attention Models, Transformers, Pointer Networks, Graph Neural Networks, constructive & improvement (local-search) policies, neural large-neighborhood search
+- Reinforcement Learning & Policy Optimization: Policy Gradients, Actor–Critic, REINFORCE, PPO, GRPO, PKPO, RSPO, Pass@K / Max@K (best-of-K) objectives
+- Combinatorial Problems: TSP, CVRP, job-shop scheduling, bin packing, assignment and routing
+- Optimization & Solvers: OR-Tools, LKH, Gurobi, metaheuristics, integer/linear programming
+- Machine Learning & Deep Learning: PyTorch, TensorFlow, Keras, Hugging Face Transformers, NumPy, scikit-learn
+- LLMs & Tools: OpenAI, Anthropic, DeepSeek, AWS Bedrock, Ollama, LangChain, LangSmith, LangGraph
+- Backend: Python, TypeScript
+- Storage: Postgres, DynamoDB, GraphDB, IPFS, S3
 - Containerization: Docker, Kubernetes
-- Cloud Computing - AWS
-- Software Development & Version Control - REST, GraphQL, Git, GitHub, Jenkins, GitLab CI
+- Cloud Computing: AWS
+- Software Development & Version Control: REST, GraphQL, Git, GitHub, Jenkins, GitLab CI
 
 # My research interests
 

@@ -8,24 +8,22 @@ redirect_from:
   - /about.html
 ---
 
-I am a Research Engineer specializing in **Agentic AI frameworks**. My work focuses on developing next-generation LLM AI agents that can reason, plan, and act autonomously by leveraging cutting-edge LLM architectures, tool integration, and multi-agent coordination.
+I am a Research Engineer specializing in **Neural Combinatorial Optimization (NCO)** — using deep learning and reinforcement learning to solve hard combinatorial optimization problems. My work focuses on training attention-based neural models that learn to construct and improve high-quality solutions for routing, scheduling, and assignment problems, optimized end-to-end with modern policy-optimization algorithms.
 
 ## My Expertise
 
-- **LLM-Based AI Agents** – Building intelligent agents that interact with environments, automate workflows, and make decisions in dynamic settings.
+- **Neural Combinatorial Optimization** – Designing learning-based solvers for classic combinatorial problems (TSP, CVRP, job-shop scheduling, bin packing, assignment) that construct and refine solutions directly from data, complementing or replacing hand-crafted heuristics.
 
-- **Reasoning & Planning** – Implementing techniques like ReAct (Reason + Act), chain-of-thought (CoT) prompting, and hierarchical decision-making to create adaptive AI agents.
+- **Attention Models & Architectures** – Building Transformer-based encoder–decoder solvers, Pointer Networks, and attention-based construction policies that scale to large problem instances.
 
-- **Tool & API Integration** – Enhancing LLMs with external tools, APIs, databases, and autonomous execution pipelines to extend their problem-solving capabilities.
+- **Policy Optimization & Reinforcement Learning** – Training solvers with policy-gradient and actor–critic methods and modern algorithms such as GRPO, PKPO, RSPO, and PPO, including REINFORCE with greedy and rollout baselines.
 
-- **Multi-Agent Systems** – Developing collaborative AI agents that communicate and coordinate in decentralized or distributed environments.
+- **Pass@K & Max@K Objectives** – Optimizing and evaluating models under best-of-K objectives (Pass@K, Max@K), sampling multiple candidate solutions and aligning the training objective with the metric that matters at inference time.
 
-- **Ontologies & Knowledge-Based AI** – Designing AI agents that leverage structured knowledge representations, ontologies, and knowledge graphs to enhance reasoning, contextual understanding, and decision-making.
+- **Learning Heuristics & Improvement Operators** – Developing constructive and improvement (local-search) policies, guided search, and neural large-neighborhood search for iterative solution refinement.
 
-- **Retrieval & Embedding-Based AI** – Implementing embedding models, vector stores, retrievers, and Retrieval Augmented Generation (RAG) techniques to enhance AI systems with efficient data representation, search capabilities, and knowledge retrieval.
+- **Generalization & Scaling** – Improving out-of-distribution generalization across instance sizes and distributions using curriculum learning, data augmentation, and inference-time search strategies.
 
-- **Fine-Tuning & Optimization** – Adapting LLMs for domain-specific tasks with prompt tuning, reinforcement learning, and performance optimization techniques.
+- **Benchmarking & Evaluation** – Assessing learned solvers against exact and metaheuristic baselines (OR-Tools, LKH, Gurobi) on solution quality, optimality gap, and runtime to ensure reliable, reproducible results.
 
-- **Evaluation & Testing** – Assessing AI applications' performance and effectiveness by benchmarking responses against predefined criteria while verifying that components and integrations work as expected, ensuring reliability and stability.
-
-With a strong foundation in AI research, deep learning, and software engineering, I strive to push the boundaries of autonomous AI by building robust, efficient, and scalable LLM-driven agents.
+With a strong foundation in machine learning, reinforcement learning, and optimization, I build neural solvers that are efficient, scalable, and competitive with state-of-the-art combinatorial optimization methods.
