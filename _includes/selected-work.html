@@ -1,0 +1,15 @@
+{% assign featured_publications = site.publications | where: "featured", true | sort: "featured_order" %}
+<div class="selected-work">
+  {% for publication in featured_publications %}
+    <article class="selected-work__card">
+      <p class="publication-meta">{{ publication.pub_type | capitalize }} · {{ publication.date | date: "%Y" }}</p>
+      <h3><a href="{{ publication.url | relative_url }}">{{ publication.title | escape }}</a></h3>
+      <p class="publication-venue">{{ publication.venue | escape }}</p>
+      <p>{{ publication.summary | escape }}</p>
+      <div class="publication-links">
+        <a href="{{ publication.url | relative_url }}" aria-label="Details: {{ publication.title | escape }}">Details</a>
+        {% include publication-links.html publication=publication %}
+      </div>
+    </article>
+  {% endfor %}
+</div>

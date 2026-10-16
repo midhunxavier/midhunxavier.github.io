@@ -1,0 +1,12 @@
+{% if include.publication.paperurl %}
+  <a href="{{ include.publication.paperurl | relative_url }}" aria-label="Download PDF: {{ include.publication.title | escape }}">PDF</a>
+{% endif %}
+{% if include.publication.doi %}
+  <a href="https://doi.org/{{ include.publication.doi }}" aria-label="DOI: {{ include.publication.title | escape }}">DOI</a>
+{% endif %}
+{% if include.publication.arxiv %}
+  <a href="https://arxiv.org/abs/{{ include.publication.arxiv }}" aria-label="arXiv: {{ include.publication.title | escape }}">arXiv</a>
+{% endif %}
+{% if include.publication.recordurl %}
+  <a href="{{ include.publication.recordurl }}" aria-label="DiVA record: {{ include.publication.title | escape }}">DiVA</a>
+{% endif %}

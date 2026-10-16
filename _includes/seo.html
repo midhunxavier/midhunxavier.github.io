@@ -89,6 +89,10 @@
   <meta property="og:image" content="{% if page.header.overlay_image contains "://" %}{{ page.header.overlay_image }}{% else %}{{ page.header.overlay_image | prepend: "/images/" | prepend: base_path }}{% endif %}">
 {% endif %}
 
+{% unless page.header.image or page.header.overlay_image %}
+  {% if site.og_image %}<meta property="og:image" content="{{ site.og_image | prepend: "/images/" | absolute_url }}">{% endif %}
+{% endunless %}
+
 {% if page.date %}
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">

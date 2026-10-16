@@ -1,0 +1,9 @@
+<article class="publication-compact">
+  <h3><a href="{{ include.publication.url | relative_url }}">{{ include.publication.title | escape }}</a></h3>
+  <p class="publication-meta"><span class="publication-type">{{ include.publication.pub_type | capitalize }}</span> · {{ include.publication.topic | escape }}</p>
+  <p class="publication-venue">{{ include.publication.venue | escape }}</p>
+  <div class="publication-links">
+    <a href="{{ include.publication.url | relative_url }}" aria-label="Details and citation: {{ include.publication.title | escape }}">Details &amp; citation</a>
+    {% include publication-links.html publication=include.publication %}
+  </div>
+</article>

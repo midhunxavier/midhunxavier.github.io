@@ -1,31 +1,37 @@
 ---
 permalink: /
-title: "About me"
-excerpt: "About me"
+title: "Learning to optimize. Building dependable systems."
+excerpt: "AI Research Engineer at Aerobase, working on neural combinatorial optimization and reinforcement learning, with a PhD background in dependable industrial automation."
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
 
-I am an **AI Research Engineer at Aerobase** specializing in **Neural Combinatorial Optimization (NCO)** and **Reinforcement Learning (RL)**. My work bridges theoretical research on learning-based optimization with its applied deployment to complex real-world engineering problems — using deep learning to generate and optimize paths, plan under constraints, and make sequential decisions that improve quality, efficiency, and reliability.
+I am an **AI Research Engineer at Aerobase**, working on neural combinatorial optimization and reinforcement learning.
+{: .portfolio-lead}
 
-## My Expertise
+During my PhD at **Luleå University of Technology (2020–2025)**, I studied formal verification and AI agents for IEC 61499 control software. That work shaped my interest in systems that can reason, act, and be checked—a foundation I now bring to learning-based optimization at Aerobase.
 
-- **Path & Toolpath Optimization** – Generating and optimizing robot and machine paths by formulating path planning as a combinatorial optimization problem, sequencing segments to reduce travel, balance load, and improve throughput and output quality.
+[Research]({{ '/research/' | relative_url }}){: .btn} [Publications]({{ '/publications/' | relative_url }}){: .btn} [CV]({{ '/cv/' | relative_url }}){: .btn} [Contact]({{ '/contact/' | relative_url }}){: .btn}
+{: .portfolio-actions}
 
-- **Reinforcement Learning for Quality & Defect Minimization** – Training RL agents to minimize defects and improve process outcomes by learning from multiphysics simulation feedback, including finite element (FEM) and computational fluid dynamics (CFD) models.
+## Research themes
 
-- **Simulation-in-the-Loop Optimization** – Coupling learned policies with physics-based simulators to close the loop between decisions, control parameters, and predicted outcomes.
+### Learning-based combinatorial optimization
 
-- **Learning-Based Solvers** – Designing neural solvers for classic combinatorial problems (TSP, CVRP, scheduling, bin packing, assignment) that construct and refine solutions directly from data, complementing or replacing hand-crafted heuristics.
+I study [attention-based neural solvers]({{ '/teaching/research_1' | relative_url }}) for routing, scheduling, and planning, including [learned improvement heuristics]({{ '/teaching/research_4' | relative_url }}) and [generalization across problem sizes and distributions]({{ '/teaching/research_5' | relative_url }}).
 
-- **Attention Models & Architectures** – Building Transformer-based encoder–decoder solvers, Pointer Networks, and graph neural networks that scale to large problem instances.
+### Reinforcement learning and policy optimization
 
-- **Policy Optimization & Reinforcement Learning** – Training solvers with policy-gradient and actor–critic methods and modern algorithms such as GRPO, PKPO, RSPO, and PPO, including REINFORCE with greedy and rollout baselines.
+My interests include [training neural solvers with reinforcement learning]({{ '/teaching/research_2' | relative_url }}) and [best-of-K objectives]({{ '/teaching/research_3' | relative_url }}) that align training with how candidate solutions are selected at inference time.
 
-- **Pass@K & Max@K Objectives** – Optimizing and evaluating models under best-of-K objectives, aligning the training objective with the metric that matters at inference time.
+### Dependable automation and AI agents
 
-- **Learned Heuristics & Generalization** – Developing constructive and improvement (local-search) policies, neural large-neighborhood search, and improving out-of-distribution generalization across instance sizes and distributions.
+My [doctoral research]({{ '/publication/paper_23' | relative_url }}) connects formal methods with industrial software development. My [publications]({{ '/publications/' | relative_url }}) explore verification, reasoning, planning, and testing for automation and agent workflows.
 
-With a strong foundation in machine learning, reinforcement learning, and optimization, I build neural solvers and RL systems that are efficient, scalable, and grounded in real-world engineering problems.
+## Selected work
+
+{% include selected-work.html %}
+
+[View all publications]({{ '/publications/' | relative_url }})
