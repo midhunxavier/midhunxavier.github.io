@@ -39,3 +39,54 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+/* Portfolio content and accessible interaction states. */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid $link-color;
+  outline-offset: 2px;
+}
+
+.portfolio-lead { font-size: 1.2em; }
+.portfolio-actions { display: flex; flex-wrap: wrap; gap: 0.5em; }
+.portfolio-actions .btn { background-color: $link-color; }
+.portfolio-actions .btn:hover { background-color: $link-color-hover; }
+
+.selected-work {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25em;
+  margin: 1.5em 0;
+}
+.selected-work__card {
+  padding: 1.25em;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-top: 3px solid $link-color;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+}
+.selected-work__card h3 { margin: 0 0 0.65em; font-size: 1.05em; }
+.selected-work__card p { font-size: 0.85em; }
+.selected-work__card .publication-links { margin-top: auto; }
+.publication-meta, .publication-venue { color: $gray; }
+.publication-meta { font-size: 0.8em; }
+.publication-type { font-weight: bold; }
+.publication-links { display: flex; flex-wrap: wrap; gap: 0.5em 1.25em; font-size: 0.85em; }
+.publication-links a { padding: 0.25em 0; text-decoration: underline; }
+.publication-compact { padding: 1.25em 0; border-bottom: 1px solid $border-color; }
+.publication-compact h3 { margin: 0 0 0.5em; font-size: 1em; }
+.publication-compact p { margin: 0.5em 0; }
+.publication-compact .publication-venue { font-size: 0.85em; }
+.publication-year > h2 { margin-bottom: 0; }
+.page__meta, .page__footer, .page__footer .fas, .page__footer .fab,
+.page__footer .far, .page__footer .fal, .archive__item-excerpt { color: $gray; }
+
+@media (max-width: 600px) {
+  .selected-work { grid-template-columns: minmax(0, 1fr); }
+  .page__title { font-size: 1.7em; }
+  .publication-links a { padding: 0.5em 0; }
+}
+
+.archive__subtitle, .pagination a, .pagination--pager { color: $gray; }
+.pagination a.current { color: #fff; }

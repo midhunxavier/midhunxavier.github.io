@@ -10,8 +10,8 @@ locale                   : "en-US"
 title                    : "Midhun Xavier"
 title_separator          : "-"
 name                     : &name "Midhun Xavier"
-description              : &description "Research Engineer at Luleå university of technology, Sweden"
-url                      : https://midhunxavier.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : &description "AI Research Engineer at Aerobase, Sweden — neural combinatorial optimization and reinforcement learning"
+url                      : https://midhunxavier.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "midhunxavier/midhunxavier.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -61,7 +61,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "profile.jpg"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -72,7 +72,7 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
+  provider               : false
   google:
     tracking_id          : "G-340K93YQZ2"
 
@@ -144,6 +144,9 @@ exclude:
   - node_modules
   - package.json
   - tmp
+  - scripts
+  - output
+  - markdown_generator
   - vendor
 keep_files:
   - .git

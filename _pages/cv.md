@@ -15,32 +15,32 @@ AI Research Engineer at **Aerobase** specializing in **Neural Combinatorial Opti
 
 - **2025 - present : AI Research Engineer, Aerobase, Sweden**
 
-- Develop robot path generation and toolpath optimization for metal additive manufacturing (DED, LPBF, and WAAM), formulating deposition- and scan-path planning as a combinatorial optimization problem and solving it with neural combinatorial optimization and attention-based solvers to improve build quality, throughput, and material efficiency.
+  - Develop robot path generation and toolpath optimization for metal additive manufacturing (DED, LPBF, and WAAM), formulating deposition- and scan-path planning as a combinatorial optimization problem and solving it with neural combinatorial optimization and attention-based solvers to improve build quality, throughput, and material efficiency.
 
-  - _Skills & Tools:_ Python, PyTorch, Neural Combinatorial Optimization, Attention Models & Transformers, Policy Optimization (GRPO, PKPO, RSPO, PPO), Pass@K / Max@K objectives, OR-Tools.
+    - _Skills & Tools:_ Python, PyTorch, Neural Combinatorial Optimization, Attention Models & Transformers, Policy Optimization (GRPO, PKPO, RSPO, PPO), Pass@K / Max@K objectives, OR-Tools.
 
-- Apply reinforcement learning to defect minimization in additive manufacturing, training agents that reduce porosity, cracking, and residual stress using feedback from thermal and mechanical FEM, microstructure analysis, and melt-pool CFD simulations (simulation-in-the-loop optimization).
+  - Apply reinforcement learning to defect minimization in additive manufacturing, training agents that reduce porosity, cracking, and residual stress using feedback from thermal and mechanical FEM, microstructure analysis, and melt-pool CFD simulations (simulation-in-the-loop optimization).
 
-  - _Skills & Tools:_ Reinforcement Learning, FEM (thermal & mechanical), Melt-Pool CFD Simulation, Microstructure Analysis, Simulation-in-the-Loop Optimization.
+    - _Skills & Tools:_ Reinforcement Learning, FEM (thermal & mechanical), Melt-Pool CFD Simulation, Microstructure Analysis, Simulation-in-the-Loop Optimization.
 
 - **2020 - 2025 : Doctoral Researcher, LTU, Luleå, Sweden**
 
-- Developed a multi-agent AI framework for distributed control systems, integrating AI-driven decision-making and real-time task execution across industrial automation platforms. The system enables seamless agent collaboration, intelligent workload distribution, and optimized performance monitoring in decentralized environments.
+  - Developed a multi-agent AI framework for distributed control systems, integrating AI-driven decision-making and real-time task execution across industrial automation platforms. The system enables seamless agent collaboration, intelligent workload distribution, and optimized performance monitoring in decentralized environments.
 
-  - _Skills & Tools:_ Multi-Agent Reinforcement Learning (MARL), MAS Frameworks, Distributed Computing, LangGraph.
+    - _Skills & Tools:_ Multi-Agent Reinforcement Learning (MARL), MAS Frameworks, Distributed Computing, LangGraph.
 
-- Optimized LLM fine-tuning for generating IEC 61499 function blocks in industrial automation, enhancing accuracy and response times for AI-driven control system design. This involved iterative benchmarking and training of models to ensure optimal function block generation and seamless integration into automation workflows.
+  - Optimized LLM fine-tuning for generating IEC 61499 function blocks in industrial automation, enhancing accuracy and response times for AI-driven control system design. This involved iterative benchmarking and training of models to ensure optimal function block generation and seamless integration into automation workflows.
 
-  - _Skills & Tools:_ PyTorch, LoRA (Low-Rank Adaptation), IEC 61499.
+    - _Skills & Tools:_ PyTorch, LoRA (Low-Rank Adaptation), IEC 61499.
 
-- Developed an AI evaluation pipeline to test model responses for accuracy, factual consistency, and unintended biases, optimizing feedback analysis in an AI-driven workplace well-being platform. Tested various LLMs for benchmarking and evaluation using LangSmith to improve sentiment analysis and stress prediction from employee feedback surveys.
+  - Developed an AI evaluation pipeline to test model responses for accuracy, factual consistency, and unintended biases, optimizing feedback analysis in an AI-driven workplace well-being platform. Tested various LLMs for benchmarking and evaluation using LangSmith to improve sentiment analysis and stress prediction from employee feedback surveys.
 
-  - _Skills & Tools:_ PyTest, LangChain Evaluation, LangSmith, Benchmarking Frameworks, A/B Testing, AI Explainability Tools.
+    - _Skills & Tools:_ PyTest, LangChain Evaluation, LangSmith, Benchmarking Frameworks, A/B Testing, AI Explainability Tools.
 
 - **2019-2020: Full Stack developer, RCKR Software Pvt Ltd, Bengaluru, India**
 
   - Designed, developed, and deployed end-to-end machine learning solutions, including preprocessing, model training, evaluation, and deployment, using frameworks like TensorFlow, PyTorch, and Scikit-learn.
-  - Developed scalable and efficient full-stack applications integrating machine learning models, front-end interfaces, and back-end services using technologies such as Python, Next.Js, and DyanamoDB.
+  - Developed scalable and efficient full-stack applications integrating machine learning models, front-end interfaces, and back-end services using technologies such as Python, Next.Js, and DynamoDB.
 
 - **2017-2019: System Engineer, Tata Consultancy Services (TCS) , Kochi, India**
 
@@ -53,9 +53,9 @@ AI Research Engineer at **Aerobase** specializing in **Neural Combinatorial Opti
 
 # Education
 
-- B.S. in Electronics and Communication Engineering, SCMS, Kochi, MG University, India, 2014
-- M.S. in Computer Science and Engineering, NIT Trichy Campus, (IIIT), India, 2017
 - PhD in Industrial AI (Machine Learning & Formal Methods for Industrial Automation), LTU, Sweden, 2025
+- M.S. in Computer Science and Engineering, NIT Trichy Campus, (IIIT), India, 2017
+- B.S. in Electronics and Communication Engineering, SCMS, Kochi, MG University, India, 2014
 
 # Skills
 
@@ -77,6 +77,6 @@ AI Research Engineer at **Aerobase** specializing in **Neural Combinatorial Opti
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership in EU funded projects
-======
-* Currently assigned to Zero-Swarm , MEDUSA and ReArctive Interreg
+# EU-funded project involvement
+
+* Contributed to Zero-Swarm, MEDUSA, and ReArctive Interreg.

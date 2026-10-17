@@ -1,14 +1,14 @@
 # main links links
 main:
 
-  - title: "My research interests"
-    url: /teaching/ 
-    
+  - title: "Research"
+    url: /research/
+
   - title: "Publications"
     url: /publications/
 
   - title: "CV"
     url: /cv/
-    
+
   - title: "Contact"
-    url: /markdown/
+    url: /contact/
