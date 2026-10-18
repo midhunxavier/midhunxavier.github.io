@@ -11,7 +11,7 @@ redirect_from:
 I am an **AI Research Engineer at Aerobase**, working on neural combinatorial optimization and reinforcement learning.
 {: .portfolio-lead}
 
-During my PhD at **Luleå University of Technology (2020–2025)**, I studied formal verification and AI agents for IEC 61499 control software. That work shaped my interest in systems that can reason, act, and be checked—a foundation I now bring to learning-based optimization at Aerobase.
+During my PhD at **Luleå University of Technology (2020–2025)**, I studied formal verification and AI agents for industrial control software. That work shaped my interest in systems that can reason, act, and be checked—a foundation I now bring to learning-based optimization at Aerobase.
 
 [Research]({{ '/research/' | relative_url }}){: .btn} [Publications]({{ '/publications/' | relative_url }}){: .btn} [CV]({{ '/cv/' | relative_url }}){: .btn} [Contact]({{ '/contact/' | relative_url }}){: .btn}
 {: .portfolio-actions}
