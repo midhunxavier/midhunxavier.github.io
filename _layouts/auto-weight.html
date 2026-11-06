@@ -11,65 +11,59 @@
   <meta property="og:title" content="{{ page.title | escape }}">
   <meta property="og:description" content="{{ page.excerpt | strip_html | normalize_whitespace | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:image" content="{{ '/images/auto-weight-architecture.svg' | absolute_url }}">
+  <meta property="og:image" content="{{ '/images/auto-weight-cover.svg' | absolute_url }}">
   <link rel="icon" type="image/svg+xml" href="{{ '/images/auto-weight-mark.svg' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/auto-weight.css' | relative_url }}">
   <script src="{{ '/assets/js/auto-weight.js' | relative_url }}" defer></script>
 </head>
 <body id="top">
-  {% capture section_links %}
-    {% for section in page.sections %}
-      <li><a href="#{{ section.id }}">{{ section.label | escape }}</a></li>
-    {% endfor %}
-  {% endcapture %}
   <a class="skip-link" href="#content">Skip to content</a>
-  <header class="topbar">
-    <div class="topbar-inner">
+  <header class="masthead">
+    <div class="masthead-inner">
       <a class="brand" href="#top">
-        <img class="brand-mark" src="{{ '/images/auto-weight-mark.svg' | relative_url }}" width="30" height="30" alt="">
-        <strong>AutoWeight</strong><span>Research</span>
+        <img src="{{ '/images/auto-weight-mark.svg' | relative_url }}" width="30" height="30" alt="">
+        <strong>AutoWeight</strong>
       </a>
-      <details class="jump-menu">
-        <summary><span class="jump-label">Jump to section</span><span class="jump-compact">Sections</span></summary>
-        <nav aria-label="Jump to section"><ul>{{ section_links }}</ul></nav>
-      </details>
-      <div class="top-actions">
-        <a href="https://pypi.org/project/auto-weight/">PyPI <span aria-hidden="true">↗</span></a>
-        <button type="button" class="theme-toggle" aria-pressed="false" hidden>Dark mode</button>
-      </div>
+      <a class="package-link" href="https://pypi.org/project/auto-weight/">View on PyPI <span aria-hidden="true">↗</span></a>
     </div>
   </header>
-  <div class="docs-layout">
-    <nav class="sidebar" aria-label="AutoWeight resources">
-      <section>
-        <h2>AutoWeight</h2>
-        <a href="#top" aria-current="page">Checkpoint repair</a>
-        <a href="#try-the-offline-demo">Try the offline demo</a>
-        <a href="https://pypi.org/project/auto-weight/">Python package <span aria-hidden="true">↗</span></a>
-      </section>
-      <section>
-        <h2>Research</h2>
-        <a href="#what-happened-in-five-cases">Agent repair cases</a>
-        <a href="#from-reading-weights-to-building-a-policy">Weight-space experiments</a>
-        <a href="https://rikiyat.github.io/blog/weight-space-programming/">Original study <span aria-hidden="true">↗</span></a>
-      </section>
-    </nav>
-    <main id="content" tabindex="-1">
-      <article>
-        <header class="article-header">
-          <p class="breadcrumb">Research <span aria-hidden="true">/</span> AutoWeight</p>
-          <h1>{{ page.title | escape }}</h1>
-          <p class="byline">Midhun Xavier <span aria-hidden="true">·</span> <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>
-        </header>
+  <main id="content" tabindex="-1">
+    <article>
+      <header class="article-header">
+        <p class="eyebrow">Research note</p>
+        <h1>{{ page.title | escape }}</h1>
+        <p class="dek">{{ page.excerpt | strip_html | escape }}</p>
+        <p class="byline">
+          <span>Midhun Xavier</span>
+          <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+          {% assign reading_minutes = content | strip_html | number_of_words | plus: 199 | divided_by: 200 %}
+          <span>{{ reading_minutes }} min read</span>
+        </p>
+      </header>
+      <figure class="cover">
+        <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380"
+             alt="Two weight matrices with a small group of cells changed in the second matrix.">
+      </figure>
+      <div class="reading-column">
+        <details class="article-outline">
+          <summary>In this article</summary>
+          <nav aria-label="In this article">
+            <ol>
+              {% for section in page.sections %}
+                <li><a href="#{{ section.id }}">{{ section.label | escape }}</a></li>
+              {% endfor %}
+            </ol>
+          </nav>
+        </details>
         <div class="article-body">{{ content }}</div>
-      </article>
-    </main>
-    <aside class="page-outline">
-      <nav aria-label="On this page">
-        <h2>On this page</h2>
-        <ul>{{ section_links }}</ul>
-      </nav>
-    </aside>
-  </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="#top">Back to top ↑</a>
+      <button type="button" class="theme-toggle" aria-pressed="false" hidden>Dark mode</button>
+    </div>
+  </footer>
 </body>
 </html>
