@@ -5,7 +5,7 @@ permalink: /blog/auto-weight/checkpoint-repair-and-weight-space-experiments/
 redirect_from:
   - /blog/auto-weight/blog-title/
 excerpt: "How AutoWeight evaluates targeted checkpoint edits, with five agent repair cases and local replays of published weight-space experiments."
-layout: auto-weight
+layout: auto-weight-article
 sections:
   - id: how-autoweight-works-today
     label: How AutoWeight works

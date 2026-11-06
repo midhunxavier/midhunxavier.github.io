@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | escape }} · AutoWeight</title>
+  <title>{{ page.title | escape }}{% unless page.auto_weight_home %} · AutoWeight{% endunless %}</title>
   <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | escape }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <meta property="og:site_name" content="AutoWeight">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="{% if page.auto_weight_home %}website{% else %}article{% endif %}">
   <meta property="og:title" content="{{ page.title | escape }}">
   <meta property="og:description" content="{{ page.excerpt | strip_html | normalize_whitespace | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
@@ -20,44 +20,19 @@
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="masthead">
     <div class="masthead-inner">
-      <a class="brand" href="#top">
+      <a class="brand" href="{{ '/auto-weight/' | relative_url }}">
         <img src="{{ '/images/auto-weight-mark.svg' | relative_url }}" width="30" height="30" alt="">
         <strong>AutoWeight</strong>
       </a>
-      <a class="package-link" href="https://pypi.org/project/auto-weight/">View on PyPI <span aria-hidden="true">↗</span></a>
+      <nav class="product-nav" aria-label="AutoWeight">
+        <a href="{{ '/auto-weight/#how-it-works' | relative_url }}">Workflow</a>
+        <a href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/' | relative_url }}">Research</a>
+        <a class="package-link" href="{{ '/auto-weight/#install' | relative_url }}">Get started <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </header>
   <main id="content" tabindex="-1">
-    <article>
-      <header class="article-header">
-        <p class="eyebrow">Research note</p>
-        <h1>{{ page.title | escape }}</h1>
-        <p class="dek">{{ page.excerpt | strip_html | escape }}</p>
-        <p class="byline">
-          <span>Midhun Xavier</span>
-          <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
-          {% assign reading_minutes = content | strip_html | number_of_words | plus: 199 | divided_by: 200 %}
-          <span>{{ reading_minutes }} min read</span>
-        </p>
-      </header>
-      <figure class="cover">
-        <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380"
-             alt="Two weight matrices with a small group of cells changed in the second matrix.">
-      </figure>
-      <div class="reading-column">
-        <details class="article-outline">
-          <summary>In this article</summary>
-          <nav aria-label="In this article">
-            <ol>
-              {% for section in page.sections %}
-                <li><a href="#{{ section.id }}">{{ section.label | escape }}</a></li>
-              {% endfor %}
-            </ol>
-          </nav>
-        </details>
-        <div class="article-body">{{ content }}</div>
-      </div>
-    </article>
+    {{ content }}
   </main>
   <footer class="site-footer">
     <div class="footer-inner">
