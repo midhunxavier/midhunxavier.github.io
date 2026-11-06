@@ -460,3 +460,25 @@ a { color: var(--accent); text-underline-offset: .2em; }
   .demo-steps button { width: auto; font-size: .72rem; padding: .36rem .4rem; }
   .window-bar { padding-inline: .75rem; letter-spacing: .035em; }
 }
+
+.agent-setup { max-width: 55rem; }
+.section-intro { max-width: 43rem; }
+.setup-step { margin-top: 1.65rem; }
+.setup-step h3 { margin: 0; color: var(--ink); font-size: 1.08rem; }
+.setup-step h3 span {
+  margin-right: .5rem;
+  color: var(--accent);
+  font: .8rem ui-monospace, monospace;
+}
+.setup-step p { max-width: 43rem; }
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+.client-grid .copy-status { padding-inline: .85rem; }
+.setup-links { font-size: .83rem; }
+.setup-step blockquote { margin: 0; padding: .85rem; }
+@media (max-width: 42rem) {
+  .client-grid { grid-template-columns: minmax(0, 1fr); }
+}

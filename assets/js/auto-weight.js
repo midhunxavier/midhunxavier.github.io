@@ -42,16 +42,18 @@ if (demoControls) {
   }
 }
 
-const copyButton = document.querySelector("[data-copy]");
-if (copyButton && navigator.clipboard) {
-  const copyStatus = document.querySelector(".copy-status");
-  copyButton.hidden = false;
-  copyButton.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(document.getElementById(copyButton.dataset.copy).textContent);
-      copyStatus.textContent = "Commands copied.";
-    } catch {
-      copyStatus.textContent = "Select the commands to copy them.";
-    }
-  });
+if (navigator.clipboard) {
+  for (const button of document.querySelectorAll("[data-copy]")) {
+    const target = document.getElementById(button.dataset.copy);
+    const status = document.getElementById(button.dataset.copy + "-status");
+    button.hidden = false;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(target.textContent);
+        status.textContent = "Copied.";
+      } catch {
+        status.textContent = "Select the text to copy it.";
+      }
+    });
+  }
 }
