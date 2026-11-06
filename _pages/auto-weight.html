@@ -1,7 +1,7 @@
 ---
 layout: auto-weight
-title: "AutoWeight · Targeted checkpoint repair"
-excerpt: "Repair fine-tuning regressions in local Hugging Face models. Evaluate targeted weight edits and export a checkpoint after confirmation."
+title: "AutoWeight · Model weight editing"
+excerpt: "Edit local Hugging Face model weights with Codex CLI or Claude Code. Verify each candidate against labeled examples and export the checkpoint after confirmation."
 permalink: /auto-weight/
 auto_weight_home: true
 ---
@@ -9,12 +9,12 @@ auto_weight_home: true
 <div class="product">
   <section class="product-hero" aria-labelledby="product-title">
     <div>
-      <p class="eyebrow product-label">Local checkpoint repair</p>
-      <h1 id="product-title">Repair your model.<br><em>Keep what works.</em></h1>
-      <p class="product-dek">AutoWeight tests targeted edits to your model’s weights against the behavior you want back and the behavior you want to keep.</p>
+      <p class="eyebrow product-label">Model weight editing</p>
+      <h1 id="product-title">Edit model weights.<br><em>Verify the result.</em></h1>
+      <p class="product-dek">Use Codex CLI or Claude Code to propose edits to a local Hugging Face model. AutoWeight tests each candidate against the behaviors you want to change and preserve.</p>
       <div class="product-actions">
-        <a class="product-button" href="#install">Try the offline demo <span aria-hidden="true">↗</span></a>
-        <a class="product-button secondary" href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/' | relative_url }}">Read the research <span aria-hidden="true">→</span></a>
+        <a class="product-button" href="#connect">Connect your CLI <span aria-hidden="true">↗</span></a>
+        <a class="product-button secondary" href="#install">Try the offline demo <span aria-hidden="true">→</span></a>
       </div>
       <p class="product-note">Python 3.11+ · macOS and Linux · Runs locally</p>
     </div>
@@ -72,12 +72,66 @@ auto_weight_home: true
     <p class="window-note">Results from the included CPU demo. Run it locally to create the model and reproduce the export.</p>
   </section>
 
+  <section class="product-section agent-setup" id="connect" aria-labelledby="connect-title">
+    <p class="eyebrow">Agent setup</p>
+    <h2 id="connect-title">Connect Codex CLI or Claude Code</h2>
+    <p class="section-intro">Your coding agent proposes weight edits through MCP. AutoWeight applies and scores them locally, then exports a checkpoint if the selected edit passes confirmation.</p>
+
+    <div class="setup-step">
+      <h3><span>01</span> Prepare your inputs and install AutoWeight</h3>
+      <p>Use an existing input directory with a Hugging Face causal language model in <code>base/</code> and independent <code>development.jsonl</code> and <code>confirmation.jsonl</code> files. Replace <code>./repair-inputs</code> with that directory.</p>
+      <div class="install-code">
+        <div class="install-bar"><span>Terminal · setup</span><button type="button" data-copy="agent-runtime" hidden>Copy commands</button></div>
+        <pre><code id="agent-runtime">uv tool install 'auto-weight[hf,mcp]'
+auto-weight setup-runtime --input-root ./repair-inputs</code></pre>
+      </div>
+      <p class="copy-status" id="agent-runtime-status" role="status"></p>
+      <details class="pip-option">
+        <summary>Model and evaluation file format</summary>
+        <p>Include the model’s safetensors weights, config, and tokenizer files. Put at least 32 distinct labeled examples per group in each JSONL split. Give the behavior to change the group <code>fix</code> and give each behavior to preserve its own group. Use different prompts in the confirmation set and leave those examples for the runner.</p>
+        <pre><code>{"group":"fix","prompt":"Return raw JSON for priority high.","check":{"type":"json","expected":{"priority":"high"}}}
+{"group":"queue","prompt":"Name the queue for invoice questions.","check":{"type":"exact","expected":"billing"}}</code></pre>
+      </details>
+    </div>
+
+    <div class="setup-step">
+      <h3><span>02</span> Register the server with your CLI</h3>
+      <p>Run the commands for your installed client from the project you work in. Then use <code>/mcp</code> in a new session to check for <code>auto-weight</code>.</p>
+      <div class="client-grid">
+        <div class="install-code">
+          <div class="install-bar"><strong>Codex CLI</strong><button type="button" data-copy="agent-codex" hidden>Copy commands</button></div>
+          <pre><code id="agent-codex">codex mcp add auto-weight -- \
+  "$(command -v auto-weight-mcp)"
+codex</code></pre>
+          <p class="copy-status" id="agent-codex-status" role="status"></p>
+        </div>
+        <div class="install-code">
+          <div class="install-bar"><strong>Claude Code</strong><button type="button" data-copy="agent-claude" hidden>Copy commands</button></div>
+          <pre><code id="agent-claude">claude mcp add --transport stdio auto-weight -- \
+  "$(command -v auto-weight-mcp)"
+claude</code></pre>
+          <p class="copy-status" id="agent-claude-status" role="status"></p>
+        </div>
+      </div>
+      <p class="setup-links"><a href="https://learn.chatgpt.com/docs/extend/mcp#configure-with-the-cli">Codex MCP docs</a> · <a href="https://code.claude.com/docs/en/mcp">Claude Code MCP docs</a></p>
+    </div>
+
+    <div class="setup-step">
+      <h3><span>03</span> Tell the agent what to edit</h3>
+      <div class="install-code">
+        <div class="install-bar"><span>Example prompt</span><button type="button" data-copy="agent-prompt" hidden>Copy prompt</button></div>
+        <blockquote id="agent-prompt">Use AutoWeight to remove Markdown fences from JSON responses in the model at base. Improve the fix group and preserve queue extraction. Use development.jsonl to try edits and reserve confirmation.jsonl for one final check. Export the edited checkpoint if it passes.</blockquote>
+      </div>
+      <p class="copy-status" id="agent-prompt-status" role="status"></p>
+    </div>
+  </section>
+
   <section class="product-section" id="how-it-works" aria-labelledby="workflow-title">
     <p class="eyebrow">Workflow</p>
-    <h2 id="workflow-title">From regression to verified checkpoint</h2>
+    <h2 id="workflow-title">From proposed edit to verified checkpoint</h2>
     <ol class="workflow-steps">
       <li><span>01</span><h3>Define the checks</h3><p>Bring a local Hugging Face checkpoint and labeled examples for the behavior to fix and preserve.</p></li>
-      <li><span>02</span><h3>Test targeted edits</h3><p>Review proposals in the CLI, use an Ollama proposer, or connect Codex or Claude Code through MCP.</p></li>
+      <li><span>02</span><h3>Test targeted edits</h3><p>Ask Codex CLI or Claude Code for an edit. AutoWeight applies it to a temporary checkpoint and evaluates it on development examples.</p></li>
       <li><span>03</span><h3>Confirm and export</h3><p>Score the selected edit on held-out cases. A passing run exports the evaluated model and its report.</p></li>
     </ol>
   </section>
@@ -85,7 +139,7 @@ auto_weight_home: true
   <section class="product-section install-section" id="install" aria-labelledby="install-title">
     <div>
       <p class="eyebrow">Get started</p>
-      <h2 id="install-title">Run your first repair</h2>
+      <h2 id="install-title">Run the offline demo</h2>
       <p>The demo builds a tiny model on CPU and works offline after installation. Use Python 3.11 or newer on macOS or Linux.</p>
       <p><a href="https://pypi.org/project/auto-weight/">View the package on PyPI <span aria-hidden="true">↗</span></a></p>
     </div>
@@ -95,7 +149,7 @@ auto_weight_home: true
         <pre><code id="install-uv">uv tool install 'auto-weight[hf,mcp]'
 auto-weight demo</code></pre>
       </div>
-      <p class="copy-status" role="status"></p>
+      <p class="copy-status" id="install-uv-status" role="status"></p>
       <details class="pip-option">
         <summary>Install with pip</summary>
         <pre><code>python3 -m venv .venv
