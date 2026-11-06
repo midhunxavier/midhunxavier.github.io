@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 570" role="img" aria-labelledby="title desc">
+  <title id="title">AutoWeight runner architecture</title>
+  <desc id="desc">Freeze the checkpoint, cases and gates. Repair loops through proposals and development scoring before selecting one candidate. Construction submits one candidate without development. Confirmation either exports the checkpoint and report or keeps the report.</desc>
+  <rect width="640" height="570" rx="22" fill="#f6f8fa"/>
+  <path d="M319 84H321V108H319Z
+           M319 182H321V202H319Z M164 201H476V203H164Z M164 203H166V226H164Z M474 203H476V226H474Z
+           M164 326H166V350H164Z M474 326H476V350H474Z M164 349H476V351H164Z M319 351H321V370H319Z
+           M319 446H321V468H319Z M164 467H476V469H164Z M164 469H166V488H164Z M474 469H476V488H474Z"
+        fill="#526477"/>
+  <path d="M315 106H325L320 114Z M160 224H170L165 232Z M470 224H480L475 232Z
+           M315 368H325L320 376Z M160 486H170L165 494Z M470 486H480L475 494Z"
+        fill="#526477"/>
+  <g stroke="#b7c6d6" stroke-width="1.5" fill="#fff">
+    <rect x="125" y="24" width="390" height="60" rx="12"/>
+    <rect x="125" y="114" width="390" height="68" rx="12"/>
+    <rect x="28" y="232" width="274" height="94" rx="12"/>
+    <rect x="338" y="232" width="274" height="94" rx="12"/>
+    <rect x="125" y="376" width="390" height="70" rx="12"/>
+    <rect x="28" y="494" width="274" height="52" rx="12" fill="#e7f6ee" stroke="#9bbcae"/>
+    <rect x="338" y="494" width="274" height="52" rx="12"/>
+  </g>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#182c40">
+    <g font-size="21" font-weight="700">
+      <text x="320" y="61">Checkpoint and evaluation cases</text>
+      <text x="320" y="143">Freeze the workspace</text>
+      <text x="165" y="261">Repair</text>
+      <text x="475" y="261">Construction</text>
+      <text x="320" y="406">Confirmation</text>
+    </g>
+    <g font-size="17">
+      <text x="320" y="165">Record inputs, gates and budget</text>
+      <text x="165" y="286">Score edits on development</text>
+      <text x="165" y="307">Select one eligible edit</text>
+      <text x="475" y="286">Submit one candidate</text>
+      <text x="475" y="307">Score against an absolute target</text>
+      <text x="320" y="429">Evaluate the serialized candidate</text>
+      <text x="165" y="527">Pass · Export model and report</text>
+      <text x="475" y="527">Fail · Keep the report</text>
+    </g>
+  </g>
+</svg>
