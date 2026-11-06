@@ -9,7 +9,6 @@
   --body: #4b5046;
   --muted: #62665b;
   --accent: #286246;
-  --on-mark: #fff;
   --bar-height: 4.5rem;
 }
 
@@ -24,7 +23,6 @@
   --body: #cecec3;
   --muted: #aeafa1;
   --accent: #92dcb5;
-  --on-mark: #171813;
 }
 
 * { box-sizing: border-box; }
