@@ -447,7 +447,7 @@ a { color: var(--accent); text-underline-offset: .2em; }
 @media (max-width: 47rem) {
   .product-hero { grid-template-columns: 1fr; gap: 2rem; }
   .repair-orbit { width: min(65%, 14rem); }
-  .workflow-steps, .install-section, .research-section { grid-template-columns: 1fr; }
+  .workflow-steps, .install-section, .research-section { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 34rem) {
   .product { width: calc(100% - 2rem); }
