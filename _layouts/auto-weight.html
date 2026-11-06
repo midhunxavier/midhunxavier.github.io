@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | escape }} · AutoWeight</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="AutoWeight">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.excerpt | strip_html | normalize_whitespace | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/images/auto-weight-architecture.svg' | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/auto-weight.css' | relative_url }}">
+  <script src="{{ '/assets/js/auto-weight.js' | relative_url }}" defer></script>
+</head>
+<body id="top">
+  {% capture section_links %}
+    {% for section in page.sections %}
+      <li><a href="#{{ section.id }}">{{ section.label | escape }}</a></li>
+    {% endfor %}
+  {% endcapture %}
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <svg class="brand-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+          <circle cx="15" cy="15" r="15" fill="currentColor"/>
+          <path d="M8.5 19.5h13M9 17l3-6 3 5 3-7 3 8" stroke="var(--on-mark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <strong>AutoWeight</strong><span>Research</span>
+      </a>
+      <details class="jump-menu">
+        <summary><span class="jump-label">Jump to section</span><span class="jump-compact">Sections</span></summary>
+        <nav aria-label="Jump to section"><ul>{{ section_links }}</ul></nav>
+      </details>
+      <div class="top-actions">
+        <a href="https://pypi.org/project/auto-weight/">PyPI <span aria-hidden="true">↗</span></a>
+        <button type="button" class="theme-toggle" aria-pressed="false" hidden>Dark mode</button>
+      </div>
+    </div>
+  </header>
+  <div class="docs-layout">
+    <nav class="sidebar" aria-label="AutoWeight resources">
+      <section>
+        <h2>AutoWeight</h2>
+        <a href="#top" aria-current="page">Checkpoint repair</a>
+        <a href="#try-the-offline-demo">Try the offline demo</a>
+        <a href="https://pypi.org/project/auto-weight/">Python package <span aria-hidden="true">↗</span></a>
+      </section>
+      <section>
+        <h2>Research</h2>
+        <a href="#what-happened-in-five-cases">Agent repair cases</a>
+        <a href="#from-reading-weights-to-building-a-policy">Weight-space experiments</a>
+        <a href="https://rikiyat.github.io/blog/weight-space-programming/">Original study <span aria-hidden="true">↗</span></a>
+      </section>
+    </nav>
+    <main id="content" tabindex="-1">
+      <article>
+        <header class="article-header">
+          <p class="breadcrumb">Research <span aria-hidden="true">/</span> AutoWeight</p>
+          <h1>{{ page.title | escape }}</h1>
+          <p class="byline">Midhun Xavier <span aria-hidden="true">·</span> <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>
+        </header>
+        <div class="article-body">{{ content }}</div>
+      </article>
+    </main>
+    <aside class="page-outline">
+      <nav aria-label="On this page">
+        <h2>On this page</h2>
+        <ul>{{ section_links }}</ul>
+      </nav>
+    </aside>
+  </div>
+</body>
+</html>

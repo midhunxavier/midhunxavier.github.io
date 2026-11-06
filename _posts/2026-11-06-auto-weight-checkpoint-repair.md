@@ -5,8 +5,20 @@ permalink: /blog/auto-weight/checkpoint-repair-and-weight-space-experiments/
 redirect_from:
   - /blog/auto-weight/blog-title/
 excerpt: "How AutoWeight evaluates targeted checkpoint edits, with five agent repair cases and local replays of published weight-space experiments."
-toc: true
-comments: false
+layout: auto-weight
+sections:
+  - id: how-autoweight-works-today
+    label: How AutoWeight works
+  - id: what-happened-in-five-cases
+    label: Five agent repair cases
+  - id: from-reading-weights-to-building-a-policy
+    label: Weight-space experiments
+  - id: how-to-use-it-effectively
+    label: How to use it effectively
+  - id: try-the-offline-demo
+    label: Try the offline demo
+  - id: when-the-experiment-is-worth-running
+    label: When to run an experiment
 tags:
   - AutoWeight
   - checkpoint repair
@@ -31,6 +43,8 @@ We use two suites to test the workflow. Five repair cases compare Codex and Clau
 
 Codex and Claude Code each received the same task, inputs, gates, and four development attempts per case. The agents saw development feedback from the AutoWeight MCP server and could confirm the first eligible candidate once. Each of the seven exports was reloaded with Transformers and rescored on confirmation. The fixed control tried one 50% blend across all donor differences or, for the donor-free case, a 0.5 scale of the output head. Where a prior checkpoint existed, it was scored separately on the same confirmation split.
 
+<div class="table-scroll" role="region" aria-label="Agent repair results" tabindex="0" markdown="1">
+
 | Regression | Base fix / preserve | Confirmed repair fix / preserve | What made the difference |
 | --- | --- | --- | --- |
 | Fenced ticket JSON | 0/60 · 60/60 | 60/60 · 60/60 | Codex restored all 38 changed tensors. Full rollback and the fixed blend reached the same scores. Claude spent four attempts on narrower restores. |
@@ -38,6 +52,8 @@ Codex and Claude Code each received the same task, inputs, gates, and four devel
 | Misclassified chat severity | 16/32 · 32/32 | 32/32 · 32/32 | Both hosts restored only the input embedding after the output-head restore failed. The fixed blend dropped development queue accuracy to 16/32. |
 | Default answer after calibration | 0/32 · 32/32 | 32/32 · 32/32 | Both hosts zeroed the final normalization bias. There was no donor, and scaling the output head left the default answer in place. |
 | Conflicting access decisions | 0/32 · 32/32 | No eligible edit | Larger blends fixed denials and broke verified allowances. Both hosts stopped without exporting a model. |
+
+</div>
 
 The strongest case for the proposer was chat severity. Both full rollback and the fixed blend regressed queue routing. The failed output-head restore gave both agents a reason to look elsewhere, and restoring the embedding passed both checks. In the schema case, the fixed blend did as well as either agent. In the DistilGPT2 case, even a full rollback sufficed on the two measured behaviors.
 
@@ -49,6 +65,8 @@ The DistilGPT2 case used a pretrained model with a locally induced regression on
 
 The research examples use revision-pinned assets and published weights. The local runs below test how AutoWeight stages, scores, and exports them. The last column describes what the original team reported with its own proposer and evaluation protocol. [Published artifacts and logs](https://github.com/RikiyaT/lm_understand-logs/tree/4d09ba6d6a7e891dd8063974dfe81b3d78e3494f)
 
+<div class="table-scroll" role="region" aria-label="Weight-space experiment results" tabindex="0" markdown="1">
+
 | Study | What you can do in AutoWeight | Published result |
 | --- | --- | --- |
 | 1. Identify a game policy | Stage four weight sets under opaque IDs and score submitted labels | Astra named all four games |
@@ -59,6 +77,8 @@ The research examples use revision-pinned assets and published weights. The loca
 | 6. Construct a 9×9 Go policy | Replay the zero-practice weights. They won **5/8** against a seeded uniform legal-move opponent | The zero-practice policy beat two smaller PPO opponents. The 50-pass policy beat the equal-sized PPO control |
 | 7. Diagnose sycophancy | Fetch the original results, or compare attention on a compatible pair you supply | Attention-assisted identification succeeded on three pairs. Weights-only attempts were inconclusive |
 | 8. Repair Qwen reasoning loops | Apply the published patch with a separate generation evaluator, or retrieve benchmark summaries | MATH-500 rose from 7.9% to 48.1%. The share hitting the token limit fell from 93.0% to 33.1% |
+
+</div>
 
 We verified staging and scoring for the three diagnosis examples using the reference keys. The MinAtar and Go replays passed their local score gates, and `verify` confirmed the exported checkpoints. A separate offline classifier exercised paired repair through the same external evaluator protocol. Confirmation accuracy for the repaired class rose from **0/32 to 32/32**, and the preserved class stayed at **32/32**.
 
