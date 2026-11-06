@@ -2,14 +2,14 @@
   <title id="title">A targeted edit to a weight matrix</title>
   <defs>
     <pattern id="paper" width="18" height="18" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1" fill="#96553f" opacity=".16"/>
+      <circle cx="2" cy="2" r="1" fill="#55735a" opacity=".16"/>
     </pattern>
     <pattern id="cells" width="30" height="30" patternUnits="userSpaceOnUse">
-      <rect x="2" y="2" width="25" height="25" rx="3" fill="#f3e4d4"/>
+      <rect x="2" y="2" width="25" height="25" rx="3" fill="#e9ede2"/>
     </pattern>
     <g id="matrix">
       <rect width="180" height="150" fill="url(#cells)"/>
-      <g fill="#dfb39c">
+      <g fill="#b8cbb0">
         <rect x="2" y="32" width="25" height="25" rx="3"/>
         <rect x="32" y="2" width="25" height="25" rx="3"/>
         <rect x="32" y="92" width="25" height="25" rx="3"/>
@@ -18,7 +18,7 @@
         <rect x="122" y="32" width="25" height="25" rx="3"/>
         <rect x="152" y="92" width="25" height="25" rx="3"/>
       </g>
-      <g fill="#eacbb5">
+      <g fill="#d1ddc9">
         <rect x="2" y="122" width="25" height="25" rx="3"/>
         <rect x="62" y="2" width="25" height="25" rx="3"/>
         <rect x="92" y="62" width="25" height="25" rx="3"/>
@@ -27,25 +27,25 @@
       </g>
     </g>
   </defs>
-  <rect width="1000" height="380" fill="#e9b39b"/>
+  <rect width="1000" height="380" fill="#ccd9c4"/>
   <rect width="1000" height="380" fill="url(#paper)"/>
-  <path d="M0 294H1000M500 0V380" fill="none" stroke="#99573f" stroke-opacity=".23"/>
-  <g fill="#fff7ec" stroke="#ba7a60">
+  <path d="M0 294H1000M500 0V380" fill="none" stroke="#67856d" stroke-opacity=".23"/>
+  <g fill="#f8faf3" stroke="#8ba789">
     <rect x="176" y="64" width="265" height="230" rx="15"/>
     <rect x="559" y="64" width="265" height="230" rx="15"/>
   </g>
   <use href="#matrix" x="219" y="101"/>
   <use href="#matrix" x="602" y="101"/>
-  <g fill="#b85539">
+  <g fill="#527a55">
     <rect x="664" y="163" width="25" height="25" rx="3"/>
     <rect x="694" y="163" width="25" height="25" rx="3"/>
     <rect x="694" y="193" width="25" height="25" rx="3"/>
   </g>
-  <g fill="none" stroke="#7f3f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#48674e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M466 180H534M523 170L534 180L523 190"/>
     <path d="M651 152h15m-15 0v15m79-15h-15m15 0v15m0 62h-15m15 0v-15m-79 15h15m-15 0v-15" stroke-dasharray="2 3"/>
   </g>
-  <g font-family="ui-monospace, monospace" font-size="15" letter-spacing="2" text-anchor="middle" fill="#613b30">
+  <g font-family="ui-monospace, monospace" font-size="15" letter-spacing="2" text-anchor="middle" fill="#365540">
     <text x="309" y="334">BASE WEIGHTS</text>
     <text x="692" y="334">TARGETED EDIT</text>
   </g>

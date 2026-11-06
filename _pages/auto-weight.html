@@ -1,0 +1,118 @@
+---
+layout: auto-weight
+title: "AutoWeight · Targeted checkpoint repair"
+excerpt: "Repair fine-tuning regressions in local Hugging Face models. Evaluate targeted weight edits and export a checkpoint after confirmation."
+permalink: /auto-weight/
+auto_weight_home: true
+---
+
+<div class="product">
+  <section class="product-hero" aria-labelledby="product-title">
+    <div>
+      <p class="eyebrow product-label">Local checkpoint repair</p>
+      <h1 id="product-title">Repair your model.<br><em>Keep what works.</em></h1>
+      <p class="product-dek">AutoWeight tests targeted edits to your model’s weights against the behavior you want back and the behavior you want to keep.</p>
+      <div class="product-actions">
+        <a class="product-button" href="#install">Try the offline demo <span aria-hidden="true">↗</span></a>
+        <a class="product-button secondary" href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/' | relative_url }}">Read the research <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="product-note">Python 3.11+ · macOS and Linux · Runs locally</p>
+    </div>
+    <div class="repair-orbit" aria-hidden="true">
+      <div class="orbit-core"><img src="{{ '/images/auto-weight-mark.svg' | relative_url }}" width="64" height="64" alt=""></div>
+      <span class="orbit-node propose">Propose</span>
+      <span class="orbit-node evaluate">Evaluate</span>
+      <span class="orbit-node confirm">Confirm</span>
+    </div>
+  </section>
+
+  <section class="demo-window" aria-labelledby="demo-title">
+    <header class="window-bar">
+      <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h2 id="demo-title">Offline demo preview</h2>
+      <span class="window-label">Scripted run</span>
+    </header>
+    <div class="window-body">
+      <div class="demo-rail">
+        <p class="demo-rail-title">Repair run</p>
+        <p class="demo-rail-model">Tiny Hugging Face model</p>
+        <div class="demo-steps" data-demo-controls role="group" aria-label="Inspect the repair stages" hidden>
+          <button type="button" data-demo-step="baseline" aria-controls="demo-baseline" aria-pressed="false"><span>01</span> Baseline</button>
+          <button type="button" data-demo-step="attempts" aria-controls="demo-attempts" aria-pressed="false"><span>02</span> Edit attempts</button>
+          <button type="button" data-demo-step="confirmation" aria-controls="demo-confirmation" aria-pressed="true"><span>03</span> Confirmation</button>
+        </div>
+      </div>
+      <div class="demo-content">
+        <p class="demo-prompt">Restore raw JSON responses while preserving queue extraction.</p>
+        <div id="demo-baseline" data-demo-panel="baseline" hidden>
+          <h3>Record the base behavior</h3>
+          <p>The tiny checkpoint wraps JSON responses in Markdown. Queue extraction already works and becomes the preservation check.</p>
+        </div>
+        <div id="demo-attempts" data-demo-panel="attempts" hidden>
+          <h3>Test two scripted edits</h3>
+          <dl class="attempts">
+            <div><dt>01 · Scale weights</dt><dd>Discarded</dd></div>
+            <div><dt>02 · Restore weights</dt><dd>Eligible</dd></div>
+          </dl>
+          <p>Only the eligible edit advances to the held-out confirmation set.</p>
+        </div>
+        <div id="demo-confirmation" data-demo-panel="confirmation">
+          <div class="demo-result"><h3>Confirmation results</h3><span class="result-chip">Accepted</span></div>
+          <table class="demo-scores">
+            <thead><tr><th scope="col">Behavior</th><th scope="col">Base</th><th scope="col">Edited</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Correct raw JSON</th><td>0/32</td><td><strong>32/32</strong></td></tr>
+              <tr><th scope="row">Queue extraction</th><td>32/32</td><td><strong>32/32</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="demo-export">Exported as a Transformers checkpoint</p>
+        </div>
+      </div>
+    </div>
+    <p class="window-note">Results from the included CPU demo. Run it locally to create the model and reproduce the export.</p>
+  </section>
+
+  <section class="product-section" id="how-it-works" aria-labelledby="workflow-title">
+    <p class="eyebrow">Workflow</p>
+    <h2 id="workflow-title">From regression to verified checkpoint</h2>
+    <ol class="workflow-steps">
+      <li><span>01</span><h3>Define the checks</h3><p>Bring a local Hugging Face checkpoint and labeled examples for the behavior to fix and preserve.</p></li>
+      <li><span>02</span><h3>Test targeted edits</h3><p>Review proposals in the CLI, use an Ollama proposer, or connect Codex or Claude Code through MCP.</p></li>
+      <li><span>03</span><h3>Confirm and export</h3><p>Score the selected edit on held-out cases. A passing run exports the evaluated model and its report.</p></li>
+    </ol>
+  </section>
+
+  <section class="product-section install-section" id="install" aria-labelledby="install-title">
+    <div>
+      <p class="eyebrow">Get started</p>
+      <h2 id="install-title">Run your first repair</h2>
+      <p>The demo builds a tiny model on CPU and works offline after installation. Use Python 3.11 or newer on macOS or Linux.</p>
+      <p><a href="https://pypi.org/project/auto-weight/">View the package on PyPI <span aria-hidden="true">↗</span></a></p>
+    </div>
+    <div>
+      <div class="install-code">
+        <div class="install-bar"><span>Terminal · uv</span><button type="button" data-copy="install-uv" hidden>Copy commands</button></div>
+        <pre><code id="install-uv">uv tool install 'auto-weight[hf,mcp]'
+auto-weight demo</code></pre>
+      </div>
+      <p class="copy-status" role="status"></p>
+      <details class="pip-option">
+        <summary>Install with pip</summary>
+        <pre><code>python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install 'auto-weight[hf,mcp]'
+auto-weight demo</code></pre>
+      </details>
+    </div>
+  </section>
+
+  <section class="product-section research-section" aria-labelledby="research-title">
+    <div>
+      <p class="eyebrow">Research</p>
+      <h2 id="research-title">What holds up in the experiments?</h2>
+      <p>Read five agent repair cases and eight weight-space studies, with local replay results distinguished from the published benchmarks.</p>
+      <a href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/' | relative_url }}">Read the research note <span aria-hidden="true">→</span></a>
+    </div>
+    <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380" alt="">
+  </section>
+</div>

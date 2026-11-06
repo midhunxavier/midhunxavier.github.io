@@ -1,0 +1,33 @@
+---
+layout: auto-weight
+---
+    <article>
+      <header class="article-header">
+        <p class="eyebrow">Research note</p>
+        <h1>{{ page.title | escape }}</h1>
+        <p class="dek">{{ page.excerpt | strip_html | escape }}</p>
+        <p class="byline">
+          <span>Midhun Xavier</span>
+          <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+          {% assign reading_minutes = content | strip_html | number_of_words | plus: 199 | divided_by: 200 %}
+          <span>{{ reading_minutes }} min read</span>
+        </p>
+      </header>
+      <figure class="cover">
+        <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380"
+             alt="Two weight matrices with a small group of cells changed in the second matrix.">
+      </figure>
+      <div class="reading-column">
+        <details class="article-outline">
+          <summary>In this article</summary>
+          <nav aria-label="In this article">
+            <ol>
+              {% for section in page.sections %}
+                <li><a href="#{{ section.id }}">{{ section.label | escape }}</a></li>
+              {% endfor %}
+            </ol>
+          </nav>
+        </details>
+        <div class="article-body">{{ content }}</div>
+      </div>
+    </article>
