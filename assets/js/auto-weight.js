@@ -28,20 +28,3 @@ themeButton.addEventListener("click", () => {
     // Keep the current page's theme even when it cannot be saved.
   }
 });
-
-const jumpMenu = document.querySelector(".jump-menu");
-jumpMenu.addEventListener("click", (event) => {
-  const link = event.target.closest("a");
-  if (!link) return;
-  jumpMenu.open = false;
-  const heading = document.getElementById(link.hash.slice(1));
-  if (heading) {
-    heading.tabIndex = -1;
-    heading.focus({ preventScroll: true });
-  }
-});
-jumpMenu.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape" || !jumpMenu.open) return;
-  jumpMenu.open = false;
-  jumpMenu.querySelector("summary").focus();
-});
