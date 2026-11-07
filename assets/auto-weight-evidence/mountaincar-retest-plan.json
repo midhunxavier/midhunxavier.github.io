@@ -1,0 +1,41 @@
+{
+  "frozen_at_utc": "2026-11-07T08:01:26.357825+00:00",
+  "candidate_proposal": {
+    "path": "[local-path-omitted]",
+    "sha256": "c9273fe9733955481f6cb4a28da8a9106650de34b686005de2e7c4698a2a90c3"
+  },
+  "candidate_payload": {
+    "path": "[local-path-omitted]",
+    "sha256": "ee71316ad23bcffb1916f175207869a014001ec56cb8a55091f938e2313c96b1"
+  },
+  "fresh_issue": {
+    "path": "[local-path-omitted]",
+    "sha256": "1e72c1801d6dd8f1cc3919b78a08221e58a8622ee69fe5cd41f06217abe246b8"
+  },
+  "fresh_confirmation": {
+    "path": "[local-path-omitted]",
+    "sha256": "d50e9416318d348a9ed4f546b7ffc39d60bcb6a91d38389f674e6626ffa962a9"
+  },
+  "sample_size_per_group": 1024,
+  "seed_start": 1000000,
+  "seed_end_inclusive": 1004161,
+  "fixed_gates": [
+    {
+      "group": "central_start",
+      "metric": "return",
+      "kind": "improve",
+      "min_delta": 5.0
+    },
+    {
+      "group": "other_starts",
+      "metric": "return",
+      "kind": "preserve",
+      "min_delta": -2.0
+    }
+  ],
+  "attempt_budget": 1,
+  "confirmation_budget": 1,
+  "stopping_rule": "Run entire sample once; no peeking, gate changes, new candidate, or additional attempts. Reject if either fixed confidence gate fails.",
+  "rationale": "8x original 128/group sample should reduce typical sampling uncertainty by sqrt(8), using new independent seeds and same paired-bootstrap methodology. It does not guarantee power or a pass.",
+  "original_result": "Discarded; preservation lower bound -2.423828125 below -2.0; original confirmation not pooled into fresh test."
+}

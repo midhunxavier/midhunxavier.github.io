@@ -1,0 +1,134 @@
+{
+  "status": "preregistered before development scoring; reviewed by parent agent",
+  "model": "sb3/ppo-MountainCarContinuous-v0",
+  "revision": "2111a66bf69db028cd2db582aa004d58a735effd",
+  "diagnosis": "Separate pilot24 seeds: motor gain .8 improved reward .932 but steps rose27.5%; velocity gain1.2 reduced opposing action fraction .299 to .254 and mean steps9.0% with reward delta-.015. Joint lower torque and increased velocity sensitivity may improve energy efficiency without excessive slowdown. Input interventions are normalized-space changes and not a proven isolated neural representation. No historical regression or induced fault.",
+  "parameterization": {
+    "motor_gain": [
+      0.7,
+      1.0
+    ],
+    "normalized_velocity_input_gain": [
+      1.0,
+      1.5
+    ]
+  },
+  "search": {
+    "algorithm": "16 scrambled Sobol points scipy.stats.qmc.Sobol seed20261107",
+    "candidates": [
+      [
+        0.8112861780449747,
+        1.4064963604323566
+      ],
+      [
+        0.9535653941333293,
+        1.0919878273271024
+      ],
+      [
+        0.924029572866857,
+        1.3525169072672725
+      ],
+      [
+        0.767652378976345,
+        1.147005726583302
+      ],
+      [
+        0.70194558724761,
+        1.2928303685039282
+      ],
+      [
+        0.8584956584498287,
+        1.2086530178785324
+      ],
+      [
+        0.9630301967263222,
+        1.472050140146166
+      ],
+      [
+        0.8205803921446204,
+        1.028394800145179
+      ],
+      [
+        0.8464555619284511,
+        1.3165697525255382
+      ],
+      [
+        0.9934784077107907,
+        1.1819773628376424
+      ],
+      [
+        0.884146367572248,
+        1.3872698796913028
+      ],
+      [
+        0.7324714973568915,
+        1.1121936412528157
+      ],
+      [
+        0.7417773656547069,
+        1.4528272431343794
+      ],
+      [
+        0.8935814825817943,
+        1.0485970303416252
+      ],
+      [
+        0.9279145285487175,
+        1.2568791531957686
+      ],
+      [
+        0.7807601472362875,
+        1.2436287146992981
+      ]
+    ],
+    "budget": 16,
+    "selection": "highest dev mean return with zero introduced failure and mean steps <=1.25*original; ties lower index; if none no candidate. No adaptive refinement."
+  },
+  "splits": {
+    "pilot": {
+      "start": 0,
+      "n": 24
+    },
+    "development": {
+      "start": 10000,
+      "n": 128
+    },
+    "confirmation": {
+      "start": 200000,
+      "n": 1024
+    },
+    "parity": {
+      "start": 900000,
+      "n": 3
+    }
+  },
+  "controls": [
+    "original_deterministic",
+    "original_stochastic_gSDE_noise_reset_each_episode",
+    "fixed_output_gain_0.8_deterministic"
+  ],
+  "inference": {
+    "draws": 50000,
+    "seed": 92731,
+    "one_sided_alpha": 0.01,
+    "return_gate_original": 0.5,
+    "return_gate_fixed_output08": 0.1,
+    "step_gate": "99% upper bound of candidate steps minus1.25*original steps <=0",
+    "failure_gate": "zero introduced failures AND one-sided exact99% Clopper-Pearson upper introduced-failure probability <.005",
+    "family": "four gates alpha .01 each; union bound <=.04, bootstrap return/time intervals approximate; binary exact",
+    "precision": "pilot paired gain.8 vs original sd1.279; n1024 expected SE.040; zero introduced failures exact99% upper .00449; episodes iid default reset seeds, no robustness guarantee outside reset distribution"
+  },
+  "normalization": "original frozen mean variance epsilon clip, no reward normalization",
+  "deployment": "original/candidate deterministic SB3 predict; candidate wrapper-equivalent input scaling then latent output mean scaling before action clipping",
+  "acceptance": "AutoWeight0.5 native gates AND external fixed-baseline/time/exact-binary gates required. If native exports but external fails label provisional/not validated. No second confirmation or candidate retry.",
+  "cost_accounting": "all 6*24 pilot,16*128 search,3*128 dev controls, original+selected+fixed08+stochastic1024 confirmation, parity and numerical audit separately disclosed",
+  "limitations": "Natural reward efficiency opportunity, not documented regression; mean reward improvement may increase completion time within preregistered25% bound; no claimed benefit of weight edit over mathematically equivalent inference wrapper.",
+  "presearch_hashes": {
+    "base.npz": "4b42a8e8239a814ad59e7a25924aef38ee282f6481ced60d1d1eebf69ba3df83",
+    "normalization.json": "dceab8885c2c8fd0aad3db79fc3d876806b93efc892e0772a1fc6e695634efed",
+    "pilot.py": "27aa33f018798f08f837430dc19ab77da905f2a63d07ef65b90777de8c7bf7cb",
+    "pilot.json": "d308c97524871a3c39eb3c65eabc6c1da9d521e1cd4f912bfb160ce5c2289003",
+    "development.jsonl": "c5034b368aeb0c2952560a8c90ad123b62fca921a169aed9c5b23ae37d7c05a1",
+    "confirmation.jsonl": "9b58c6f71c8d40782bb5fef9d0d6cd51614d1b40d5e6322ce0efbfddb08b773a"
+  }
+}

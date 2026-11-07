@@ -1,0 +1,286 @@
+{
+  "instruct": {
+    "groups": {
+      "arc": {
+        "examples": 1280,
+        "baseline": {
+          "accuracy": 0.38671875
+        },
+        "candidate": {
+          "accuracy": 0.38671875
+        }
+      },
+      "instruction": {
+        "examples": 512,
+        "baseline": {
+          "accuracy": 0.333984375
+        },
+        "candidate": {
+          "accuracy": 0.333984375
+        }
+      }
+    },
+    "gates": [
+      {
+        "group": "arc",
+        "metric": "accuracy",
+        "kind": "improve",
+        "min_delta": 0.02,
+        "delta": 0.0,
+        "lower_bound": 0.0,
+        "passed": false,
+        "simultaneous_lower_bound": 0.0,
+        "simultaneous_passed": false
+      },
+      {
+        "group": "instruction",
+        "metric": "accuracy",
+        "kind": "preserve",
+        "min_delta": -0.05,
+        "delta": 0.0,
+        "lower_bound": 0.0,
+        "passed": true,
+        "simultaneous_lower_bound": 0.0,
+        "simultaneous_passed": true
+      }
+    ],
+    "passed": false,
+    "inference": {
+      "method": "paired-sequence-bootstrap-v1",
+      "draws": 4096,
+      "family_alpha": 0.05,
+      "numpy": "2.5.4",
+      "secondary_comparison_family_metrics": 6
+    },
+    "source_strata": {
+      "ARC-Easy": {
+        "examples": 640,
+        "correct": 291,
+        "accuracy": 0.4546875
+      },
+      "ARC-Challenge": {
+        "examples": 640,
+        "correct": 204,
+        "accuracy": 0.31875
+      },
+      "ai2_if_multi": {
+        "examples": 512,
+        "correct": 171,
+        "accuracy": 0.333984375
+      }
+    }
+  },
+  "astra-L1": {
+    "groups": {
+      "arc": {
+        "examples": 1280,
+        "baseline": {
+          "accuracy": 0.38671875
+        },
+        "candidate": {
+          "accuracy": 0.43203125
+        }
+      },
+      "instruction": {
+        "examples": 512,
+        "baseline": {
+          "accuracy": 0.333984375
+        },
+        "candidate": {
+          "accuracy": 0.31640625
+        }
+      }
+    },
+    "gates": [
+      {
+        "group": "arc",
+        "metric": "accuracy",
+        "kind": "improve",
+        "min_delta": 0.02,
+        "delta": 0.0453125,
+        "lower_bound": 0.03046875,
+        "passed": true,
+        "simultaneous_lower_bound": 0.028125,
+        "simultaneous_passed": true
+      },
+      {
+        "group": "instruction",
+        "metric": "accuracy",
+        "kind": "preserve",
+        "min_delta": -0.05,
+        "delta": -0.017578125,
+        "lower_bound": -0.050048828125,
+        "passed": false,
+        "simultaneous_lower_bound": -0.056396484375,
+        "simultaneous_passed": false
+      }
+    ],
+    "passed": false,
+    "inference": {
+      "method": "paired-sequence-bootstrap-v1",
+      "draws": 4096,
+      "family_alpha": 0.05,
+      "numpy": "2.5.4",
+      "secondary_comparison_family_metrics": 6
+    },
+    "source_strata": {
+      "ARC-Easy": {
+        "examples": 640,
+        "correct": 333,
+        "accuracy": 0.5203125
+      },
+      "ARC-Challenge": {
+        "examples": 640,
+        "correct": 220,
+        "accuracy": 0.34375
+      },
+      "ai2_if_multi": {
+        "examples": 512,
+        "correct": 162,
+        "accuracy": 0.31640625
+      }
+    }
+  },
+  "rollback": {
+    "groups": {
+      "arc": {
+        "examples": 1280,
+        "baseline": {
+          "accuracy": 0.38671875
+        },
+        "candidate": {
+          "accuracy": 0.50703125
+        }
+      },
+      "instruction": {
+        "examples": 512,
+        "baseline": {
+          "accuracy": 0.333984375
+        },
+        "candidate": {
+          "accuracy": 0.13671875
+        }
+      }
+    },
+    "gates": [
+      {
+        "group": "arc",
+        "metric": "accuracy",
+        "kind": "improve",
+        "min_delta": 0.02,
+        "delta": 0.1203125,
+        "lower_bound": 0.0953125,
+        "passed": true,
+        "simultaneous_lower_bound": 0.08984375,
+        "simultaneous_passed": true
+      },
+      {
+        "group": "instruction",
+        "metric": "accuracy",
+        "kind": "preserve",
+        "min_delta": -0.05,
+        "delta": -0.197265625,
+        "lower_bound": -0.240234375,
+        "passed": false,
+        "simultaneous_lower_bound": -0.251953125,
+        "simultaneous_passed": false
+      }
+    ],
+    "passed": false,
+    "inference": {
+      "method": "paired-sequence-bootstrap-v1",
+      "draws": 4096,
+      "family_alpha": 0.05,
+      "numpy": "2.5.4",
+      "secondary_comparison_family_metrics": 6
+    },
+    "source_strata": {
+      "ARC-Easy": {
+        "examples": 640,
+        "correct": 409,
+        "accuracy": 0.6390625
+      },
+      "ARC-Challenge": {
+        "examples": 640,
+        "correct": 240,
+        "accuracy": 0.375
+      },
+      "ai2_if_multi": {
+        "examples": 512,
+        "correct": 70,
+        "accuracy": 0.13671875
+      }
+    }
+  },
+  "blend-15": {
+    "groups": {
+      "arc": {
+        "examples": 1280,
+        "baseline": {
+          "accuracy": 0.38671875
+        },
+        "candidate": {
+          "accuracy": 0.42734375
+        }
+      },
+      "instruction": {
+        "examples": 512,
+        "baseline": {
+          "accuracy": 0.333984375
+        },
+        "candidate": {
+          "accuracy": 0.296875
+        }
+      }
+    },
+    "gates": [
+      {
+        "group": "arc",
+        "metric": "accuracy",
+        "kind": "improve",
+        "min_delta": 0.02,
+        "delta": 0.040625,
+        "lower_bound": 0.028125,
+        "passed": true,
+        "simultaneous_lower_bound": 0.025,
+        "simultaneous_passed": true
+      },
+      {
+        "group": "instruction",
+        "metric": "accuracy",
+        "kind": "preserve",
+        "min_delta": -0.05,
+        "delta": -0.037109375,
+        "lower_bound": -0.0703125,
+        "passed": false,
+        "simultaneous_lower_bound": -0.076171875,
+        "simultaneous_passed": false
+      }
+    ],
+    "passed": false,
+    "inference": {
+      "method": "paired-sequence-bootstrap-v1",
+      "draws": 4096,
+      "family_alpha": 0.05,
+      "numpy": "2.5.4",
+      "secondary_comparison_family_metrics": 6
+    },
+    "source_strata": {
+      "ARC-Easy": {
+        "examples": 640,
+        "correct": 328,
+        "accuracy": 0.5125
+      },
+      "ARC-Challenge": {
+        "examples": 640,
+        "correct": 219,
+        "accuracy": 0.3421875
+      },
+      "ai2_if_multi": {
+        "examples": 512,
+        "correct": 152,
+        "accuracy": 0.296875
+      }
+    }
+  }
+}

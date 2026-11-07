@@ -1,0 +1,122 @@
+{
+  "proposer_model": "gpt-6-astra",
+  "status": "Six exact schedules and two-stage selection frozen before new candidate development feedback",
+  "identities": {
+    "origin": {
+      "repo_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+      "revision": "a10cc1512eabd3dde888204e902eca88bddb4951"
+    },
+    "donor": {
+      "repo_id": "HuggingFaceTB/SmolLM2-360M",
+      "revision": "f8027fd0eaeea54caa13c31d31b9fdc459c38b49"
+    }
+  },
+  "candidate_ids": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6"
+  ],
+  "adaptive_schedules": false,
+  "gates": {
+    "arc_minimum_delta_lower_bound": 0.02,
+    "instruction_minimum_delta_lower_bound": -0.05,
+    "bootstrap_draws": 4096,
+    "family_alpha": 0.05,
+    "family_metrics": 2,
+    "baseline": "original instruct",
+    "scorer": "Unchanged existing scorer, prompts, tokenizer, precision, decoding and strict Google instruction checks."
+  },
+  "screen": {
+    "arc_examples": 1280,
+    "instruction_examples": 256,
+    "data": "Identical original blend-search development set; all previously exposed.",
+    "candidates": "All six frozen schedules",
+    "advance_count": 2,
+    "ranking": {
+      "eligible_first": true,
+      "eligible_order": [
+        "higher ARC accuracy",
+        "higher instruction accuracy",
+        "lower stored-parameter-weighted mean donor fraction",
+        "lexicographically smaller candidate ID"
+      ],
+      "ineligible_order": [
+        "higher min(ARC_lower_bound - 0.02, instruction_lower_bound + 0.05)",
+        "higher ARC accuracy",
+        "higher instruction accuracy",
+        "lower stored-parameter-weighted mean donor fraction",
+        "lexicographically smaller candidate ID"
+      ],
+      "units": "Accuracy fractions; gate lower bounds use the configured two-gate family correction. Parameter-weighted mean includes all stored tensors, including zero-alpha and nonlayer tensors, counted once."
+    },
+    "rule": "Advance exactly the first two candidates under this ranking, even if fewer than two are eligible."
+  },
+  "development_validation": {
+    "arc_examples": 1280,
+    "instruction_examples": 512,
+    "data": "Most recently opened former holdout, now development validation.",
+    "candidates": "Only the two advanced candidates",
+    "additional_acceptance_gate": false
+  },
+  "final_development_selection": {
+    "arc_examples": 2560,
+    "instruction_examples": 768,
+    "data": "Pool screen and development-validation per-case outcomes; recompute paired-bootstrap gates on the pooled data. Do not average stage-level bounds.",
+    "candidates": "Only the two advanced candidates",
+    "ranking": {
+      "eligible_first": true,
+      "eligible_order": [
+        "higher ARC accuracy",
+        "higher instruction accuracy",
+        "lower stored-parameter-weighted mean donor fraction",
+        "lexicographically smaller candidate ID"
+      ],
+      "ineligible_order": [
+        "higher min(ARC_lower_bound - 0.02, instruction_lower_bound + 0.05)",
+        "higher ARC accuracy",
+        "higher instruction accuracy",
+        "lower stored-parameter-weighted mean donor fraction",
+        "lexicographically smaller candidate ID"
+      ],
+      "units": "Accuracy fractions; gate lower bounds use the configured two-gate family correction. Parameter-weighted mean includes all stored tensors, including zero-alpha and nonlayer tensors, counted once."
+    },
+    "selected_count": 1,
+    "eligibility": "Both pooled development gates must pass.",
+    "fallback": "If neither qualifies, select the first under ineligible_order and permanently mark diagnostic_only.",
+    "freeze": "Seal selected label, exact checkpoint hash and eligible/diagnostic_only status before any new holdout evaluation.",
+    "no_rescue": "No holdout-based edits, reselection, or promotion of a diagnostic fallback."
+  },
+  "controls": [
+    "original instruct",
+    "full rollback",
+    "fixed uniform 15% base-donor blend B15"
+  ],
+  "cache": "Reuse exposed observations only for exact checkpoint/scorer/configuration/case identity; no new learning or cache reuse for fresh rows.",
+  "fresh_holdout": {
+    "sampling_owner": "Parent prepared protocol; availability verification pending. No proposer access to new examples or partial results.",
+    "planned_arc": {
+      "ARC_Easy_unused_official_train": 640,
+      "ARC_Challenge_unused_official_train": 640
+    },
+    "planned_instruction": {
+      "unused_Ai2_same_supported_checkers": 512
+    },
+    "requirement": "Freeze exact achieved sources, counts, admission, sampling and deduplication before new candidate feedback. Exclude every prior exposed case/task/body and disclose official ARC split and instruction source-mixture changes.",
+    "secondary_reporting": "Report source and difficulty strata descriptively; do not use them to rescue eligibility.",
+    "outcome": "Evaluate one sealed candidate and all three controls once. A diagnostic fallback cannot be accepted or exported as a repair."
+  },
+  "limitations": [
+    "Two-stage screening may eliminate a candidate that would rank better on pooled development.",
+    "Pooled development and fresh holdout have differing source mixtures; neither is an IID enlargement of original IFEval.",
+    "Architecture-based schedules are hypotheses, not established localization of knowledge or instruction following."
+  ],
+  "native_contract": {
+    "max_operations": 16,
+    "max_exact_names_per_operation": 200,
+    "grouping": "Group disjoint exact names by positive alpha; omit zero-alpha targets. All tensor mapping entries remain explicit.",
+    "constraints": "No replacement payloads, training, core/scorer edits, or overlapping operations."
+  }
+}

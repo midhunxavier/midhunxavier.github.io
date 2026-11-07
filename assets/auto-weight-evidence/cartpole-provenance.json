@@ -1,0 +1,29 @@
+{
+  "source": "https://huggingface.co/NithirojTripatarasit/ppo-CartPole-v1",
+  "revision": "33232c56f9c9a3ae6c77d05f17b2cc389bf26f4d",
+  "source_files": {
+    "model.pt": "615063e1c901e83f6483e95e25739786a9c37a58a7e03e55a1c56f95f7e1493a",
+    "README.md": "6f0462d55fb6f002fbded32701dfb02cede7ca3143a37218515190df75ddbff1",
+    "results.json": "5d44c0d2c54be49746d155c06cea4a4003a2f42d3444fa911ef9faed8e48abae",
+    "native-ppo.py": "d8dfbb7ac0b21e747b77d6e6673e566db4d6cdacc83bcebcd19cf87ad0e459ae",
+    "native-agent.py": "9aa5c34b350c9f93437ff751cd29e4ba17b0a34afc120d6174b4c81e7e4d2abe"
+  },
+  "native_source": "https://raw.githubusercontent.com/vwxyzjn/cleanrl/master/cleanrl/ppo.py",
+  "source_limitation": "Original model card links to unavailable HF course unit8; CleanRL architecture and native stochastic categorical inference strictly match; exact training source commit unknown.",
+  "simulator": {
+    "path": "[local-path-omitted]",
+    "sha256": "b758e3286711a2c44b0817265412c9fab1dce8b1b385e2126bc710ceedd47378",
+    "name": "CartPole-v1",
+    "unaltered": true,
+    "time_limit": 500,
+    "parameters": "all defaults"
+  },
+  "versions": {
+    "auto-weight": "0.5.0",
+    "gymnasium": "1.2.3",
+    "numpy": "1.26.4",
+    "torch": "2.8.0"
+  },
+  "platform": "macOS-15.4.1-arm64-arm-64bit",
+  "device": "cpu"
+}

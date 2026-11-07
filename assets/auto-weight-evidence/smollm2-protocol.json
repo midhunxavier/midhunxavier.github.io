@@ -1,0 +1,86 @@
+{
+  "version": "public-layer-blend-search.v1",
+  "previous_experiment": "[local-path-omitted]",
+  "proposer_model": "gpt-6-astra",
+  "astra_manifest_sha256": "bac58ce6768ab61802f8549827aff819af83da093f5a4693cff99d64a240a23e",
+  "issue_sha256": "0f25c3ec00ff931964a729dd39c6995e2be6fa6eecc51d0a834d370f238a913c",
+  "screen_issue_sha256": "e153c86c8d72ba61813c7b29733cb5f32816052db5b168ef2fe4bbc3d9543657",
+  "input_hashes": {
+    "L1.json": "8bc03a71b9f4bdb8002fae59c16012dfa74a745f9be34cdc7748dd2f7bb8badf",
+    "L2.json": "30a4a306919fab3c879c125eb9cd79ad0c2d60ae0e07fa9bbf2574f6b1ae7526",
+    "L3.json": "078be675b1940fabf5942bb24f5558ea191c91aebcfc38036cd913c42bc96d4f",
+    "L4.json": "b284100d1a2f68fefea2fdbae022196f94749e8161cb24699de84d6d0eb123c7",
+    "L5.json": "a768527e7d93cedb2f3947310bcdc61c068cec49748700783b0f826166b08574",
+    "L6.json": "daf6622380487fd69eaf51f1fbadeefc27c29a0effeede36041456b70a6c76c1",
+    "confirmation.jsonl": "aad8fea8ffb5f29d21c82d8e4b89f84f2a2061f455b9c7598d89a9cb82590620",
+    "development-validation.jsonl": "3d5675dbc66d4334899b41a441ef963793fa8ebf123c5e6c0af9a607b205cc58",
+    "development.jsonl": "071e6f493f56536afa703db95a73b8b4d71e6eed9acbd94b1641e708ebea85d6",
+    "issue.json": "0f25c3ec00ff931964a729dd39c6995e2be6fa6eecc51d0a834d370f238a913c",
+    "screen-development.jsonl": "2a69fd9c3307b46ea4e466c3459679f5ff7d3e7d493668bb6aac1ad831279a97",
+    "screen-issue.json": "e153c86c8d72ba61813c7b29733cb5f32816052db5b168ef2fe4bbc3d9543657"
+  },
+  "gates": [
+    {
+      "group": "arc",
+      "metric": "accuracy",
+      "kind": "improve",
+      "min_delta": 0.02
+    },
+    {
+      "group": "instruction",
+      "metric": "accuracy",
+      "kind": "preserve",
+      "min_delta": -0.05
+    }
+  ],
+  "same_scorer_sha256": "6feb54ecc1aeb3348e8d787129bb3baafbb350f00509aa318d8a7e44dfc1db32",
+  "same_scoring_configuration": true,
+  "controls": [
+    "instruct",
+    "rollback",
+    "blend-15"
+  ],
+  "control_hashes": {
+    "instruct": "9ef753e348066be7d127cf8cdbe89eaca8d461beb1d72f44337d12864232c4ab",
+    "rollback": "c400114161171594fb9fd896ac17c9ac1040b0951b7fbb61acf1f297f520adf7",
+    "aligned-rollback": "be068d66ad1fdea63961c68308e34ef4def7bac553722f8fa49f53a2202919da",
+    "blend-15": "a602a109e04cd356885f80e1580809db15951593900742b43c63a6a2ee17c49f"
+  },
+  "counts": {
+    "screen": {
+      "arc": 1280,
+      "instruction": 256
+    },
+    "validation": {
+      "arc": 1280,
+      "instruction": 512
+    },
+    "development": {
+      "arc": 2560,
+      "instruction": 768
+    },
+    "confirmation": {
+      "arc": 1280,
+      "instruction": 512
+    }
+  },
+  "source_sha256": {
+    "https://huggingface.co/datasets/allenai/ai2_arc/resolve/210d026faf9955653af8916fad021475a3f00453/ARC-Easy/train-00000-of-00001.parquet": "b315db8a4be597dc7daa50a4e70d48dd7c990c32085629e6ccd8c926beaa80b5",
+    "https://huggingface.co/datasets/allenai/ai2_arc/resolve/210d026faf9955653af8916fad021475a3f00453/ARC-Challenge/train-00000-of-00001.parquet": "e488c1587ffdcfc8443f916c53488a95cd471c5790e0746c6bfe4cecf20962cb",
+    "allenai/IF_multi_constraints_upto5@2e3a77407b7fce69f95b248d64a884e3ae1c2423/data/train-00000-of-00001.parquet": "edb8baed687cd85ce0602911f6c6cc8c8e657da69a7faba036082fa9618008ee"
+  },
+  "sampling_seeds": {
+    "arc": 20261134,
+    "instruction": 20261135
+  },
+  "deduplication": "Exclude all prior exposed IDs and normalized prompts/questions. Fresh question texts unique. New instruction task keys, stripped bodies, normalized prompts and 12-gram overlap excluded across all prior and new selections.",
+  "source_shift": "Fresh ARC uses unused official TRAIN split questions, balanced 640 Easy/640 Challenge; previous evaluations used official validation/test. These train questions are held out from this repair search, not claimed unseen in upstream model training. Fresh instruction is 512 unused Ai2 IF_multi tasks, same 17 Google strict verifier types; no original IFEval prompts. Gates and inference unchanged, source mixtures changed.",
+  "heldout_inference": "Sealed selected candidate is primary, unchanged two-gate family. Six-metric simultaneous bounds across selected, rollback and B15 are secondary. Direct selected-versus-control deltas descriptive only.",
+  "selection": "Frozen Astra plan: advance2 of6 on original development; select1 on pooled development with same gates; eligible first, otherwise permanently diagnostic maximin fallback. No holdout rescue/reselection.",
+  "no_fresh_holdout_scored_at_freeze": true,
+  "limitations": [
+    "Two-stage screen may eliminate a better pooled candidate.",
+    "Public upstream training contamination not ruled out.",
+    "Source mixture changes; instruction accuracy tests structural constraints, not semantic answer quality."
+  ]
+}

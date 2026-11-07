@@ -1,0 +1,18 @@
+{
+  "temperature": 1.8293775184950158,
+  "baseline": {
+    "nll": 0.5343933776083405,
+    "accuracy": 0.876,
+    "ece_15_equal_width": 0.07896499909911173,
+    "mean_confidence": 0.9519130279775501,
+    "brier": 0.20811031558580317
+  },
+  "candidate": {
+    "nll": 0.4055309019872884,
+    "accuracy": 0.876,
+    "ece_15_equal_width": 0.024657152222769832,
+    "mean_confidence": 0.8852767778511155,
+    "brier": 0.18966668224785177
+  },
+  "selection": "301-point log-spaced T grid [0.5,5], development NLL only"
+}

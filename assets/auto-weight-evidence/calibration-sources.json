@@ -1,0 +1,16 @@
+{
+  "urls": {
+    "public-model.bin": "https://huggingface.co/edadaltocg/resnet18_cifar10/resolve/ccacbae365101b9bfa45e1f17f4acac30c2601b2/pytorch_model.bin",
+    "images.npy": "https://raw.githubusercontent.com/modestyachts/CIFAR-10.1/master/datasets/cifar10.1_v6_data.npy",
+    "labels.npy": "https://raw.githubusercontent.com/modestyachts/CIFAR-10.1/master/datasets/cifar10.1_v6_labels.npy"
+  },
+  "sha256": {
+    "public-model.bin": "f656242526b567dbd46857276acbcfcb4ee74a7f8a7ae5e56557b7e8fa5d914a",
+    "images.npy": "2997188e5816f5bd545dc77771b6227828c28146049fcecf3fa10775474cacc6",
+    "labels.npy": "ae40beda001693674edc94d925ee8268cfe68905f8f9aff800c8dcdfcd6c9448",
+    "features.npy": "250eaf0cd46dd1daf71ba0eb01e87b7d8468c0ef6ff317759965c48465c5b750",
+    "base.npz": "3f95d6610dfae6a81a3b90cfeca5eccd4e3f8f008182aab50f773c7e800e79a1"
+  },
+  "split_seed": 20261107,
+  "checkpoint_revision": "ccacbae365101b9bfa45e1f17f4acac30c2601b2"
+}

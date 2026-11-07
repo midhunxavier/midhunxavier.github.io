@@ -1,0 +1,15 @@
+{
+ "status":"preregistered before scoring; retrospective head-to-head informed by prior results",
+ "development":{"env_start":700000,"n":128},
+ "heldout":{"env_start":800000,"n":1024},
+ "parity":{"env_start":900000,"n":3},
+ "action_seed":"environment seed + 9000000; Torch Categorical native sampler; same RNG seed paired across methods, not inverse-CDF uniform coupling",
+ "automatic_candidates":[[1,1],[1,6],[4,1],[4,6],[8,1],[8,6],[12,1],[12,6]],
+ "selection":"highest development mean; ties earliest candidate; no further trials",
+ "fixed_final_methods":["original_stochastic","original_argmax","output_only_3","angle_only_12","accepted_12_3","automatic_winner","accepted_argmax"],
+ "primary":"accepted_12_3 minus each of original_stochastic, original_argmax, output_only_3, angle_only_12, automatic_winner; 10-step superiority margin (2 percent of horizon)",
+ "inference":"50000 paired bootstrap draws; one-sided 99 percent lower bounds for 5 comparisons, Bonferroni family alpha .05; superiority only lower bound >10",
+ "secondary":"unadjusted descriptive 95 percent bootstrap mean CI; return<200 failure; >=475 near-completion; 500 completion; left/right initial tilt means; accepted argmax descriptive only",
+ "budget":"automatic 8 candidates times 128 episodes; same number and maximum 512000 simulation steps as original 8-candidate search. Realized steps and wall time reported, not claimed equal. Fixed ablations not chosen by development. Prior search, pilot and sensitivity costs not erased.",
+ "limitations":"search grid and ranges informed by prior successful edit; not an independent test of discovery efficiency; simulator episodes independent seeds, policies fixed, no training. Exact historical training source unknown. >=475 is a per-episode metric, not official solved criterion."
+}

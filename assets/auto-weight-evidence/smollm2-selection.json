@@ -1,0 +1,22 @@
+{
+  "version": "public-layer-blend-selection.v1",
+  "status": "eligible",
+  "astra_label": "L1",
+  "attempt_id": "001",
+  "development_report_id": "1a6d69c4a12447e4514310ad6cc031727a05f9f37ef3a03ec0345b29f7840014",
+  "candidate_sha256": "bec63a6008bf1cf2e8f3d5e7b81423a25fca04f69bd47b6cceccfc2ac17322b5",
+  "proposal_id": "2ccb073b18b4cd7854849821f634642bfb373243c09937a460043bd0cac548c2",
+  "issue_sha256": "0f25c3ec00ff931964a729dd39c6995e2be6fa6eecc51d0a834d370f238a913c",
+  "protocol_sha256": "985d447ee56a447362652d8d816fbb12b6a3e9e87065dad45df8845c9840953e",
+  "astra_manifest_sha256": "bac58ce6768ab61802f8549827aff819af83da093f5a4693cff99d64a240a23e",
+  "advancement_id": "ede5ea12eea5c1693222c365a32fa211c52e5b227e8bf33f896a5d488a82a498",
+  "controls": [
+    "instruct",
+    "rollback",
+    "blend-15"
+  ],
+  "holdout_peeked": false,
+  "no_holdout_based_edits_or_reselection": true,
+  "selection_rule": "Frozen Astra two-stage ranking; eligible first, otherwise diagnostic maximin gate clearance; ARC, instruction, lower mean fraction, smaller label tie-breaks.",
+  "id": "80f2b2646af0c05c1ebea43505c267e70220ac5cd431254086bb9a0250847645"
+}

@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "date": "2026-11-07",
+  "scope": "Selected archived protocols, proposals, reports and scores. No new model execution or statistical resampling.",
+  "records": [
+    {
+      "file": "cartpole-provenance.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/provenance.json",
+      "source_sha256": "2ee4f5e5c61a42cf1d30d37bc5bafa120db496bcdeeae3ae690ddc139c78a97b",
+      "published_sha256": "b3fcd7e0e719ee7c11ef9b9a9718b0b79ff072e12f0d23471a644927f173a996",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "cartpole-initial-issue.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/run/issue.json",
+      "source_sha256": "a521779698a089aef84514cb35f4cdf184513efea3a6de89e60b1fc744d0436b",
+      "published_sha256": "52f6ce0f4e0a9af7356beeb1ff2a49d9c5e5130fdd78567dbd7cc63bb8b8ef87",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "cartpole-proposal.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/run/attempts/008/proposal.json",
+      "source_sha256": "caa2de6c3b6d7759bcd03f6272414fda4bd8d68deb95a65963c4fb181259f6e3",
+      "published_sha256": "caa2de6c3b6d7759bcd03f6272414fda4bd8d68deb95a65963c4fb181259f6e3",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-confirmation.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/run/confirmation/result/report.json",
+      "source_sha256": "0e623371dcb5330eeb9c5638cd50e193b206301504b242547bbd6b62ca7456bc",
+      "published_sha256": "0e623371dcb5330eeb9c5638cd50e193b206301504b242547bbd6b62ca7456bc",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-comparison-plan.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/plan.json",
+      "source_sha256": "b20b70acebb55f47afce9ff2bf3047ee55a5bd743047975c8b2a982f86b1bf23",
+      "published_sha256": "b20b70acebb55f47afce9ff2bf3047ee55a5bd743047975c8b2a982f86b1bf23",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-grid-selection.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/selection.json",
+      "source_sha256": "322b36ee7ba241f5fc07e8a2c98a06eaf5d38d0999f4c9eee2b14433c8139ad6",
+      "published_sha256": "322b36ee7ba241f5fc07e8a2c98a06eaf5d38d0999f4c9eee2b14433c8139ad6",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-analysis.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/analysis.json",
+      "source_sha256": "2924ed71d81cc934dfeb6a5dd66d0691ef8b27218b1ef14343536ae0ec7a6736",
+      "published_sha256": "2924ed71d81cc934dfeb6a5dd66d0691ef8b27218b1ef14343536ae0ec7a6736",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-accepted_12_3.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-accepted_12_3.json",
+      "source_sha256": "619da289b9ccf19d3ec02cddbd5e0d22f996bf61067e97229747f7094040bf8e",
+      "published_sha256": "619da289b9ccf19d3ec02cddbd5e0d22f996bf61067e97229747f7094040bf8e",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-accepted_argmax.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-accepted_argmax.json",
+      "source_sha256": "62483355d6f05f847e47204d391347f3d5e7f038b68dddf70020c5dbaba78515",
+      "published_sha256": "62483355d6f05f847e47204d391347f3d5e7f038b68dddf70020c5dbaba78515",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-angle_only_12.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-angle_only_12.json",
+      "source_sha256": "dcc2467aa7d0480f9485ac7f447c6fcdd665e788039309a2f8a1430436f83c6a",
+      "published_sha256": "dcc2467aa7d0480f9485ac7f447c6fcdd665e788039309a2f8a1430436f83c6a",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-automatic_winner.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-automatic_winner.json",
+      "source_sha256": "8024fbe87b6ed7b9f91793661927797040a31b7a82412b8b0c833d06ee413534",
+      "published_sha256": "8024fbe87b6ed7b9f91793661927797040a31b7a82412b8b0c833d06ee413534",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-original_argmax.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-original_argmax.json",
+      "source_sha256": "8be7d21c2532e80d218020f862a86d4c2098072bcc8e631231977cd61c3951b1",
+      "published_sha256": "8be7d21c2532e80d218020f862a86d4c2098072bcc8e631231977cd61c3951b1",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-original_stochastic.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-original_stochastic.json",
+      "source_sha256": "4da0438472ea0dba310ff4b4d4df7c6f889601962c477f798f828a879f425478",
+      "published_sha256": "4da0438472ea0dba310ff4b4d4df7c6f889601962c477f798f828a879f425478",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "cartpole-final-output_only_3.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-cartpole/comparison-20261107/final-output_only_3.json",
+      "source_sha256": "04e5958d847bfb96e92a729a94e720694cd56408cbc60222d705f45d4b438424",
+      "published_sha256": "04e5958d847bfb96e92a729a94e720694cd56408cbc60222d705f45d4b438424",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-protocol.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/protocol.json",
+      "source_sha256": "985d447ee56a447362652d8d816fbb12b6a3e9e87065dad45df8845c9840953e",
+      "published_sha256": "ba70509b089061d36b1abee7e0cc0876b29465e13fffbe214f145e4471b9e2e9",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "smollm2-astra-plan.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/astra-specifications/plan.json",
+      "source_sha256": "ec51019c84fc877b070cdee745f87f8f8a2a426a2dac91df87d8e1c76993cb9c",
+      "published_sha256": "ec51019c84fc877b070cdee745f87f8f8a2a426a2dac91df87d8e1c76993cb9c",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-L1.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/astra-specifications/L1.json",
+      "source_sha256": "bfa86975306dd1e82464d7abe70f8e99f582fd41f68786fb1c6a3f2ab8af009d",
+      "published_sha256": "bfa86975306dd1e82464d7abe70f8e99f582fd41f68786fb1c6a3f2ab8af009d",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-selection.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/selection.json",
+      "source_sha256": "a97a241ebc6944def4d837e46ce3b5b0f1d7b5955a134377b4a12353499697bc",
+      "published_sha256": "a97a241ebc6944def4d837e46ce3b5b0f1d7b5955a134377b4a12353499697bc",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-confirmation.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/toolkit-confirmation.json",
+      "source_sha256": "df501d46446ceebf43720f1ce4e7b32f6cd34785a0f44c0c452b57d22691a3be",
+      "published_sha256": "df501d46446ceebf43720f1ce4e7b32f6cd34785a0f44c0c452b57d22691a3be",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-comparisons.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/holdout-comparisons.json",
+      "source_sha256": "b6a72859ebe85acc44d51f97642749e25db99132fd9b44757265ee775b4f759f",
+      "published_sha256": "b6a72859ebe85acc44d51f97642749e25db99132fd9b44757265ee775b4f759f",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-case-identities.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/case-identities.json",
+      "source_sha256": "94847526441236bbc327160ab102e0fe0c1c610c904d4ac359d7d2d2de1db589",
+      "published_sha256": "94847526441236bbc327160ab102e0fe0c1c610c904d4ac359d7d2d2de1db589",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-case-sources.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/case-sources.json",
+      "source_sha256": "37b0aca455b79b8b2084afaf2d26f4709f2edf005e2f23dc05d71d28dba7530e",
+      "published_sha256": "37b0aca455b79b8b2084afaf2d26f4709f2edf005e2f23dc05d71d28dba7530e",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-instruct-scores.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/holdout/instruct/observations.json",
+      "source_sha256": "e6aec8f5374cbbe10adef6a601c197bab9eb30d285317c1b68d22305760de3b6",
+      "published_sha256": "e6aec8f5374cbbe10adef6a601c197bab9eb30d285317c1b68d22305760de3b6",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-astra-L1-scores.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/holdout/astra-L1/observations.json",
+      "source_sha256": "d6f06d1dc30fbd287de5cf98ab76af69a53adcc4da299feb470bfe9888634022",
+      "published_sha256": "d6f06d1dc30fbd287de5cf98ab76af69a53adcc4da299feb470bfe9888634022",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-blend-15-scores.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/holdout/blend-15/observations.json",
+      "source_sha256": "18af361ef47d04d69008d4d7c6daabcf1d618ec775da063fdd9eee9d9dd8a4e4",
+      "published_sha256": "18af361ef47d04d69008d4d7c6daabcf1d618ec775da063fdd9eee9d9dd8a4e4",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "smollm2-rollback-scores.json",
+      "source": "docs/experiments/public-smollm2-layer-blend/holdout/rollback/observations.json",
+      "source_sha256": "1f085e526df248d52380072c0030e5021d5c3d552b61b333661e2afaac23dee5",
+      "published_sha256": "1f085e526df248d52380072c0030e5021d5c3d552b61b333661e2afaac23dee5",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "continuous-provenance.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/provenance.json",
+      "source_sha256": "21be9580e99e759a4f6e4ea582d60fcb59795ed3832ab2b87157da9b6f770316",
+      "published_sha256": "97a94fc8091a01b804823a72ba8a0e01cbede3e00b9195dff32b59216518d5c5",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "continuous-plan.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/plan.json",
+      "source_sha256": "c6241afd6228213f6d8a5e4c6809947af2c88172c5912a0582cc1acbd92d0dfa",
+      "published_sha256": "c6241afd6228213f6d8a5e4c6809947af2c88172c5912a0582cc1acbd92d0dfa",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "continuous-search.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/search-results.json",
+      "source_sha256": "588fe255fdcf77ccfc3b541c534dac3058f92f56615c8acc0a99379a059d3a81",
+      "published_sha256": "588fe255fdcf77ccfc3b541c534dac3058f92f56615c8acc0a99379a059d3a81",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "continuous-issue.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/validation-run/issue.json",
+      "source_sha256": "bf0e08aa9e099f4711c6922c3b5be1c4107ec2efccd610821896868bd196c041",
+      "published_sha256": "4f5dcd7c50ca01fc48dc5844916c965259cd4361b7db98c6778a445cfd9b969b",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "continuous-proposal.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/validation-run/attempts/001/proposal.json",
+      "source_sha256": "c18ee03bd11558e18b2e37013799cc9a213a87141568c4a3ebb2ffea18fc9bf3",
+      "published_sha256": "c18ee03bd11558e18b2e37013799cc9a213a87141568c4a3ebb2ffea18fc9bf3",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "continuous-confirmation.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/validation-run/confirmation/result/report.json",
+      "source_sha256": "ef15b768e330ae61c3c562a6bef2283aed5b31338eb05a9da8de70291ad9f531",
+      "published_sha256": "ef15b768e330ae61c3c562a6bef2283aed5b31338eb05a9da8de70291ad9f531",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "continuous-external-confirmation.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincarcontinuous/external-confirmation.json",
+      "source_sha256": "04f8e7873636b92413a85ddbdc1163fe7b5ed46d2cb97676d1de2ec581a27043",
+      "published_sha256": "04f8e7873636b92413a85ddbdc1163fe7b5ed46d2cb97676d1de2ec581a27043",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "calibration-sources.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-ml/sources.json",
+      "source_sha256": "2d4ba81b5996ef5b6c8368fffe49492338586a93d54001be0bba76ccba65b3e3",
+      "published_sha256": "2d4ba81b5996ef5b6c8368fffe49492338586a93d54001be0bba76ccba65b3e3",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "calibration-issue.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-ml/run/issue.json",
+      "source_sha256": "dc65dd33f639d06ee55e1535fda526d3b1c2029c4ecb0143c6c78e8b27c7087c",
+      "published_sha256": "6875c1088e2921a88a4d6ba066a6410418876e8d254f705235042fee1de2a5da",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "calibration-selection.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-ml/development_selection.json",
+      "source_sha256": "bd8680be1208b7bd0027af689a994df124e3b61fae3a2b89bac47e480045440f",
+      "published_sha256": "bd8680be1208b7bd0027af689a994df124e3b61fae3a2b89bac47e480045440f",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "calibration-confirmation.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-ml/run/confirmation/result/report.json",
+      "source_sha256": "c8eec0a88a68bf0bf162f41523b4bcc9cea78ff0f1425bd8fcfe3eb4833a3e76",
+      "published_sha256": "c8eec0a88a68bf0bf162f41523b4bcc9cea78ff0f1425bd8fcfe3eb4833a3e76",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "mountaincar-issue.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincar/run/issue.json",
+      "source_sha256": "dae4a50322bc809618cf79691ae64920b5aabf1aed0566e74dcf361827d21fc8",
+      "published_sha256": "f366ac2563f61e5af01811d0841d8dcbad6a192a4ed04f692b02a3f9844f5cb6",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "mountaincar-original-confirmation.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincar/run/confirmation/result/report.json",
+      "source_sha256": "654a67c0b12e36d68d61c1fb7d9e36fa299ada8a9d51b5f03c64ab30926f4070",
+      "published_sha256": "654a67c0b12e36d68d61c1fb7d9e36fa299ada8a9d51b5f03c64ab30926f4070",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "file": "mountaincar-retest-plan.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincar/retest/preregistration.json",
+      "source_sha256": "bc6ed88f5b4303939ad87d2600ba8dad89adac9489180dfd985aae78f98e77c9",
+      "published_sha256": "8e3b0f1cf69015b6fcf3d627d4a53087bbb01f762992f2cfd2180a04524769b8",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    },
+    {
+      "file": "mountaincar-retest-summary.json",
+      "source": "docs/experiments/cross-domain-study/evidence/test-weight/real-rl-mountaincar/retest/summary.json",
+      "source_sha256": "a5151deb5b50e05f27b15927a8bfd2508aae0c98dc5faf0590f6027bb28b6a11",
+      "published_sha256": "a159b47441b72c17a6d3938d434b5ce0187a3e6d08ba892341c4c6a9a7e17b34",
+      "transformation": "local absolute paths redacted; historical IDs retained"
+    }
+  ]
+}

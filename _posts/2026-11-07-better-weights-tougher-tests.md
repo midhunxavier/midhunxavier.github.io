@@ -16,8 +16,6 @@ sections:
     label: "Recovering one skill can cost another"
   - id: a-failed-test-does-not-always-mean-a-harmful-edit
     label: "A failed test does not always mean a harmful edit"
-  - id: what-this-tells-us-about-llms-as-optimizers
-    label: "What this tells us about LLMs as optimizers"
   - id: conclusion-and-our-perspective
     label: "Conclusion and our perspective"
   - id: methods-and-remaining-results
@@ -34,9 +32,11 @@ A public CartPole policy scored **164.60** out of a possible 500 in a reserved e
 
 That is a promising result for an LLM acting as an optimizer. But it leaves two questions open. Could a simpler method do as well? And when an edit helps one behavior, what happens to the others?
 
-Those questions became the thread connecting our AutoWeight experiments across vision, control, and language. AutoWeight is the toolkit used to apply and evaluate the proposed changes. [[10]](#ref-10) Some edits worked for reasons we can explain mathematically. Others improved the target while damaging another behavior. One unchanged candidate failed a test and later passed a larger, fresh one. Understanding those differences turned out to be more useful than counting successes.
+Those questions became the thread connecting our AutoWeight experiments across vision, control, and language. The collection covers **performance improvement, calibration, and regression repair**: most policy cases start from a performance shortfall, rather than a documented loss between historical checkpoints. AutoWeight is the toolkit used to apply and evaluate the proposed changes. [[10]](#ref-10) Some edits worked for reasons we can explain mathematically. Others improved the target while damaging another behavior. One unchanged candidate failed a test and later passed a larger, fresh one. Understanding those differences turned out to be more useful than counting successes.
 
 The broader motivation comes from *Sparks of Weight-Space Programming*, which investigates LLMs reading and writing neural-network weights, including demonstrations without environment feedback. Our experiments usually supplied architecture information, development results, or trajectories. They examine a related, narrower question: **can an LLM help propose useful weight changes when we can measure both the improvement and its cost?** [[2]](#ref-2)
+
+Here, **weight-space programming** means specifying changes to stored model parameters. Our cases include LLM-proposed tensor edits and LLM-guided choices of parameters that numerical search then tunes; we do not attribute every selected value to direct LLM reasoning. These are author-reported experiments. [Selected protocols, exact edit specifications, and per-case scores are now public](/blog/auto-weight/weight-space-evidence/); this is evidence for inspection, not an independent replication.
 
 ## A promising edit meets a harder test
 
@@ -48,11 +48,11 @@ The first reserved test showed a large gain. A follow-up then compared the edit 
 
 <a class="research-figure" href="/images/auto-weight-research/cartpole-controls.svg" aria-label="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="/images/auto-weight-research/cartpole-controls-mobile.svg"><img src="/images/auto-weight-research/cartpole-controls.svg" alt="Four principal CartPole comparisons: original policy 169.40, original argmax 401.26, Astra edit 469.12, and informed grid 479.89." loading="lazy"></picture></a>
 
-*Figure 1. The improvement survives, but its interpretation changes. Four main comparisons on 1,024 fresh shared seeds. Bars show mean return; whiskers are descriptive 95% bootstrap intervals. The three additional controls are reported in the text. Source: our archived control experiment. [[1]](#ref-1)*
+*Figure 1. The improvement survives, but its interpretation changes. Four main comparisons on 1,024 fresh shared seeds. Bars show mean return; whiskers are descriptive 95% bootstrap intervals. The paired grid-minus-Astra difference is annotated separately. The exploratory edited-plus-argmax policy scored **487.80**, the highest observed mean, but is outside these four bars and the prespecified superiority comparisons. [All seven policies and their episode scores](/blog/auto-weight/weight-space-evidence/#cartpole).*
 
 Simply choosing the original policy's highest-probability action—*argmax*—raised its mean to **401.26**. Angle scaling alone reached **402.73**, while output scaling alone reached **256.30**. The combined Astra edit still did better, at **469.12**. Those ablations support contributions from both parts of the edit. The seventh policy, the Astra edit with argmax actions, scored **487.80** descriptively; it was outside the prespecified superiority comparisons.
 
-Then the numerical control changed the story. An eight-point grid, informed by the earlier successful edit, selected angle gain **12** and output gain **6**. Its mean was **479.89**. The grid's advantage over the Astra candidate was **10.77**, with a simultaneous two-sided 99% interval of **[7.49, 14.04]**. The direction favors the grid; an advantage larger than the prespecified 10-return margin is not established.
+Then the numerical control changed the story. An eight-point grid, informed by the earlier successful edit, selected angle gain **12** and output gain **6**. Its mean was **479.89**. The grid's advantage over the Astra candidate was **10.77**, with a paired two-sided 99% interval of **[7.49, 14.04]** (per comparison; five comparisons have a Bonferroni family-error bound of 0.05). The direction favors the grid; an advantage larger than the prespecified 10-return margin is not established.
 
 This was not an independent contest to discover the right edit from scratch. The grid inherited a useful parameterization and range from the earlier result. Both searches tried eight candidates on 128 episodes each, with the same maximum candidate-step budget, but their actual work differed: **308,555 versus 362,308 simulator steps**. The comparison supports the resulting numerical policy, while leaving the value of Astra's diagnosis unresolved.
 
@@ -73,6 +73,15 @@ CIFAR-10.1 supplies naturally collected images for testing generalization beyond
 The [continuous MountainCar policy](https://huggingface.co/sb3/ppo-MountainCarContinuous-v0) had a different opportunity. It already reached the goal reliably, but reaching the goal consumed control effort. For a successful episode, reward is **100 minus the accumulated quadratic action cost**.
 
 Astra inspected trajectories and motivated two adjustable quantities: motor-mean gain and normalized-velocity gain. A frozen 16-point numerical search chose **0.74178** and **1.45283**. On **1,024 fresh seeds**, both the original and edited policies completed every episode. The edited mean return rose from **93.9295 to 96.2973**, so its **+2.36785** gain directly corresponds to lower control cost on those episodes. Average completion time also fell slightly, from **299.88 to 295.15 steps**. [[1]](#ref-1)
+
+**What Astra actually contributed.** The [archived pre-search plan](/assets/auto-weight-evidence/continuous-plan.json) makes the division of work concrete:
+
+- **Information available:** canonical dynamics and reward, original state/action trajectories, and a separate 24-seed pilot. Motor gain 0.8 increased return by about 0.93 but increased mean steps by 27.5%; velocity gain 1.2 shortened episodes by 9.0% with almost unchanged return.
+- **Contemporaneous hypothesis:** “Joint lower torque and increased velocity sensitivity may improve energy efficiency without excessive slowdown.” This is a recorded hypothesis, not a neural mechanism inferred from the final success.
+- **Intervention:** Astra motivated the two controls; the frozen numerical search selected their values. The [selected proposal](/assets/auto-weight-evidence/continuous-proposal.json) replaces `action_net.weight` and `action_net.bias` with their originals multiplied by 0.74178, and scales column 1 of `mlp_extractor.policy_net.0.weight` by 1.45283.
+- **What evaluation revealed:** the selected candidate completed every fresh episode with lower control cost. That supports the intervention’s practical effect; it does not prove the pilot’s proposed explanation of the internal computation.
+
+The archive preserves this diagnosis and specification, but not the complete prompt or a transcript of every tensor inspection. The exact gains came from numerical selection, not an LLM-written prediction of the optimum.
 
 The candidate beat a fixed output-gain 0.8 control by **1.49825** return, with a one-sided 99% lower bound of **1.18368**. It also passed the completion-time and introduced-failure requirements. This establishes an efficiency improvement. A separately optimized one-dimensional gain search was not tested, and the edit has an equivalent input/output wrapper.
 
@@ -100,6 +109,8 @@ A useful control knob is not always available. For a language model, the behavio
 We compared **SmolLM2-360M-Instruct** with its public base checkpoint. The target was science-question accuracy; the behavior to preserve was structural instruction compliance. Blending toward the base reverses a fraction of the fine-tuning update. Earlier work on model soups and task arithmetic shows that combining parameters can be useful under particular designs. Our repair search tests its own model pair and objectives. [[5]](#ref-5) [[6]](#ref-6)
 
 Astra tried six selective tensor masks, then five uniform blend strengths from 15% to 35%, and finally six layer-wise schedules. The final selected schedule moved successive eight-layer blocks **30%, 20%, 10%, and 0%** toward the base, with **15%** for nonlayer tensors. It passed development on **2,560 ARC questions and 768 instruction prompts**. Earlier exposed holdouts had been explicitly moved into development; the final evaluation used new examples.
+
+Science accuracy here uses **zero-shot continuation scoring under a shared tokenizer/chat interface**. A lower score establishes a regression under that evaluation; it does not independently establish lost scientific knowledge.
 
 On that fresh evaluation, full rollback answered the most science questions correctly—and followed the fewest instructions. The selected layer blend offered a less costly compromise. [[1]](#ref-1)
 
@@ -132,11 +143,11 @@ These cases show why a target score cannot carry the whole argument. The interve
 
 The SmolLM2 result contains a subtlety. Its observed instruction loss was smaller than the five-point tolerance, but its uncertainty extended just beyond it.
 
-AutoWeight's *preservation gate* required the lower confidence bound on the instruction-score change to be at least **−5 percentage points**. The selected blend's bound was **−5.0048828125**. It therefore failed confirmation, and no repair checkpoint was accepted. The frozen procedure was not rerun to seek a pass. [[1]](#ref-1)
+AutoWeight's *preservation gate* required the lower confidence bound on the instruction-score change to be at least **−5 percentage points**. The selected blend's bound was approximately **−5.005 percentage points**. It therefore failed confirmation, and no repair checkpoint was accepted. The frozen procedure was not rerun to seek a pass. [[1]](#ref-1)
 
 The five-point tolerance was an experimental acceptance margin, not a validated deployment standard. Relative to the original **33.40%** instruction pass rate, it permits a loss of about **15%** of that rate. Whether that loss is acceptable depends on the application; passing this gate would not by itself establish deployment suitability.
 
-That **0.0048828-point** shortfall is a decision under a finite-bootstrap rule, not a sharp scientific boundary between a harmless and harmful edit. The requirement was not established with the available evidence.
+That approximately **0.005-point** shortfall is a decision under a finite-bootstrap rule, not a sharp scientific boundary between a harmless and harmful edit. The requirement was not established with the available evidence.
 
 Discrete MountainCar makes the distinction easier to see. Its candidate multiplied **64 velocity-input weights by 0.95**. On the first reserved test, target improvement passed. The preservation group's average return was slightly better too: **+0.055**. But its lower bound, **−2.424**, missed the permitted **−2** margin.
 
@@ -146,29 +157,19 @@ The original failure remains part of the record. The larger test provides strong
 
 It does tell us to distinguish **observed damage** from **failure to establish preservation**. LunarLander illustrates the first. MountainCar illustrates why the second can occur even when the point estimate is positive. Calling both simply “weight editing failed” would discard the most useful information.
 
-## What this tells us about LLMs as optimizers
-
-The initial CartPole result survives this examination: the edit really did improve the measured policy. What changes is the claim we can attach to it.
-
-Astra proposed edits and useful ways to parameterize them. Numerical search sometimes chose the strengths. AutoWeight applied the resulting tensors and checked improvement and preservation on reserved data. Those are distinct contributions. Our **LLM-guided weight optimization** experiments do not isolate an end-to-end LLM optimizer against an equally informed alternative in every case.
-
-We distinguish an **observed outcome**, a **functional explanation** of the changed computation, and a **proposed mechanism** for the resulting behavior. The strongest explanations for success concern what the edits compute. Positive temperature rescales confidence without changing class order. Input and output gains change sensitivities and action selection. In continuous MountainCar, higher successful-episode reward directly means lower action cost. The discrete MountainCar gain corresponds to about **8.94 fewer target steps per episode** on its retest, but why the particular velocity gain works internally remains open.
-
-The explanations for failure are less uniform. We observed target/preservation tradeoffs, candidates too weak to meet the required gain, and confidence bounds too wide to establish a margin. We also tested restricted edit families. None of those findings establishes that weight editing generally fails or that LLMs cannot reason usefully about weights.
-
 ## Conclusion and our perspective
 
-**Yes, weight-space programming can improve an existing model on held-out tests. These experiments do not establish that an LLM is a better optimizer than a well-informed numerical method.** Both statements matter: the gains are real, and the stronger baselines limit what we can claim about how they were found.
+**Yes, weight-space programming can improve an existing model on held-out tests. These experiments do not establish that an LLM is a better optimizer than a well-informed numerical method.** The gains are real; the controls determine what we can claim about how they were found.
 
-Our interpretation is that the clearest opportunity is **finding a useful, testable control within an existing model**. Calibration has a mathematical explanation: positive temperature changes confidence without changing class order. The policy experiments show that input sensitivity and action selection can offer useful controls. In continuous MountainCar, the measured reward gain means less control effort while completing every tested episode. These cases support targeted adjustment; they do not demonstrate the creation of a missing capability.
+Our interpretation is that the clearest opportunity is finding a useful, testable control within an existing model. Temperature scaling has a mathematical explanation: it changes confidence without changing class order. Policy gains change input sensitivity and action selection. In continuous MountainCar, the reward gain directly means lower control cost while completing every tested episode. These are functional explanations and measured outcomes, not evidence that an edit created a missing capability.
 
-The negative results tell a different story in each case. SmolLM2 recovered science accuracy while losing instruction compliance; LunarLander improved one starting cohort while damaging another. Other candidates simply did not establish the required improvement or preservation margin. The MountainCar retest shows why a rejection is not automatically evidence of harm. We can explain the measured tradeoffs and the acceptance decisions, but we have not established a neural mechanism that makes those failures inevitable.
+The negative results require separate explanations. SmolLM2 recovered science scores while losing instruction compliance; LunarLander helped one starting cohort while harming another. Other candidates failed to establish the required gain or preservation margin. The unchanged MountainCar candidate’s later success shows why rejection is not automatically proof of harm. None of these results identifies an inevitable neural mechanism behind failure.
 
-**Our current view is that an LLM is most promising here as a proposer of interventions and experiments.** Astra suggested useful edits and parameterizations; numerical search sometimes selected their strengths. The informed CartPole grid then outperformed the earlier Astra candidate on the fresh comparison. Because that grid inherited the earlier insight, this result neither measures the independent value of Astra's diagnosis nor establishes an LLM optimization advantage. A fair discovery comparison would need matched information and budgets from the start.
+**We currently see the LLM’s most promising role as proposing interventions and experiments.** Astra suggested useful edits and parameterizations; numerical search sometimes selected the strengths. The informed CartPole grid then scored higher than the earlier Astra candidate. Because it inherited the earlier insight, that comparison leaves the independent value of Astra’s diagnosis unresolved. Testing discovery advantage would require matched information and budgets from the start.
 
-For AutoWeight, we therefore see the strongest demonstrated value in making a proposed repair earn acceptance: select on development data, preserve a fresh test, measure the behavior at risk, and compare with rollback or a simple alternative. That is our interpretation of this collection, not a general ranking of optimization methods. A small set of heterogeneous cases cannot settle that ranking.
+For AutoWeight, the strongest demonstrated value is making a proposed repair earn acceptance through development selection, fresh confirmation, explicit preservation metrics, and credible controls. That is our interpretation of these heterogeneous cases, not a general ranking of optimizers.
 
-We started with a strikingly better CartPole score. We end with a more useful standard: **a better checkpoint is one result; evidence that we found a better way to repair models is another.** The successes show that weight edits can be worth trying. The failures and controls show what must be measured before trusting them.
+We started with a strikingly better CartPole score. We end with a more useful distinction: **a better checkpoint is one result; evidence of a better repair method is another.** The successes justify trying targeted edits. The failures and stronger baselines show what must be checked before trusting them.
 
 ## Methods and remaining results
 
@@ -176,7 +177,28 @@ AutoWeight freezes a checkpoint, development examples, reserved confirmation exa
 
 The collection covers **one image-classification case, eight RL environments, and four language-model cases**, represented by 14 external runs/cohorts and three related SmolLM2 studies. No fault was injected into these public checkpoints. Most RL cases are performance shortfalls, rather than documented historical regressions. Follow-ups are related experiments, and cases have different objectives and budgets; a pooled success rate would be misleading. All reported measurements are from the archived experiments. [[1]](#ref-1)
 
-**Table 3. Rejected outcomes across the collection.** Development failures left their reserved confirmation sets unused. A positive mean alone does not satisfy a confidence-bound requirement. [[1]](#ref-1)
+### Acceptance rules
+
+**Table 3. Complete acceptance rules for the main experiments.** Changes are candidate minus original unless noted; pp means percentage points. Every requirement in a row must pass. Lower-is-better NLL and Brier are oriented so improvement is positive. These margins were frozen experimental choices, not deployment standards. [Protocol and report records](/blog/auto-weight/weight-space-evidence/).
+
+<div class="table-scroll" role="region" aria-label="Research results table" tabindex="0" markdown="1">
+
+| Experiment | Target and minimum improvement | Preservation metric and permitted loss | Uncertainty rule |
+|---|---|---|---|
+| ResNet18 calibration | NLL decrease ≥ **0.01** | Accuracy: **0 pp** loss; Brier increase ≤ **0.005** | Native paired bootstrap; **3** gates |
+| CartPole initial confirmation | Separately for left/right initial tilt: return gain ≥ **30**, fraction reaching ≥475 steps gain ≥ **8 pp** | Fraction surviving ≥200 steps: loss ≤ **3 pp**, separately for each tilt group | Native paired bootstrap; **6** gates |
+| Discrete MountainCar, original and retest | Central starts [−0.50, −0.45): return gain ≥ **5** | Other standard starts: return loss ≤ **2** | Native paired bootstrap; **2** gates within each test; no joint error guarantee across the retest |
+| Continuous MountainCar, native | Return gain ≥ **0.5** | Success fraction: **0 pp** loss | Native paired bootstrap; **2** gates |
+| Continuous MountainCar, additional external rules | Return gain ≥ **0.5** over original and ≥ **0.1** over fixed output gain 0.8 | Upper bound on mean(candidate steps − 1.25 × original steps) ≤ **0**; **zero** introduced failures and exact upper failure-probability bound **<0.005** | 50,000 paired draws, one-sided **99%** bounds for return/time; exact one-sided **99%** Clopper–Pearson failure bound; four-rule union bound ≤ **0.04** |
+| SmolLM2 selected layer blend | ARC accuracy gain ≥ **2 pp** | Strict instruction pass-rate loss ≤ **5 pp** | Native paired bootstrap; **2** primary gates |
+
+</div>
+
+For the native rule, resample paired cases 4,096 times using seed 7612301 and compare each gate’s lower bound at quantile **0.05 / number of gates** with its stated threshold. The family-error target is 0.05 within that test; bootstrap coverage is approximate. The exact SmolLM2 preservation lower bound was **−5.0048828125 pp**, below the −5 pp requirement. Its ARC lower bound was **+3.046875 pp**, above +2 pp.
+
+The separate CartPole control study tests superiority rather than acceptance of a new repair. Its frozen rule required the Astra-minus-comparator one-sided 99% lower bound to exceed **10 return** for each of five contrasts (50,000 paired draws; Bonferroni family-error target 0.05). The two-sided intervals reported here are **99% per comparison**, with a family-error bound of 0.05 across five intervals—not 99% joint coverage. The edited-plus-argmax control is descriptive only.
+
+**Table 4. Rejected outcomes across the collection.** Development failures left their reserved confirmation sets unused. A positive mean alone does not satisfy a confidence-bound requirement. [[1]](#ref-1)
 
 <div class="table-scroll" role="region" aria-label="Research results table" tabindex="0" markdown="1">
 
@@ -192,7 +214,7 @@ The collection covers **one image-classification case, eight RL environments, an
 
 </div>
 
-**Table 4. Exploratory language-model pilots.** These metrics are narrower than the public failure reports that motivated them. None produced an accepted repair. [[1]](#ref-1)
+**Table 5. Exploratory language-model pilots.** These metrics are narrower than the public failure reports that motivated them. None produced an accepted repair. [[1]](#ref-1)
 
 <div class="table-scroll" role="region" aria-label="Research results table" tabindex="0" markdown="1">
 
@@ -206,7 +228,7 @@ The collection covers **one image-classification case, eight RL environments, an
 
 **Selection and retesting.** The first two SmolLM2 rounds had no eligible candidate; their held-out comparisons were diagnostic. The layer round selected one development-eligible candidate before fresh scoring. Exposed examples became development data in later rounds. The MountainCar retest was separately registered after failure, with no new weight search. There is no joint error guarantee across this collection of searches and retests.
 
-**Uncertainty.** Native gates generally used 4,096 paired bootstrap draws, a 0.05 family level, and per-run metric correction. SmolLM2's primary decision used two gates; secondary simultaneous control analyses are separate. CartPole's five prespecified contrasts used 50,000 draws and simultaneous two-sided 99% intervals. Continuous MountainCar added stronger external one-sided 99% bounds and an exact introduced-failure bound. Bootstrap coverage is approximate. Figures use archived statistics, with no new inference or resampling.
+**Uncertainty.** Native gates generally used 4,096 paired bootstrap draws, a 0.05 family level, and per-run metric correction. SmolLM2's primary decision used two gates; secondary simultaneous control analyses are separate. CartPole's five prespecified contrasts used 50,000 draws; the reported two-sided intervals are 99% per comparison, with a Bonferroni family-error bound of 0.05. Continuous MountainCar added stronger external one-sided 99% bounds and an exact introduced-failure bound. Bootstrap coverage is approximate. Figures use archived statistics, with no new inference or resampling.
 
 **Language data and scoring.** ARC is a science-question benchmark. [[7]](#ref-7) The final holdout uses unused questions from its official **train splits**, because earlier rounds nearly exhausted the Challenge test split. They were held out from repair selection, not guaranteed absent from upstream training. Instruction scoring uses verifiable constraints from the IFEval approach, [[8]](#ref-8) applied to **512 unused Ai2 prompts** with the same 17 supported Google strict checkers. These are not the original IFEval prompt set. [[9]](#ref-9) Source mixtures differ across rounds, so absolute scores are not one learning curve.
 
@@ -216,18 +238,13 @@ ARC uses zero-shot continuation ranking; the instruction metric measures structu
 
 ### Experiment records and provenance
 
-This is the public, readable index for reference [1]. It identifies the archived studies behind the results and links to their summaries in this article. **The underlying run files are retained in the author's archive and are not publicly released here.** This index is a summary of those records, not an independently reproducible raw-data release. The AutoWeight GitHub link in reference [10] identifies the software separately.
+The [public evidence appendix](/blog/auto-weight/weight-space-evidence/) contains 41 browsable records: protocols, checkpoint revisions, exact selected edit specifications, acceptance reports, evaluation identifiers, and individual outcomes for the central CartPole, SmolLM2, and continuous-MountainCar comparisons. A manifest identifies each archived source and the hash of its published copy. Local absolute paths are redacted where needed; those copies are explicitly labeled.
 
-- **CartPole — initial confirmation and stronger controls.** Archive identifiers: `real-rl-cartpole/RESULTS.md` and `real-rl-cartpole/comparison-20261107/analysis.json`. The first evaluates one selected edit on 256 reserved episodes; the second compares seven policies on 1,024 fresh shared seeds. [Results, controls, and Figure 1](#a-promising-edit-meets-a-harder-test).
-- **ResNet18 calibration.** Archive identifier: `real-ml/README.md`, backed by its frozen issue and confirmation report. Temperature is selected on 1,000 development images and evaluated on 1,000 reserved images. [Calibration explanation and Table 1](#why-some-targeted-edits-work).
-- **Continuous MountainCar.** Archive identifier: `real-rl-mountaincarcontinuous/RESULTS.md`. A 16-point search precedes the 1,024-seed comparison with the original and a fixed scalar control. [Efficiency result and its limitations](#why-some-targeted-edits-work).
-- **SmolLM2 recovery and preservation.** Archive identifiers: `public-smollm2-layer-blend/protocol.json`, `selection.json`, and `toolkit-confirmation.json` within that study. The selected layer blend and controls share the final 1,280-question, 512-prompt holdout. [Exact counts and Figure 2](#recovering-one-skill-can-cost-another); [acceptance decision](#a-failed-test-does-not-always-mean-a-harmful-edit). The earlier selective and uniform studies remain separate diagnostic evaluations.
-- **Discrete MountainCar — rejection and retest.** Archive identifiers: `real-rl-mountaincar/RESULTS.md` and `real-rl-mountaincar/retest/RESULTS.md`. The first uses 128 episodes per group; the separately registered retest uses 1,024 new episodes per group with identical candidate bytes and thresholds. [Both outcomes and their interpretation](#a-failed-test-does-not-always-mean-a-harmful-edit).
-- **Remaining negative results and pilots.** The integrated `catalogue.json` and `gate-results.csv` retain 377 extracted gate rows, with development, confirmation, and diagnostic comparisons distinguished. [Tables 3–4 and evaluation methods](#methods-and-remaining-results) summarize the remaining cases, including searches that never advanced to confirmation.
+This is a partial evidence release. Calibration and discrete MountainCar have protocols and aggregate reports; their individual observations are not included. Other exploratory runs, checkpoint binaries, and complete agent conversations remain unpublished. The records support inspection of the reported experiments, not a claim of independent replication or a complete inference reproduction package. The GitHub reference identifies the software separately and still requires repository access.
 
 ## References
 
-1. <span id="ref-1"></span>**Xavier, M. (2026).** [AutoWeight experiment records: study index and provenance](#experiment-records-and-provenance). Public summary of the author's archived runs, evaluation reports, and analyses, 7 November 2026. Underlying run artifacts are unpublished; this is the source record for the reported experiments, not an independent study.
+1. <span id="ref-1"></span>**Xavier, M. (2026).** [AutoWeight experiment records: protocols and outcomes](/blog/auto-weight/weight-space-evidence/). Selected archived protocols, edit specifications, reports, and per-case scores, 7 November 2026. Author-reported evidence; release scope and redactions are documented in the appendix.
 
 2. <span id="ref-2"></span>**Takehi, R., Teoh, J., Zhang, A., and Khattab, O. (2026).** [Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights](https://rikiyat.github.io/blog/weight-space-programming/). Research blog, 2 November 2026.
 

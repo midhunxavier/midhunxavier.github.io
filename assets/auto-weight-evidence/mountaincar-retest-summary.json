@@ -1,0 +1,67 @@
+{
+  "fresh_status": "accepted",
+  "original_status": "discarded",
+  "groups": {
+    "central_start": {
+      "baseline": {
+        "return": -119.4326171875
+      },
+      "candidate": {
+        "return": -110.48828125
+      },
+      "examples": 1024
+    },
+    "other_starts": {
+      "baseline": {
+        "return": -108.314453125
+      },
+      "candidate": {
+        "return": -107.154296875
+      },
+      "examples": 1024
+    }
+  },
+  "gates": [
+    {
+      "delta": 8.9443359375,
+      "group": "central_start",
+      "kind": "improve",
+      "lower_bound": 7.782958984375,
+      "metric": "return",
+      "min_delta": 5,
+      "passed": true
+    },
+    {
+      "delta": 1.16015625,
+      "group": "other_starts",
+      "kind": "preserve",
+      "lower_bound": 0.33349609375,
+      "metric": "return",
+      "min_delta": -2,
+      "passed": true
+    }
+  ],
+  "inference": {
+    "draws": 4096,
+    "family_alpha": 0.05,
+    "method": "paired-sequence-bootstrap-v1",
+    "numpy": "1.26.4"
+  },
+  "verification": {
+    "attempt_limit": 1,
+    "attempts": {
+      "001": "eligible"
+    },
+    "attempts_used": 1,
+    "baseline": null,
+    "checkpoint": "[local-path-omitted]",
+    "confirmation": "accepted",
+    "issue_id": "f298e30ba1e49e1f52cff5a4f94b11334060d5529f17a85aa33285eb97be9f7f",
+    "status": "verified"
+  },
+  "preregistered_inputs_unchanged": true,
+  "new_seeds_disjoint_from_original": true,
+  "original_tensors_unchanged": true,
+  "candidate_matches_original_attempt_003": true,
+  "confirmation_seconds": 144.09294941698317
+}

@@ -1,0 +1,37 @@
+{
+  "source": "https://huggingface.co/sb3/ppo-MountainCarContinuous-v0",
+  "revision": "2111a66bf69db028cd2db582aa004d58a735effd",
+  "files": {
+    "ppo-MountainCarContinuous-v0.zip": "893202514403c8bda7e82c24302bb82bd118f6815d25ce8d7e4152b6209ca7db",
+    "vec_normalize.pkl": "28212ce949c825be0e57b5a1daad10c449130f5040de2953f1738509c899d152",
+    "config.yml": "6ac989ebf7bca870883ef5c9fe63f3d0d52a0b9b44bd22a4fbfd1a865091508a",
+    "README.md": "fd1e5e7af7fba55d82e4c19ffb00a3989d9193ccb209c542aaf7424ae474e3cb",
+    "results.json": "7bd6cfb6116d1e7a33946a3d306e052d2eab05221450eb3a9b45cceb02d435a3",
+    "normalization.json": "dceab8885c2c8fd0aad3db79fc3d876806b93efc892e0772a1fc6e695634efed",
+    "base.npz": "4b42a8e8239a814ad59e7a25924aef38ee282f6481ced60d1d1eebf69ba3df83",
+    "pilot.py": "27aa33f018798f08f837430dc19ab77da905f2a63d07ef65b90777de8c7bf7cb",
+    "plan.json": "c6241afd6228213f6d8a5e4c6809947af2c88172c5912a0582cc1acbd92d0dfa",
+    "search.py": "347d051668484ce6f9d0f6b7531c743cfcf88f21403a3edd839004686bafb280",
+    "evaluator.py": "174617b3e58706ba2abb1e99b31408ea0c589eef0e7a6c4e047ab83d1d25caca"
+  },
+  "simulator": {
+    "name": "MountainCarContinuous-v0",
+    "path": "[local-path-omitted]",
+    "sha256": "ba9d0a5795afaf30bb32e0131bfe42a9b90141d99fab6509f647f56e221369e9",
+    "unaltered": true,
+    "time_limit": 999,
+    "reset": "default uniform position[-.6,-.4], velocity0",
+    "reward": "100 at success minus .1*action^2 each step"
+  },
+  "versions": {
+    "auto-weight": "0.5.0",
+    "gymnasium": "1.2.3",
+    "stable-baselines3": "2.9.2",
+    "numpy": "1.26.4",
+    "torch": "2.8.0",
+    "scipy": "1.16.2"
+  },
+  "platform": "macOS-15.4.1-arm64-arm-64bit",
+  "device": "cpu",
+  "normalization": "original frozen running mean/variance; norm_reward=False"
+}
