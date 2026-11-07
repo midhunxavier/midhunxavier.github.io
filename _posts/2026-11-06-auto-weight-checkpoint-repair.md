@@ -1,22 +1,23 @@
 ---
-title: "Checkpoint repair and weight-space experiments with AutoWeight"
+title: "Repairing a copying regression with AutoWeight"
 date: 2026-11-06
+last_modified_at: 2026-11-07
 permalink: /blog/auto-weight/checkpoint-repair-and-weight-space-experiments/
 redirect_from:
   - /blog/auto-weight/blog-title/
-excerpt: "How AutoWeight evaluates targeted checkpoint edits, with five agent repair cases and local replays of published weight-space experiments."
+excerpt: "One training regression, two proposed weight edits, and a held-out check: what AutoWeight repaired, what it preserved, and what this result establishes."
 layout: auto-weight-article
 sections:
-  - id: how-autoweight-works-today
+  - id: how-autoweight-works
     label: How AutoWeight works
-  - id: what-happened-in-five-cases
-    label: Five agent repair cases
-  - id: from-reading-weights-to-building-a-policy
-    label: Weight-space experiments
-  - id: how-to-use-it-effectively
-    label: How to use it effectively
-  - id: try-the-offline-demo
-    label: Try the offline demo
+  - id: the-copying-regression
+    label: The copying regression
+  - id: what-passed-confirmation
+    label: Confirmation results
+  - id: what-this-result-establishes
+    label: What the result establishes
+  - id: running-your-own-repair
+    label: Run your own repair
   - id: when-the-experiment-is-worth-running
     label: When to run an experiment
 tags:
@@ -25,83 +26,79 @@ tags:
   - weight-space programming
 ---
 
-A fine-tune can improve a model on one task and break a behavior another part of the system depends on. An API client may suddenly receive fenced JSON. A routing model may learn a new queue name and start misclassifying urgent tickets. AutoWeight makes a targeted repair testable. An agent proposes a bounded tensor edit, the local runner grades it against the base checkpoint, and a separate confirmation split decides whether to export it.
+A model can become worse at a behavior as training continues. AutoWeight provides a way to test a weight edit against both the regression and the behavior you want to preserve. An agent proposes an edit, a local runner measures it on development examples, and a separate confirmation set decides whether the candidate can be exported.
 
-We use two suites to test the workflow. Five repair cases compare Codex and Claude Code with fixed edits and, where available, full rollback. The research suite uses artifacts from Takehi, Teoh, Zhang, and Khattab to inspect weights, replay published edits, and score one-shot policies. [Original study](https://rikiyat.github.io/blog/weight-space-programming/)
+This article follows one documented repair: a copying regression that emerged during an earlier training study. It involved a small research transformer and synthetic token sequences. The checkpoints and the observed regression existed before the repair was designed. It is evidence for this particular repair workflow; a confirmed repair of a public fine-tune would be a separate case.
 
-## How AutoWeight works today
+*Updated November 7, 2026.*
 
-![The AutoWeight runner sends repair proposals through development before confirmation and sends a single construction proposal directly to confirmation. A passing candidate is exported with its report.]({{ '/images/auto-weight-architecture.svg' | relative_url }})
+## How AutoWeight works
 
-**Prepare and inspect.** `prepare` can split labeled text examples by prompt family or validate existing splits. The runner freezes the checkpoint, cases, gates, and budget, then scores the development baseline. Agents can list tensors and read bounded slices to decide where to edit.
+**Freeze the experiment.** Start with a checkpoint, independent development and confirmation examples, and rules for improvement and preservation. AutoWeight records the inputs and acceptance gates before testing proposals.
 
-**Apply and measure.** Codex and Claude Code use local MCP. The CLI supports manual proposals or an Ollama proposer. Built-in repair can restore, blend, or scale weights. Replacement payloads can supply explicit values for entire tensors or slices. Text and token evaluators ship with the runner, and a trusted local evaluator can return numeric observations from a simulator or a separate model runtime.
+**Propose and measure.** Codex or Claude Code can propose edits through local MCP. The CLI also accepts manual proposals or uses a local Ollama proposer. For compatible checkpoints, edits can restore selected tensors from an earlier checkpoint, blend weights, or scale them. Development feedback helps decide whether to discard a proposal or select it for confirmation.
 
-**Confirm and export.** Repair uses paired improvement and preservation gates. The runner rebuilds one selected edit, checks its hash against the development candidate, and scores it on the held-out cases. Construction reserves a single submission and checks an absolute score floor. The passing result includes the evaluated NPZ or Hugging Face checkpoint and a report.
+**Confirm and export.** The runner rebuilds the selected edit, checks that it matches the development candidate, and scores it on the held-out examples. Export requires both the improvement and preservation gates to pass. The report records the evaluated checkpoint, changed tensors, scores, and acceptance decision. [Workflow and evaluation rules](https://github.com/midhunxavier/auto-weight/blob/main/docs/05-evaluation-protocol.md)
 
-## What happened in five cases
+## The copying regression
 
-Codex and Claude Code each received the same task, inputs, gates, and four development attempts per case. The agents saw development feedback from the AutoWeight MCP server and could confirm the first eligible candidate once. Each of the seven exports was reloaded with Transformers and rescored on confirmation. The fixed control tried one 50% blend across all donor differences or, for the donor-free case, a 0.5 scale of the output head. Where a prior checkpoint existed, it was scored separately on the same confirmation split.
+A four-layer causal transformer, trained with seed 11101, learned to copy repeated permutations of distinct tokens. Between training steps 500 and 1,000, it became worse at copying sequences containing token collisions. The earlier study measured collision-copy accuracy of 44.6% at step 500 and 33.2% at step 1,000 on its fixed-position prompts. Both checkpoints had been saved at fixed steps during that study. [Original training and measurements](https://github.com/midhunxavier/weight-space-programming/blob/9b4a7b1f2a0156caba723158b4c3ff31c1ede2bd/packages/weight-edit-toolkit/research/inspector/examples/specificity-validation-20261105/README.md)
 
-<div class="table-scroll" role="region" aria-label="Agent repair results" tabindex="0" markdown="1">
+The repair used the later checkpoint as the base and the earlier one as a donor. Its evaluation examples varied prompt offsets from 0 through 16, so the repair scores below use a different dataset from the earlier study. Collision-copy accuracy was the behavior to improve. Accuracy on sequences with unique tokens was the behavior to preserve.
 
-| Regression | Base fix / preserve | Confirmed repair fix / preserve | What made the difference |
+Codex authored two proposals. First, it tested restoring the earlier readout. Exploratory scores showed lower loss with almost no accuracy change. It then explored blends of 10%, 25%, and 50% toward the earlier checkpoint and selected the 50% blend for the tracked workflow. Both tracked proposals were recorded before confirmation. The selected blend covered the complete state and changed 33 tensors.
+
+## What passed confirmation
+
+Development used 256 examples per group. Confirmation used 1,024 per group from a separate seed. The frozen gates required a lower confidence bound of at least **+3 percentage points** on collision-copy accuracy and at least **−2 points** on unique-copy accuracy.
+
+<div class="table-scroll" role="region" aria-label="Copying regression repair results" tabindex="0" markdown="1">
+
+| Trial | Collision accuracy, base → candidate | Unique accuracy, base → candidate | Result |
 | --- | --- | --- | --- |
-| Fenced ticket JSON | 0/60 · 60/60 | 60/60 · 60/60 | Codex restored all 38 changed tensors. Full rollback and the fixed blend reached the same scores. Claude spent four attempts on narrower restores. |
-| Wrong JSON field | 0/32 · 32/32 | 32/32 · 32/32 | Both hosts and the fixed blend passed at 50%. Full rollback recovered the schema and dropped policy accuracy to 0/32. |
-| Misclassified chat severity | 16/32 · 32/32 | 32/32 · 32/32 | Both hosts restored only the input embedding after the output-head restore failed. The fixed blend dropped development queue accuracy to 16/32. |
-| Default answer after calibration | 0/32 · 32/32 | 32/32 · 32/32 | Both hosts zeroed the final normalization bias. There was no donor, and scaling the output head left the default answer in place. |
-| Conflicting access decisions | 0/32 · 32/32 | No eligible edit | Larger blends fixed denials and broke verified allowances. Both hosts stopped without exporting a model. |
+| Development: restore readout | 39.58% → 39.67% | 99.43% → 99.41% | Discarded |
+| Development: blend checkpoints | 39.58% → 47.55% | 99.43% → 99.35% | Eligible |
+| Confirmation: blend checkpoints | **38.75% → 47.41%** | **99.31% → 99.31%** | **Accepted** |
 
 </div>
 
-The strongest case for the proposer was chat severity. Both full rollback and the fixed blend regressed queue routing. The failed output-head restore gave both agents a reason to look elsewhere, and restoring the embedding passed both checks. In the schema case, the fixed blend did as well as either agent. In the DistilGPT2 case, even a full rollback sufficed on the two measured behaviors.
+On confirmation, collision-copy accuracy improved by **8.66 percentage points**, with a lower bound of **+8.29 points**. Unique-copy accuracy changed by **+0.008 points**, with a lower bound of **−0.10 points**. Both gates passed.
 
-The conflict case shows the value of the runner independently of the proposer. With the available weights, the two prompt types reached the same final decision representation. Trying a stronger blend only moved the error from unverified to verified requests. A data or training change would be needed to make this fixture distinguish them.
+The evaluator loaded the serialized candidate at both stages. Verification matched the accepted NPZ bytes to the evaluation reports, and the input base and donor remained unchanged. The repository includes the [proposals, provenance, and reproduction instructions](https://github.com/midhunxavier/auto-weight/tree/main/examples/copy-repair), along with the [confirmation report](https://github.com/midhunxavier/auto-weight/blob/main/examples/copy-repair/confirmation.json).
 
-The DistilGPT2 case used a pretrained model with a locally induced regression on synthetic tickets and reused the existing experiment's holdout. The other four checkpoints had deliberately constructed weights, and their held-out prompts used new wording and IDs with the same answer classes. These results describe the five scenarios and one session per client per scenario. They establish how the workflow behaves under controlled conditions and leave production coverage to the user's evaluation set.
+## What this result establishes
 
-## From reading weights to building a policy
+For this training run and these two tasks, a checkpoint blend improved the regressed behavior while passing the held-out preservation check. AutoWeight made the proposal, evaluation, and export decision traceable.
 
-The research examples use revision-pinned assets and published weights. The local runs below test how AutoWeight stages, scores, and exports them. The last column describes what the original team reported with its own proposer and evaluation protocol. [Published artifacts and logs](https://github.com/RikiyaT/lm_understand-logs/tree/4d09ba6d6a7e891dd8063974dfe81b3d78e3494f)
+The edit itself was standard checkpoint interpolation. A full rollback was not scored on confirmation, so this experiment does not establish an advantage over rollback or show that an LLM finds better repairs than a fixed blend. The repaired model still missed roughly half the collision targets. The result covers one small model trained on synthetic sequences and two related copying tasks.
 
-<div class="table-scroll" role="region" aria-label="Weight-space experiment results" tabindex="0" markdown="1">
+Preservation also depends on the metric. Unique-copy accuracy passed, but its negative log-likelihood increased from 0.0291 to 0.0349. Collision negative log-likelihood improved from 3.852 to 2.766. The frozen issue gated accuracy and recorded loss as a secondary measure. A passing result means the specified checks passed; broader behavior needs broader evaluation.
 
-| Study | What you can do in AutoWeight | Published result |
-| --- | --- | --- |
-| 1. Identify a game policy | Stage four weight sets under opaque IDs and score submitted labels | Astra named all four games |
-| 2. Identify a diffusion model's target shape | Stage three checkpoints and score submitted labels | Astra identified all three shapes |
-| 3. Identify language and copying heads | Inspect middle blocks and score labels and head lists | All three languages and their copying heads identified |
-| 4. Repair the Kinetix ramp policy | Rebuild the rounded base and replay the edit on paired ramp and preservation cases | Base succeeded in 0/256 episodes. The edit succeeded in 1,024/1,024 |
-| 5. Construct MinAtar policies | Replay Breakout, Seaquest, and Asterix from zero templates. Local means were **526.69**, **60.50**, and **54.22** over 32 episodes each | Means were 517.4, 53.1, and 53.2 over 1,000 episodes each |
-| 6. Construct a 9×9 Go policy | Replay the zero-practice weights. They won **5/8** against a seeded uniform legal-move opponent | The zero-practice policy beat two smaller PPO opponents. The 50-pass policy beat the equal-sized PPO control |
-| 7. Diagnose sycophancy | Fetch the original results, or compare attention on a compatible pair you supply | Attention-assisted identification succeeded on three pairs. Weights-only attempts were inconclusive |
-| 8. Repair Qwen reasoning loops | Apply the published patch with a separate generation evaluator, or retrieve benchmark summaries | MATH-500 rose from 7.9% to 48.1%. The share hitting the token limit fell from 93.0% to 33.1% |
+## Running your own repair
 
-</div>
-
-We verified staging and scoring for the three diagnosis examples using the reference keys. The MinAtar and Go replays passed their local score gates, and `verify` confirmed the exported checkpoints. A separate offline classifier exercised paired repair through the same external evaluator protocol. Confirmation accuracy for the repaired class rose from **0/32 to 32/32**, and the preserved class stayed at **32/32**.
-
-The local Go run measures a different opponent, and the MinAtar sample uses 32 episodes per game. The Kinetix and Qwen figures in the table come from the authors' published runs. The original team also tried targeted edits on a Gemma model that rarely looped and found no established math improvement. The Qwen result shows how much removing a particular failure mode can matter. [Original benchmark protocols](https://rikiyat.github.io/blog/weight-space-programming/)
-
-## How to use it effectively
-
-1. **Write down what broke and what must survive.** Use exact text for short labels and exact JSON with a schema for API responses. The schema fixture returned valid JSON on every base example, so a syntax-only check would have missed the regression. Include at least 32 distinct examples per gated group in each split. Vary the failure conditions and input forms that matter in your application.
-2. **Measure the original and the prior before spending an agent budget.** Use development examples for that comparison. If the prior still meets the relevant checks, rollback may be enough. Otherwise, a modest blend across changed weights is a reasonable first trial for closely related checkpoints. Offer the agent the strongest compatible donor and describe which useful behaviors it predates.
-3. **Make trial feedback drive the next edit.** Give Codex or Claude Code the model and split paths, the improvement group, the behavior to preserve, and the generation settings. Pass exact tool arguments such as `donors=["prior"]`. Claude retried run creation in three scenarios after guessing donor directory names. If a broad edit fixes the target and breaks preservation, try a smaller blend or a narrower tensor group. Match the prompt format and output cap to how the model is actually used.
-4. **Confirm once and reload the export.** Reserve the confirmation examples for one chosen development candidate. Look at the actual scores and the preservation gate. Add an absolute preservation floor through the manual CLI when your product has a minimum acceptable rate. Load the exported checkpoint through the same serving path you plan to use.
-
-## Try the offline demo
-
-With Python 3.11 or newer on macOS or Linux, install AutoWeight from PyPI and run the demo.
+Install AutoWeight with Python 3.11 or newer on macOS or Linux:
 
 ```sh
 uv tool install 'auto-weight[hf,mcp]'
-auto-weight demo
 ```
 
-The demo builds a tiny model locally and runs two scripted edits. Its confirmation score for correct JSON goes from 0/32 to 32/32 while queue extraction stays at 32/32. The final JSON includes the path to the exported model. The research replays above use the extended source runner. [AutoWeight on PyPI](https://pypi.org/project/auto-weight/)
+For a local Hugging Face causal language model, prepare two labeled JSONL files with at least 32 independent examples per gated behavior in each file. Name the improvement group `fix` and give each preservation behavior its own group. Keep the confirmation examples out of the proposer's context. [Supported models and data format](https://github.com/midhunxavier/auto-weight/blob/main/docs/12-hugging-face.md)
+
+Start a local Ollama service and install the default proposer with `ollama pull qwen3.5`, then run:
+
+```sh
+auto-weight repair --base ./my-model \
+  --development dev.jsonl --confirmation holdout.jsonl \
+  --donor ./earlier-model \
+  --issue "Describe the regression and the behavior to preserve"
+```
+
+The proposer and the model being repaired are separate models. The donor must be compatible with the base; omit it when no earlier checkpoint is available, in which case the automatic proposer can try scaling edits. Set `--improve` and `--preserve` to define your own acceptance gates. The first candidate that passes development is checked once on confirmation. A failing confirmation ends the run without an accepted export. [Automatic repair settings](https://github.com/midhunxavier/auto-weight/blob/main/docs/13-automatic-repair.md)
+
+For Codex or Claude Code, configure the same local runner with `auto-weight setup-runtime --input-root ./repair-inputs` and follow the [plugin setup](https://github.com/midhunxavier/auto-weight/blob/main/plugins/auto-weight/README.md). The agent can then propose edits through MCP and use development feedback before selecting a candidate.
 
 ## When the experiment is worth running
 
-AutoWeight makes sense when a regression is narrow, the model fits the local runtime, and you can score the fix and preservation cheaply. It is especially useful when you have checkpoints from the same training lineage and need a repeatable way to test edits. The agents found useful tensor choices in two cases where the fixed recipe failed, but the controls also show where an agent adds little. Treat the proposed edit as a candidate and the frozen evaluation as the basis for accepting it.
+AutoWeight is useful when the regression is narrow, the model fits the local runtime, and you can score both the fix and preservation. Compare the base, an earlier checkpoint, and a simple blend on development examples before spending an agent budget. If rollback already meets the relevant requirements, that may be enough.
+
+Choose gates that reflect the behavior your application needs, reserve confirmation for the selected candidate, and reload an accepted export through the serving path you intend to use. The copying case demonstrates a measured improvement under those checks. Further cases are needed to establish how often this approach helps with regressions in larger, publicly available fine-tunes.
