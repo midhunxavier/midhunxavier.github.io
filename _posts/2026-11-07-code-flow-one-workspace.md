@@ -86,3 +86,5 @@ Open **New chat → Team**, select a repository, and start with a plan-only vers
 You can also use the experimental integration from a Claude Code or Codex CLI conversation: install the launcher, run `codeflow init` in your Git project, and follow the [terminal setup guide](https://midhunxavier.com/code-flow/docs/cli-conversational-teams.html). The [landing page](https://midhunxavier.com/code-flow/#get-started) has desktop downloads and setup options.
 
 Code Flow is a preview. Choose a repository you trust, review the proposed permissions and checks, and inspect the result before shipping.
+
+Want to use a team from your existing conversation? Read [Bring your Code Flow team into the tools you already use](https://midhunxavier.com/blog/code-flow/code-flow-in-your-cli-and-desktop-apps/).
