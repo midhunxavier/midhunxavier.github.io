@@ -162,7 +162,7 @@ a { color: var(--accent); text-underline-offset: .2em; }
 }
 .article-body a:has(> img) { display: block; cursor: zoom-in; }
 .article-body a > img { background: white; }
-.article-body .research-figure { display: block; cursor: zoom-in; }
+.article-body .research-figure { display: block; width: 100%; max-width: 40rem; margin: 1.4rem auto; cursor: zoom-in; }
 .article-body .research-figure picture { display: block; }
 .article-body .research-figure img { width: 100%; background: #fafaf7; }
 .article-body a[href^="#ref-"] { font: .8em system-ui, sans-serif; white-space: nowrap; }
@@ -171,7 +171,7 @@ a { color: var(--accent); text-underline-offset: .2em; }
 .article-body span[id^="ref-"] { scroll-margin-top: 2rem; }
 @media (min-width: 64rem) {
   .article-body a:has(> img) { width: calc(100% + 12rem); margin-inline: -6rem; }
-  .article-body .research-figure { width: calc(100% + 12rem); margin-inline: -6rem; }
+  .article-body .research-figure { width: 100%; margin-inline: auto; }
 }
 .article-body li + li { margin-top: .6rem; }
 .article-body img {

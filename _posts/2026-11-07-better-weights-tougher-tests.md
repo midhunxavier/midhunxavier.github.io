@@ -1,9 +1,9 @@
 ---
-title: "Can You Fix a Model by Editing Its Weights?"
+title: "Can Weight-Space Programming Fix a Model?"
 date: 2026-11-07
 last_modified_at: 2026-11-07
 permalink: /blog/auto-weight/better-weights-tougher-tests/
-excerpt: "Real gains, hidden tradeoffs, and what happens when weight edits meet stronger baselines."
+excerpt: "Real gains, hidden tradeoffs, and what happens when LLM-guided weight edits meet stronger baselines."
 layout: auto-weight-article
 hide_cover: true
 image: /images/auto-weight-research/cartpole-controls.png
@@ -20,8 +20,6 @@ sections:
     label: "What this tells us about LLMs as optimizers"
   - id: methods-and-remaining-results
     label: "Methods and remaining results"
-  - id: data-and-figures
-    label: "Data and figures"
   - id: references
     label: "References"
 tags:
@@ -34,7 +32,7 @@ A public CartPole policy scored **164.60** out of a possible 500 in a reserved e
 
 That is a promising result for an LLM acting as an optimizer. But it leaves two questions open. Could a simpler method do as well? And when an edit helps one behavior, what happens to the others?
 
-Those questions became the thread connecting our AutoWeight experiments across vision, control, and language. Some edits worked for reasons we can explain mathematically. Others improved the target while damaging another behavior. One unchanged candidate failed a test and later passed a larger, fresh one. Understanding those differences turned out to be more useful than counting successes.
+Those questions became the thread connecting our AutoWeight experiments across vision, control, and language. AutoWeight is the toolkit used to apply and evaluate the proposed changes. [[10]](#ref-10) Some edits worked for reasons we can explain mathematically. Others improved the target while damaging another behavior. One unchanged candidate failed a test and later passed a larger, fresh one. Understanding those differences turned out to be more useful than counting successes.
 
 The broader motivation comes from *Sparks of Weight-Space Programming*, which investigates LLMs reading and writing neural-network weights, including demonstrations without environment feedback. Our experiments usually supplied architecture information, development results, or trajectories. They examine a related, narrower question: **can an LLM help propose useful weight changes when we can measure both the improvement and its cost?** [[2]](#ref-2)
 
@@ -46,11 +44,11 @@ Astra's accepted edit changed two controls. It multiplied the first actor layer'
 
 The first reserved test showed a large gain. A follow-up then compared the edit with six alternatives on **1,024 new shared seeds**. This new cohort is why the original-policy mean below is 169.40 rather than 164.60. [[1]](#ref-1)
 
-<a class="research-figure" href="/images/auto-weight-research/cartpole-controls.svg" aria-label="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="/images/auto-weight-research/cartpole-controls-mobile.svg"><img src="/images/auto-weight-research/cartpole-controls.svg" alt="CartPole returns for seven methods. The Astra edit improves the original policy from 169.40 to 469.12, while an informed numerical grid reaches 479.89." loading="lazy"></picture></a>
+<a class="research-figure" href="/images/auto-weight-research/cartpole-controls.svg" aria-label="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="/images/auto-weight-research/cartpole-controls-mobile.svg"><img src="/images/auto-weight-research/cartpole-controls.svg" alt="Four principal CartPole comparisons: original policy 169.40, original argmax 401.26, Astra edit 469.12, and informed grid 479.89." loading="lazy"></picture></a>
 
-*Figure 1. The improvement survives, but its interpretation changes. Bars show mean return; whiskers are descriptive 95% bootstrap intervals. All seven methods use the same 1,024 fresh seeds. The asterisk marks edited argmax, a descriptive comparison outside the prespecified superiority tests. Source: our archived control experiment. [[1]](#ref-1)*
+*Figure 1. The improvement survives, but its interpretation changes. Four main comparisons on 1,024 fresh shared seeds. Bars show mean return; whiskers are descriptive 95% bootstrap intervals. The three additional controls are reported in the text. Source: our archived control experiment. [[1]](#ref-1)*
 
-Simply choosing the original policy's highest-probability action—*argmax*—raised its mean to **401.26**. Angle scaling alone reached **402.73**, while output scaling alone reached **256.30**. The combined Astra edit still did better, at **469.12**. Those ablations support contributions from both parts of the edit.
+Simply choosing the original policy's highest-probability action—*argmax*—raised its mean to **401.26**. Angle scaling alone reached **402.73**, while output scaling alone reached **256.30**. The combined Astra edit still did better, at **469.12**. Those ablations support contributions from both parts of the edit. The seventh policy, the Astra edit with argmax actions, scored **487.80** descriptively; it was outside the prespecified superiority comparisons.
 
 Then the numerical control changed the story. An eight-point grid, informed by the earlier successful edit, selected angle gain **12** and output gain **6**. Its mean was **479.89**. The grid's advantage over the Astra candidate was **10.77**, with a simultaneous two-sided 99% interval of **[7.49, 14.04]**. The direction favors the grid; an advantage larger than the prespecified 10-return margin is not established.
 
@@ -103,9 +101,9 @@ Astra tried six selective tensor masks, then five uniform blend strengths from 1
 
 On that fresh evaluation, full rollback answered the most science questions correctly—and followed the fewest instructions. The selected layer blend offered a less costly compromise. [[1]](#ref-1)
 
-<a class="research-figure" href="/images/auto-weight-research/smollm2-gates.svg" aria-label="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="/images/auto-weight-research/smollm2-gates-mobile.svg"><img src="/images/auto-weight-research/smollm2-gates.svg" alt="SmolLM2 accuracy on science questions and instruction compliance. Full rollback has the highest science score and the lowest instruction score; the selected layer blend retains more instruction compliance." loading="lazy"></picture></a>
+<a class="research-figure" href="/images/auto-weight-research/smollm2-gates.svg" aria-label="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="/images/auto-weight-research/smollm2-gates-mobile.svg"><img src="/images/auto-weight-research/smollm2-gates.svg" alt="SmolLM2 tradeoff plot: higher and farther right is better. Rollback recovers the most science accuracy but loses the most instruction compliance; the layer blend lies between rollback and the original." loading="lazy"></picture></a>
 
-*Figure 2. Each checkpoint faces the same fresh questions and prompts. These are accuracy point estimates, not confidence intervals. The acceptance decision also uses the uncertainty bounds discussed below. Source: final SmolLM2 comparison. [[1]](#ref-1)*
+*Figure 2. Higher and farther right is better. Moving toward rollback improves science accuracy while sacrificing instruction compliance. Each point uses the same fresh holdout: 1,280 questions and 512 prompts. These are point estimates; preservation was not established for any edit under the frozen gates. Source: final SmolLM2 comparison. [[1]](#ref-1)*
 
 **Table 2. The counts behind the tradeoff.** ARC uses 1,280 questions; instruction compliance uses 512 prompts. Source: final SmolLM2 comparison. [[1]](#ref-1)
 
@@ -139,10 +137,6 @@ That **0.0048828-point** shortfall is a decision under a finite-bootstrap rule, 
 Discrete MountainCar makes the distinction easier to see. Its candidate multiplied **64 velocity-input weights by 0.95**. On the first reserved test, target improvement passed. The preservation group's average return was slightly better too: **+0.055**. But its lower bound, **−2.424**, missed the permitted **−2** margin.
 
 A separately registered retest kept **the identical candidate bytes and thresholds** and used **1,024 fresh episodes per group**, instead of 128. Its preservation mean was **+1.160**, with a lower bound of **+0.333**. Both gates passed. [[1]](#ref-1)
-
-<a class="research-figure" href="/images/auto-weight-research/mountaincar-retest.svg" aria-label="Open full-size figure"><picture><source media="(max-width: 600px)" srcset="/images/auto-weight-research/mountaincar-retest-mobile.svg"><img src="/images/auto-weight-research/mountaincar-retest.svg" alt="MountainCar preservation lower bounds. The first test has a lower bound of minus 2.424, below the minus 2 requirement. The fresh retest has a lower bound of plus 0.333 and passes." loading="lazy"></picture></a>
-
-*Figure 3. The dots show one-sided preservation lower bounds, not mean effects. Passing requires the dot to lie at −2 or higher. Target improvement passed in both tests. The retest followed the initial failure; there is no joint error guarantee across the two tests. Source: original and separately registered retest records. [[1]](#ref-1)*
 
 The original failure remains part of the record. The larger test provides stronger evidence, but both sample precision and the observed mean changed. It does not tell us that every rejected edit would pass with more data.
 
@@ -180,7 +174,7 @@ That is where the opening question lands. **An LLM can help produce a better che
 
 ## Methods and remaining results
 
-AutoWeight freezes a checkpoint, development examples, reserved confirmation examples, and acceptance requirements. Proposals are scored on development data; a selected eligible candidate can then spend its confirmation test. Vision and policies use custom evaluators that load named arrays; SmolLM2 uses native Hugging Face checkpoints. The target models were not retrained during these edit searches.
+AutoWeight freezes a checkpoint, development examples, reserved confirmation examples, and acceptance requirements. Proposals are scored on development data; a selected eligible candidate can then spend its confirmation test. Vision and policies use custom evaluators that load named arrays; SmolLM2 uses native Hugging Face checkpoints. The target models were not retrained during these edit searches. [[10]](#ref-10)
 
 The collection covers **one image-classification case, eight RL environments, and four language-model cases**, represented by 14 external runs/cohorts and three related SmolLM2 studies. No fault was injected into these public checkpoints. Most RL cases are performance shortfalls, rather than documented historical regressions. Follow-ups are related experiments, and cases have different objectives and budgets; a pooled success rate would be misleading. All reported measurements are from the archived experiments. [[1]](#ref-1)
 
@@ -222,13 +216,9 @@ ARC uses zero-shot continuation ranking; the instruction metric measures structu
 
 **Scope and software.** RL conclusions apply to the recorded simulator versions and reset distributions. External vision/RL runs used released AutoWeight 0.5.0; later SmolLM2 runs included the documented native-HF extension. The integration checked 172 content-hashed records, frozen dataset/evaluator identities, and five accepted export hashes representing four case families. This was an artifact-consistency audit, not an independent rerun of all models.
 
-## Data and figures
-
-[Download the research supplement](https://midhunxavier.com/files/auto-weight-research-20261107.zip) for all 377 extracted gate rows, CartPole comparison statistics, a compact case catalogue, source hashes, and the plotting code. Each figure has desktop and mobile versions in SVG, PNG, and PDF. The package reproduces the reported visualizations; it does not bundle the checkpoints, raw observations, and runtimes needed for independent model inference. [[1]](#ref-1)
-
 ## References
 
-1. <span id="ref-1"></span>**Xavier, M. (2026).** [AutoWeight experiment supplement](https://midhunxavier.com/files/auto-weight-research-20261107.zip). Data and plotting code accompanying this research note, 7 November 2026. Source of this article's experimental results.
+1. <span id="ref-1"></span>**Xavier, M. (2026).** *AutoWeight experiment records.* Author's archived runs, evaluation reports, and analyses summarized in this research note, 7 November 2026. Unpublished research artifacts; source of the reported experimental results.
 
 2. <span id="ref-2"></span>**Takehi, R., Teoh, J., Zhang, A., and Khattab, O. (2026).** [Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights](https://rikiyat.github.io/blog/weight-space-programming/). Research blog, 2 November 2026.
 
@@ -245,3 +235,5 @@ ARC uses zero-shot continuation ranking; the instruction metric measures structu
 8. <span id="ref-8"></span>**Zhou, J., et al. (2023).** [Instruction-Following Evaluation for Large Language Models](https://arxiv.org/abs/2311.07911). arXiv:2311.07911.
 
 9. <span id="ref-9"></span>**Allen Institute for AI.** [IF_multi_constraints_upto5](https://huggingface.co/datasets/allenai/IF_multi_constraints_upto5). Dataset; evaluated revision `2e3a77407b7fce69f95b248d64a884e3ae1c2423`. Source of the fresh instruction prompts, used with the supported strict checkers.
+
+10. <span id="ref-10"></span>**Xavier, M. (2026).** [AutoWeight](https://github.com/midhunxavier/auto-weight). Software for proposing, evaluating, and confirming model-weight edits. GitHub repository; repository access required.
