@@ -1,9 +1,9 @@
 ---
-title: "Better Weights, Tougher Tests"
+title: "Can You Fix a Model by Editing Its Weights?"
 date: 2026-11-07
 last_modified_at: 2026-11-07
 permalink: /blog/auto-weight/better-weights-tougher-tests/
-excerpt: "When weight edits succeed, when they fail, and what experiments across vision, control, and language actually explain."
+excerpt: "Real gains, hidden tradeoffs, and what happens when weight edits meet stronger baselines."
 layout: auto-weight-article
 hide_cover: true
 image: /images/auto-weight-research/cartpole-controls.png
@@ -30,6 +30,8 @@ tags:
   - model evaluation
 ---
 
+Can an LLM act as a useful optimizer for another model by proposing changes directly to its weights? These experiments investigate that question with GPT-6 Astra and AutoWeight. The LLM proposes or diagnoses an intervention; the runner measures it against explicit improvement and preservation requirements. Some workflows also use numerical search to choose the edit strengths.
+
 A small change to a checkpoint can produce a large improvement. In one public CartPole policy, an edit raised mean return from 164.60 to 465.14 on reserved evaluation episodes. In a public image classifier, scaling its final layer reduced negative log-likelihood by 21.5% without changing accuracy. These are useful results. They also invite a harder question: **what made the edit work, and what would a simpler alternative have achieved?**
 
 I used AutoWeight to investigate public models across vision, reinforcement learning, and language. The collection includes successful edits, rejected searches, a failure followed by a successful fixed-candidate retest, and an instruction-tuned language model whose science recovery did not establish preservation. The strongest explanation for success is often a small, interpretable adjustment to a behavior the model already has. Failure has several meanings: an observed tradeoff, an insufficient gain, or insufficient evidence to certify a margin.
@@ -41,6 +43,8 @@ The result is a mixed picture. **Direct edits can improve models. A better score
 AutoWeight separates proposal from acceptance. A run freezes a checkpoint, development examples, reserved confirmation examples, and explicit improvement and preservation requirements. A proposer supplies changes to named tensors; the runner applies and scores them. An eligible candidate can be selected on development data and checked on confirmation. An accepted export must satisfy the frozen requirements.
 
 The experiments use accessible checkpoint weights, rather than API-only models. Vision and policy networks run through custom evaluators that load their named arrays; the SmolLM2 studies use native Hugging Face checkpoints. GPT-6 Astra authored the SmolLM2 edits and contributed policy diagnoses and proposals. Other candidates were selected by numerical grids or a fixed Sobol search. This is a collection of workflows, not a benchmark of one uniform agent algorithm.
+
+Here, **LLM-guided weight optimization** describes the proposal loop: an LLM uses model information and development feedback to suggest parameter changes, without gradient-based retraining of the target. It is not the whole optimization process in every experiment. In SmolLM2, Astra authored the edit schedules; in continuous MountainCar, Astra motivated two controls and numerical search selected their values. The temperature-calibration grid is a conventional numerical positive control. This distinction matters: an effective candidate is evidence for the intervention, while an advantage attributable to LLM reasoning requires a matched discovery comparison.
 
 The scope is **one image-classification case, eight RL environments, and four language-model cases**, represented by 14 external runs/cohorts and three related SmolLM2 studies. Follow-ups are not independent cases. Most RL targets are performance shortfalls in existing policies; the SmolLM2 base/instruct comparison addresses a loss associated with instruction tuning. No fault was injected into these public checkpoints. Cases, metrics, and search budgets differ, so an overall success percentage would be misleading.
 
