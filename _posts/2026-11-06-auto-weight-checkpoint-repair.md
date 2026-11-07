@@ -28,6 +28,8 @@ tags:
 
 A model can become worse at a behavior as training continues. AutoWeight provides a way to test a weight edit against both the regression and the behavior you want to preserve. An agent proposes an edit, a local runner measures it on development examples, and a separate confirmation set decides whether the candidate can be exported.
 
+For the broader research context, see [Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights](https://rikiyat.github.io/blog/weight-space-programming/) by Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab. Their study examines general-purpose LLMs reading and writing neural network weights directly. AutoWeight focuses on testing proposed repairs against explicit improvement and preservation checks.
+
 This article follows one documented repair: a copying regression that emerged during an earlier training study. It involved a small research transformer and synthetic token sequences. The checkpoints and the observed regression existed before the repair was designed. It is evidence for this particular repair workflow; a confirmed repair of a public fine-tune would be a separate case.
 
 *Updated November 7, 2026.*
