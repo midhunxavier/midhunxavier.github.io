@@ -13,10 +13,12 @@ layout: auto-weight
           <span>{{ reading_minutes }} min read</span>
         </p>
       </header>
+      {% unless page.hide_cover %}
       <figure class="cover">
         <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380"
              alt="Two weight matrices with a small group of cells changed in the second matrix.">
       </figure>
+      {% endunless %}
       <div class="reading-column">
         <details class="article-outline">
           <summary>In this article</summary>

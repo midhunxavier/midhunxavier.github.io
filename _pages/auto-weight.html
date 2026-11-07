@@ -146,7 +146,7 @@ claude</code></pre>
       <p>For a classifier, policy network, or another architecture, export named real numeric weight arrays as <code>.npz</code> and provide a Python evaluator that loads the candidate and returns scores. AutoWeight checks the repair and preservation gates and exports an accepted NPZ for your code to load.</p>
       <p>The NPZ path is limited to <strong>64 MiB of expanded tensor data</strong> and explicit tensor or slice replacements. It uses issue files through the manual CLI or MCP, with at least 32 independent cases per gated group in each development and confirmation split. The automatic Ollama repair command is for the built-in language-model workflow.</p>
       <p>PyTorch <code>.pt</code>/<code>.pth</code>, JAX checkpoints, and ONNX files need conversion and evaluator code. API-only models without accessible weights cannot be edited.</p>
-      <p><a href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/#using-your-own-model' | relative_url }}">Read the supported formats, integration requirements, and limits <span aria-hidden="true">→</span></a></p>
+      <p><a href="{{ '/blog/auto-weight/better-weights-tougher-tests/#what-we-tested' | relative_url }}">Read how local language, vision, and policy models were evaluated <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -177,9 +177,9 @@ auto-weight demo</code></pre>
   <section class="product-section research-section" aria-labelledby="research-title">
     <div>
       <p class="eyebrow">Blog</p>
-      <h2 id="research-title">Repairing a copying regression</h2>
-      <p>Read the copying-regression case: a checkpoint blend improved held-out accuracy while passing its preservation check. See the measured results and their limits.</p>
-      <a href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/' | relative_url }}">Read the blog <span aria-hidden="true">→</span></a>
+      <h2 id="research-title">Better Weights, Tougher Tests</h2>
+      <p>When do weight edits work, and why do they fail? Explore positive and negative results across vision, control, and language, with held-out checks and simple baselines.</p>
+      <a href="{{ '/blog/auto-weight/better-weights-tougher-tests/' | relative_url }}">Read the research note <span aria-hidden="true">→</span></a>
     </div>
     <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380" alt="">
   </section>
