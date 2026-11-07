@@ -146,7 +146,7 @@ claude</code></pre>
       <p>For a classifier, policy network, or another architecture, export named real numeric weight arrays as <code>.npz</code> and provide a Python evaluator that loads the candidate and returns scores. AutoWeight checks the repair and preservation gates and exports an accepted NPZ for your code to load.</p>
       <p>The NPZ path is limited to <strong>64 MiB of expanded tensor data</strong> and explicit tensor or slice replacements. It uses issue files through the manual CLI or MCP, with at least 32 independent cases per gated group in each development and confirmation split. The automatic Ollama repair command is for the built-in language-model workflow.</p>
       <p>PyTorch <code>.pt</code>/<code>.pth</code>, JAX checkpoints, and ONNX files need conversion and evaluator code. API-only models without accessible weights cannot be edited.</p>
-      <p><a href="{{ '/blog/auto-weight/better-weights-tougher-tests/#what-we-tested' | relative_url }}">Read how local language, vision, and policy models were evaluated <span aria-hidden="true">→</span></a></p>
+      <p><a href="{{ '/blog/auto-weight/better-weights-tougher-tests/#methods-and-remaining-results' | relative_url }}">Read how local language, vision, and policy models were evaluated <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
