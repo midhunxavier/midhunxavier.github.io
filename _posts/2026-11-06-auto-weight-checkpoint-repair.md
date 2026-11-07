@@ -32,6 +32,8 @@ This article follows one documented repair: a copying regression that emerged du
 
 *Updated November 7, 2026.*
 
+*The source repositories linked below are private. Their documentation and run artifacts require repository access; the measured results and limitations are summarized here.*
+
 ## How AutoWeight works
 
 **Freeze the experiment.** Start with a checkpoint, independent development and confirmation examples, and rules for improvement and preservation. AutoWeight records the inputs and acceptance gates before testing proposals.
