@@ -16,6 +16,8 @@ sections:
     label: Confirmation results
   - id: what-this-result-establishes
     label: What the result establishes
+  - id: using-your-own-model
+    label: Use your own model
   - id: running-your-own-repair
     label: Run your own repair
   - id: when-the-experiment-is-worth-running
@@ -78,6 +80,23 @@ The edit itself was standard checkpoint interpolation. A full rollback was not s
 
 Preservation also depends on the metric. Unique-copy accuracy passed, but its negative log-likelihood increased from 0.0291 to 0.0349. Collision negative log-likelihood improved from 3.852 to 2.766. The frozen issue gated accuracy and recorded loss as a secondary measure. A passing result means the specified checks passed; broader behavior needs broader evaluation.
 
+## Using your own model
+
+**You do not need a Hugging Face account or to upload your model.** AutoWeight reads checkpoints from your local filesystem. You can use a model you trained yourself or a compatible model you already have locally. Here, “Hugging Face” describes the checkpoint format and Transformers compatibility, rather than where the model must be hosted.
+
+The standard text-repair workflow supports local Transformers-compatible causal language models with safetensors weights, configuration, and tokenizer files. The architecture must be available in Transformers; the built-in evaluator runs on CPU with remote model code disabled and expects dense, unquantized floating-point weights.
+
+For a custom architecture, such as your own classifier or policy network, export its named weight arrays to a NumPy `.npz` checkpoint and supply a Python evaluator. Your evaluator defines the architecture, loads the candidate checkpoint, runs the supplied cases, and returns numeric scores. AutoWeight applies the proposed weight replacements, checks improvement and preservation, and exports an accepted NPZ checkpoint for your own code to load.
+
+This is an advanced integration with these current limits:
+
+- **Checkpoint format and size:** the custom NPZ path accepts real numeric arrays, with a maximum expanded tensor size of **64 MiB**. PyTorch `.pt` or `.pth`, JAX checkpoints, and ONNX files are not accepted directly; you must convert the weights and implement the corresponding loader in your evaluator.
+- **Edits:** custom external adapters accept explicit replacement values for whole tensors or slices. The automatic Ollama `repair` command targets the built-in language-model workflow. Custom runs use an issue file with `auto-weight init`, then proposals through the manual CLI or MCP.
+- **Evaluation:** you provide the evaluator and its dependencies, separate development and confirmation cases, metrics, and acceptance gates. Repair requires at least **32 independent cases per gated group in each split**. AutoWeight does not infer your architecture or invent a task-specific scoring function.
+- **Weight access:** API-only models whose weights you cannot access cannot be edited through this workflow.
+
+A custom evaluator can also use unquantized safetensors in a supported Hugging Face-style directory instead of NPZ. That path still requires the supported config and tokenizer files and is capped at **4 GiB** for the checkpoint directory. [Custom evaluator protocol and replacement format](https://github.com/midhunxavier/auto-weight/blob/main/docs/15-external-evaluators.md)
+
 ## Running your own repair
 
 Install AutoWeight with Python 3.11 or newer on macOS or Linux:
@@ -86,7 +105,7 @@ Install AutoWeight with Python 3.11 or newer on macOS or Linux:
 uv tool install 'auto-weight[hf,mcp]'
 ```
 
-For a local Hugging Face causal language model, prepare two labeled JSONL files with at least 32 independent examples per gated behavior in each file. Name the improvement group `fix` and give each preservation behavior its own group. Keep the confirmation examples out of the proposer's context. [Supported models and data format](https://github.com/midhunxavier/auto-weight/blob/main/docs/12-hugging-face.md)
+For the standard local Transformers-compatible language-model workflow, prepare two labeled JSONL files with at least 32 independent examples per gated behavior in each file. Name the improvement group `fix` and give each preservation behavior its own group. Keep the confirmation examples out of the proposer's context. [Supported models and data format](https://github.com/midhunxavier/auto-weight/blob/main/docs/12-hugging-face.md)
 
 Start a local Ollama service and install the default proposer with `ollama pull qwen3.5`, then run:
 

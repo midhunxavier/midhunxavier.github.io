@@ -1,7 +1,7 @@
 ---
 layout: auto-weight
 title: "AutoWeight · Model weight editing"
-excerpt: "Edit local Hugging Face model weights with Codex CLI or Claude Code. Verify each candidate against labeled examples and export the checkpoint after confirmation."
+excerpt: "Edit your own local model weights with Codex CLI or Claude Code. No Hugging Face account required. Use a supported Transformers checkpoint or integrate a custom model with an evaluator."
 permalink: /auto-weight/
 auto_weight_home: true
 ---
@@ -11,7 +11,8 @@ auto_weight_home: true
     <div>
       <p class="eyebrow product-label">Model weight editing</p>
       <h1 id="product-title">Edit model weights.<br><em>Verify the result.</em></h1>
-      <p class="product-dek">Use Codex CLI or Claude Code to propose edits to a local Hugging Face model. AutoWeight tests each candidate against the behaviors you want to change and preserve.</p>
+      <p class="product-dek">Use Codex CLI or Claude Code to propose edits to your own local model. AutoWeight tests each candidate against the behaviors you want to change and preserve.</p>
+      <p>No Hugging Face account or model upload required. Start with a supported Transformers checkpoint, or <a href="#your-model">connect a custom model with your own evaluator</a>.</p>
       <div class="product-actions">
         <a class="product-button" href="#connect">Connect your CLI <span aria-hidden="true">↗</span></a>
         <a class="product-button secondary" href="#install">Try the offline demo <span aria-hidden="true">→</span></a>
@@ -79,7 +80,7 @@ auto_weight_home: true
 
     <div class="setup-step">
       <h3><span>01</span> Prepare your inputs and install AutoWeight</h3>
-      <p>Use an existing input directory with a Hugging Face causal language model in <code>base/</code> and independent <code>development.jsonl</code> and <code>confirmation.jsonl</code> files. Replace <code>./repair-inputs</code> with that directory.</p>
+      <p>For the standard text-repair workflow, use an existing input directory with a local Transformers-compatible causal language model in <code>base/</code> and independent <code>development.jsonl</code> and <code>confirmation.jsonl</code> files. The model can be one you trained yourself. Replace <code>./repair-inputs</code> with that directory.</p>
       <div class="install-code">
         <div class="install-bar"><span>Terminal · setup</span><button type="button" data-copy="agent-runtime" hidden>Copy commands</button></div>
         <pre><code id="agent-runtime">uv tool install 'auto-weight[hf,mcp]'
@@ -130,10 +131,23 @@ claude</code></pre>
     <p class="eyebrow">Workflow</p>
     <h2 id="workflow-title">From proposed edit to verified checkpoint</h2>
     <ol class="workflow-steps">
-      <li><span>01</span><h3>Define the checks</h3><p>Bring a local Hugging Face checkpoint and labeled examples for the behavior to fix and preserve.</p></li>
+      <li><span>01</span><h3>Define the checks</h3><p>Bring a supported local checkpoint and examples for the behavior to fix and preserve. Custom architectures also need your evaluator.</p></li>
       <li><span>02</span><h3>Test targeted edits</h3><p>Ask Codex CLI or Claude Code for an edit. AutoWeight applies it to a temporary checkpoint and evaluates it on development examples.</p></li>
       <li><span>03</span><h3>Confirm and export</h3><p>Score the selected edit on held-out cases. A passing run exports the evaluated model and its report.</p></li>
     </ol>
+  </section>
+
+  <section class="product-section agent-setup" id="your-model" aria-labelledby="your-model-title">
+    <p class="eyebrow">Your model</p>
+    <h2 id="your-model-title">Use local weights, including your own</h2>
+    <p class="section-intro">Hugging Face hosting is optional. The standard workflow reads a local Transformers-compatible causal language model with safetensors weights, config, and tokenizer files. It runs on CPU with remote model code disabled and requires dense, unquantized floating-point weights.</p>
+    <div class="setup-step">
+      <h3>Custom architectures need a custom evaluator</h3>
+      <p>For a classifier, policy network, or another architecture, export named real numeric weight arrays as <code>.npz</code> and provide a Python evaluator that loads the candidate and returns scores. AutoWeight checks the repair and preservation gates and exports an accepted NPZ for your code to load.</p>
+      <p>The NPZ path is limited to <strong>64 MiB of expanded tensor data</strong> and explicit tensor or slice replacements. It uses issue files through the manual CLI or MCP, with at least 32 independent cases per gated group in each development and confirmation split. The automatic Ollama repair command is for the built-in language-model workflow.</p>
+      <p>PyTorch <code>.pt</code>/<code>.pth</code>, JAX checkpoints, and ONNX files need conversion and evaluator code. API-only models without accessible weights cannot be edited.</p>
+      <p><a href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/#using-your-own-model' | relative_url }}">Read the supported formats, integration requirements, and limits <span aria-hidden="true">→</span></a></p>
+    </div>
   </section>
 
   <section class="product-section install-section" id="install" aria-labelledby="install-title">
@@ -164,7 +178,7 @@ auto-weight demo</code></pre>
     <div>
       <p class="eyebrow">Research</p>
       <h2 id="research-title">What holds up in the experiments?</h2>
-      <p>Read five agent repair cases and eight weight-space studies, with local replay results distinguished from the published benchmarks.</p>
+      <p>Read the copying-regression case: a checkpoint blend improved held-out accuracy while passing its preservation check. See the measured results and their limits.</p>
       <a href="{{ '/blog/auto-weight/checkpoint-repair-and-weight-space-experiments/' | relative_url }}">Read the research note <span aria-hidden="true">→</span></a>
     </div>
     <img src="{{ '/images/auto-weight-cover.svg' | relative_url }}" width="1000" height="380" alt="">
