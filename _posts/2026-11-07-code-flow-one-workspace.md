@@ -16,11 +16,13 @@ Today that can mean moving between conversations, copying context, and keeping t
 
 Imagine asking Code Flow:
 
-> Build a settings page for my app. Have Claude Opus brainstorm the approach and Codex Sol review it for up to three rounds. Then have Codex Astra turn the discussion into a plan. Show me the plan before implementation.
+> Build a settings page for my app. Have Claude Opus brainstorm the approach and Codex Sol review it until they agree or reach 10 rounds. Then have Codex Astra turn the discussion into a plan. Show me the plan before implementation.
 >
 > Once I approve the plan, propose an implementation with Opus and Sol, then have a fresh Fable reviewer examine the result. Run the relevant checks. Use high effort for each participant where supported.
 
 This is an **illustrative request**, not a claim that these exact model names, roles, or sequence are available in every installation. Model access and effort settings depend on the installed CLI, its catalog, and your account. Code Flow checks explicit choices and asks you to correct unsupported ones rather than silently substituting them. If your installed CLI doesn't offer Fable, for example, choose an available reviewer.
+
+**Today, conversational workflow loops support at most five passes**, so a 10-round request must be revised to a supported limit before starting. The run can also stop earlier if its call or time allowance is exhausted, and it reports unresolved disagreement rather than forcing agreement. [CLI team workflow details](https://midhunxavier.com/code-flow/docs/cli-conversational-teams.html)
 
 The point is the shape of the request: you describe **who should contribute, how they should collaborate, and what you want to review**. Code Flow helps turn that into a task-specific approach.
 
