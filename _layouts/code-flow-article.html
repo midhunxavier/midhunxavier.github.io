@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | escape }} · Code Flow</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="article"><meta property="og:title" content="{{ page.title | escape }}"><meta property="og:description" content="{{ page.excerpt | strip_html | escape }}"><meta property="og:url" content="{{ page.url | absolute_url }}">
+  <link rel="icon" href="{{ '/images/code-flow-mark.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/code-flow-article.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip" href="#article">Skip to article</a>
+  <header class="masthead"><div class="shell nav"><a class="brand" href="https://midhunxavier.com/code-flow/"><img src="{{ '/images/code-flow-mark.svg' | relative_url }}" alt="" width="34" height="34">code-flow</a><nav aria-label="Main navigation"><a href="https://midhunxavier.com/code-flow/">Home</a><a href="https://midhunxavier.com/code-flow/docs/">Docs</a><a href="{{ '/blog/code-flow/' | relative_url }}" aria-current="page">Blog</a><a class="nav-button" href="https://github.com/midhunxavier/code-flow">GitHub ↗</a></nav></div></header>
+  <main id="article"><article>
+    <header class="article-head shell"><div class="crumb"><a href="{{ '/blog/code-flow/' | relative_url }}">CODE FLOW JOURNAL</a> <span>/</span> INTRODUCTION</div><p class="eyebrow">PRODUCT · {{ page.date | date: '%B %-d, %Y' }}</p><h1>{{ page.title | escape }}</h1><p class="dek">{{ page.excerpt | escape }}</p><div class="byline"><span class="author-mark">MX</span><span><strong>Midhun Xavier</strong><br>Code Flow</span><span class="read-time">{% assign mins = content | strip_html | number_of_words | plus: 199 | divided_by: 200 %}{{ mins }} MIN READ</span></div></header>
+    <div class="visual shell" aria-label="Illustration of a Code Flow task moving through plan, build and review"><span class="visual-label">A CLEARER PATH FROM IDEA TO RESULT</span><div class="flow"><span>01 <strong>Plan</strong></span><i>→</i><span>02 <strong>Build</strong></span><i>→</i><span>03 <strong>Review</strong></span></div><span class="visual-note">YOUR AGENTS · YOUR WORKFLOW</span></div>
+    <div class="article-wrap shell"><aside class="side"><span>IN THIS ARTICLE</span><a href="#the-idea">The idea</a><a href="#how-it-works">How it works</a><a href="#what-makes-it-different">What makes it different</a><a href="#where-it-helps">Where it helps</a><a href="#getting-started">Getting started</a></aside><div class="prose">{{ content }}<div class="next"><span>READY TO TRY IT?</span><h2>Give your next task a clearer path.</h2><p>Start locally, bring the CLIs you already use, and review the work as it happens.</p><a href="https://midhunxavier.com/code-flow/#get-started">Get started ↗</a><a href="https://midhunxavier.com/code-flow/docs/">Read the docs →</a></div></div></div>
+  </article></main><footer><div class="shell footer"><a class="brand" href="https://midhunxavier.com/code-flow/"><img src="{{ '/images/code-flow-mark.svg' | relative_url }}" alt="" width="28" height="28">code-flow</a><span>Open source · Built for a clearer way to work.</span><div><a href="https://midhunxavier.com/code-flow/docs/">Docs</a><a href="{{ '/blog/code-flow/' | relative_url }}">Blog</a><a href="https://github.com/midhunxavier/code-flow">GitHub ↗</a></div></div></footer>
+</body></html>
