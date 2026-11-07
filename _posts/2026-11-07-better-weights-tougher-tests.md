@@ -3,9 +3,6 @@ title: "Better Weights, Tougher Tests"
 date: 2026-11-07
 last_modified_at: 2026-11-07
 permalink: /blog/auto-weight/better-weights-tougher-tests/
-redirect_from:
-  - /blog/auto-weight/checkpoint-repair-and-weight-space-experiments/
-  - /blog/auto-weight/blog-title/
 excerpt: "When weight edits succeed, when they fail, and what experiments across vision, control, and language actually explain."
 layout: auto-weight-article
 hide_cover: true
