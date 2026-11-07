@@ -10,14 +10,16 @@ image: /images/auto-weight-research/cartpole-controls.png
 sections:
   - id: a-promising-edit-meets-a-harder-test
     label: "A promising edit meets a harder test"
-  - id: why-some-small-edits-work
-    label: "Why some small edits work"
+  - id: why-some-targeted-edits-work
+    label: "Why some targeted edits work"
   - id: recovering-one-skill-can-cost-another
     label: "Recovering one skill can cost another"
   - id: a-failed-test-does-not-always-mean-a-harmful-edit
     label: "A failed test does not always mean a harmful edit"
   - id: what-this-tells-us-about-llms-as-optimizers
     label: "What this tells us about LLMs as optimizers"
+  - id: conclusion-and-our-perspective
+    label: "Conclusion and our perspective"
   - id: methods-and-remaining-results
     label: "Methods and remaining results"
   - id: references
@@ -28,7 +30,7 @@ tags:
   - model evaluation
 ---
 
-A public CartPole policy scored **164.60** out of a possible 500 in a reserved evaluation. After a small weight edit, it scored **465.14**. The network had not been retrained. GPT-6 Astra had proposed changing how strongly it responded to pole angle and how sharply it chose actions. The candidate passed all six of the experiment's checks. [[1]](#ref-1)
+A public CartPole policy scored **164.60** out of a possible 500 in a reserved evaluation. After an edit to a small set of parameters, it scored **465.14**. The network had not been retrained. GPT-6 Astra had proposed changing how strongly it responded to pole angle and how sharply it chose actions. The candidate passed all six of the experiment's checks: improvement in return and near-completion, and preservation of 200-step survival, evaluated separately for left- and right-tilted starts. [[1]](#ref-1)
 
 That is a promising result for an LLM acting as an optimizer. But it leaves two questions open. Could a simpler method do as well? And when an edit helps one behavior, what happens to the others?
 
@@ -58,7 +60,7 @@ There was another useful control. An equivalent inference wrapper and the edited
 
 The lesson is specific: **the edit improved this policy substantially, but improvement over the original did not establish an advantage for LLM optimization over an informed numerical alternative.**
 
-## Why some small edits work
+## Why some targeted edits work
 
 The clearest success came from a problem that needed very little structural change: an image classifier was too confident.
 
@@ -74,7 +76,7 @@ Astra inspected trajectories and motivated two adjustable quantities: motor-mean
 
 The candidate beat a fixed output-gain 0.8 control by **1.49825** return, with a one-sided 99% lower bound of **1.18368**. It also passed the completion-time and introduced-failure requirements. This establishes an efficiency improvement. A separately optimized one-dimensional gain search was not tested, and the edit has an equivalent input/output wrapper.
 
-These two examples explain what a useful small edit can look like: **adjust an existing behavior through a control whose effect is understandable**. One changes confidence; the other changes control cost while retaining completion. CartPole's ablations support a similar account involving sensitivity and action selection.
+These two examples explain what a useful targeted edit can look like: **adjust an existing behavior through a control whose effect is understandable**. One changes confidence; the other changes control cost while retaining completion. CartPole's ablations support a similar account involving sensitivity and action selection.
 
 **Table 1. Accepted outcomes on reserved data.** Discrete MountainCar is a separately registered retest; we return to its original failure below. Source: experiment records. [[1]](#ref-1)
 
@@ -132,6 +134,8 @@ The SmolLM2 result contains a subtlety. Its observed instruction loss was smalle
 
 AutoWeight's *preservation gate* required the lower confidence bound on the instruction-score change to be at least **−5 percentage points**. The selected blend's bound was **−5.0048828125**. It therefore failed confirmation, and no repair checkpoint was accepted. The frozen procedure was not rerun to seek a pass. [[1]](#ref-1)
 
+The five-point tolerance was an experimental acceptance margin, not a validated deployment standard. Relative to the original **33.40%** instruction pass rate, it permits a loss of about **15%** of that rate. Whether that loss is acceptable depends on the application; passing this gate would not by itself establish deployment suitability.
+
 That **0.0048828-point** shortfall is a decision under a finite-bootstrap rule, not a sharp scientific boundary between a harmless and harmful edit. The requirement was not established with the available evidence.
 
 Discrete MountainCar makes the distinction easier to see. Its candidate multiplied **64 velocity-input weights by 0.95**. On the first reserved test, target improvement passed. The preservation group's average return was slightly better too: **+0.055**. But its lower bound, **−2.424**, missed the permitted **−2** margin.
@@ -148,29 +152,23 @@ The initial CartPole result survives this examination: the edit really did impro
 
 Astra proposed edits and useful ways to parameterize them. Numerical search sometimes chose the strengths. AutoWeight applied the resulting tensors and checked improvement and preservation on reserved data. Those are distinct contributions. Our **LLM-guided weight optimization** experiments do not isolate an end-to-end LLM optimizer against an equally informed alternative in every case.
 
-The strongest explanations for success concern what the edits compute. Positive temperature rescales confidence without changing class order. Input and output gains change sensitivities and action selection. In continuous MountainCar, higher successful-episode reward directly means lower action cost. The discrete MountainCar gain corresponds to about **8.94 fewer target steps per episode** on its retest, but why the particular velocity gain works internally remains open.
+We distinguish an **observed outcome**, a **functional explanation** of the changed computation, and a **proposed mechanism** for the resulting behavior. The strongest explanations for success concern what the edits compute. Positive temperature rescales confidence without changing class order. Input and output gains change sensitivities and action selection. In continuous MountainCar, higher successful-episode reward directly means lower action cost. The discrete MountainCar gain corresponds to about **8.94 fewer target steps per episode** on its retest, but why the particular velocity gain works internally remains open.
 
 The explanations for failure are less uniform. We observed target/preservation tradeoffs, candidates too weak to meet the required gain, and confidence bounds too wide to establish a margin. We also tested restricted edit families. None of those findings establishes that weight editing generally fails or that LLMs cannot reason usefully about weights.
 
-**Table 3. What the evidence explains—and what it leaves open.**
+## Conclusion and our perspective
 
-<div class="table-scroll" role="region" aria-label="Research results table" tabindex="0" markdown="1">
+**Yes, weight-space programming can improve an existing model on held-out tests. These experiments do not establish that an LLM is a better optimizer than a well-informed numerical method.** Both statements matter: the gains are real, and the stronger baselines limit what we can claim about how they were found.
 
-| Pattern | Supported explanation | Remaining uncertainty |
-|---|---|---|
-| Calibration succeeds | Positive temperature rescales confidence while preserving class order; held-out probability scores improve | Transfer to other shifts and classifiers |
-| Policy gains succeed | Input/output gains change useful existing control; ablations and parity tests support their functional role | Whether LLM diagnosis outperforms independent human or automatic discovery |
-| Continuous control becomes more efficient | All held-out episodes complete; higher reward means lower quadratic control cost | Whether this is the best low-dimensional tuning method |
-| Target gain damages another cohort | The same intervention has different measured effects across initial conditions | The precise internal or dynamical mechanism |
-| Checkpoint reversal trades recovery for compliance | Moving toward the base recovers one measured capability and loses another | Whether those capabilities can be separated by a different edit |
-| A positive estimate fails its gate | The confidence bound does not establish the required margin | Whether a larger independent sample would pass |
-| A search finds no eligible edit | Its tested candidates and budget were insufficient | Whether a broader family or better diagnostic would succeed |
+Our interpretation is that the clearest opportunity is **finding a useful, testable control within an existing model**. Calibration has a mathematical explanation: positive temperature changes confidence without changing class order. The policy experiments show that input sensitivity and action selection can offer useful controls. In continuous MountainCar, the measured reward gain means less control effort while completing every tested episode. These cases support targeted adjustment; they do not demonstrate the creation of a missing capability.
 
-</div>
+The negative results tell a different story in each case. SmolLM2 recovered science accuracy while losing instruction compliance; LunarLander improved one starting cohort while damaging another. Other candidates simply did not establish the required improvement or preservation margin. The MountainCar retest shows why a rejection is not automatically evidence of harm. We can explain the measured tradeoffs and the acceptance decisions, but we have not established a neural mechanism that makes those failures inevitable.
 
-The practical opportunity is to use an LLM to suggest an understandable intervention, then ask demanding questions of it: does it survive new examples, preserve what matters, and compare well with a competent baseline? In this collection, the answer was sometimes yes to the first two and unresolved or unfavorable on the third.
+**Our current view is that an LLM is most promising here as a proposer of interventions and experiments.** Astra suggested useful edits and parameterizations; numerical search sometimes selected their strengths. The informed CartPole grid then outperformed the earlier Astra candidate on the fresh comparison. Because that grid inherited the earlier insight, this result neither measures the independent value of Astra's diagnosis nor establishes an LLM optimization advantage. A fair discovery comparison would need matched information and budgets from the start.
 
-That is where the opening question lands. **An LLM can help produce a better checkpoint. Establishing a better way to repair models requires more than the checkpoint's improved score.** The positive and negative results are useful together because they reveal which part of that argument each experiment actually supports.
+For AutoWeight, we therefore see the strongest demonstrated value in making a proposed repair earn acceptance: select on development data, preserve a fresh test, measure the behavior at risk, and compare with rollback or a simple alternative. That is our interpretation of this collection, not a general ranking of optimization methods. A small set of heterogeneous cases cannot settle that ranking.
+
+We started with a strikingly better CartPole score. We end with a more useful standard: **a better checkpoint is one result; evidence that we found a better way to repair models is another.** The successes show that weight edits can be worth trying. The failures and controls show what must be measured before trusting them.
 
 ## Methods and remaining results
 
@@ -178,7 +176,7 @@ AutoWeight freezes a checkpoint, development examples, reserved confirmation exa
 
 The collection covers **one image-classification case, eight RL environments, and four language-model cases**, represented by 14 external runs/cohorts and three related SmolLM2 studies. No fault was injected into these public checkpoints. Most RL cases are performance shortfalls, rather than documented historical regressions. Follow-ups are related experiments, and cases have different objectives and budgets; a pooled success rate would be misleading. All reported measurements are from the archived experiments. [[1]](#ref-1)
 
-**Table 4. Rejected outcomes across the collection.** Development failures left their reserved confirmation sets unused. A positive mean alone does not satisfy a confidence-bound requirement. [[1]](#ref-1)
+**Table 3. Rejected outcomes across the collection.** Development failures left their reserved confirmation sets unused. A positive mean alone does not satisfy a confidence-bound requirement. [[1]](#ref-1)
 
 <div class="table-scroll" role="region" aria-label="Research results table" tabindex="0" markdown="1">
 
@@ -194,7 +192,7 @@ The collection covers **one image-classification case, eight RL environments, an
 
 </div>
 
-**Table 5. Exploratory language-model pilots.** These metrics are narrower than the public failure reports that motivated them. None produced an accepted repair. [[1]](#ref-1)
+**Table 4. Exploratory language-model pilots.** These metrics are narrower than the public failure reports that motivated them. None produced an accepted repair. [[1]](#ref-1)
 
 <div class="table-scroll" role="region" aria-label="Research results table" tabindex="0" markdown="1">
 
@@ -216,9 +214,20 @@ ARC uses zero-shot continuation ranking; the instruction metric measures structu
 
 **Scope and software.** RL conclusions apply to the recorded simulator versions and reset distributions. External vision/RL runs used released AutoWeight 0.5.0; later SmolLM2 runs included the documented native-HF extension. The integration checked 172 content-hashed records, frozen dataset/evaluator identities, and five accepted export hashes representing four case families. This was an artifact-consistency audit, not an independent rerun of all models.
 
+### Experiment records and provenance
+
+This is the public, readable index for reference [1]. It identifies the archived studies behind the results and links to their summaries in this article. **The underlying run files are retained in the author's archive and are not publicly released here.** This index is a summary of those records, not an independently reproducible raw-data release. The AutoWeight GitHub link in reference [10] identifies the software separately.
+
+- **CartPole — initial confirmation and stronger controls.** Archive identifiers: `real-rl-cartpole/RESULTS.md` and `real-rl-cartpole/comparison-20261107/analysis.json`. The first evaluates one selected edit on 256 reserved episodes; the second compares seven policies on 1,024 fresh shared seeds. [Results, controls, and Figure 1](#a-promising-edit-meets-a-harder-test).
+- **ResNet18 calibration.** Archive identifier: `real-ml/README.md`, backed by its frozen issue and confirmation report. Temperature is selected on 1,000 development images and evaluated on 1,000 reserved images. [Calibration explanation and Table 1](#why-some-targeted-edits-work).
+- **Continuous MountainCar.** Archive identifier: `real-rl-mountaincarcontinuous/RESULTS.md`. A 16-point search precedes the 1,024-seed comparison with the original and a fixed scalar control. [Efficiency result and its limitations](#why-some-targeted-edits-work).
+- **SmolLM2 recovery and preservation.** Archive identifiers: `public-smollm2-layer-blend/protocol.json`, `selection.json`, and `toolkit-confirmation.json` within that study. The selected layer blend and controls share the final 1,280-question, 512-prompt holdout. [Exact counts and Figure 2](#recovering-one-skill-can-cost-another); [acceptance decision](#a-failed-test-does-not-always-mean-a-harmful-edit). The earlier selective and uniform studies remain separate diagnostic evaluations.
+- **Discrete MountainCar — rejection and retest.** Archive identifiers: `real-rl-mountaincar/RESULTS.md` and `real-rl-mountaincar/retest/RESULTS.md`. The first uses 128 episodes per group; the separately registered retest uses 1,024 new episodes per group with identical candidate bytes and thresholds. [Both outcomes and their interpretation](#a-failed-test-does-not-always-mean-a-harmful-edit).
+- **Remaining negative results and pilots.** The integrated `catalogue.json` and `gate-results.csv` retain 377 extracted gate rows, with development, confirmation, and diagnostic comparisons distinguished. [Tables 3–4 and evaluation methods](#methods-and-remaining-results) summarize the remaining cases, including searches that never advanced to confirmation.
+
 ## References
 
-1. <span id="ref-1"></span>**Xavier, M. (2026).** *AutoWeight experiment records.* Author's archived runs, evaluation reports, and analyses summarized in this research note, 7 November 2026. Unpublished research artifacts; source of the reported experimental results.
+1. <span id="ref-1"></span>**Xavier, M. (2026).** [AutoWeight experiment records: study index and provenance](#experiment-records-and-provenance). Public summary of the author's archived runs, evaluation reports, and analyses, 7 November 2026. Underlying run artifacts are unpublished; this is the source record for the reported experiments, not an independent study.
 
 2. <span id="ref-2"></span>**Takehi, R., Teoh, J., Zhang, A., and Khattab, O. (2026).** [Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights](https://rikiyat.github.io/blog/weight-space-programming/). Research blog, 2 November 2026.
 
